@@ -1,2 +1,9 @@
-# labbd2016
-Repositório para o código do sistema desenvolvido na disciplina de Laboratório de Bancos de Dados.
+# Sistema Prograd e DiGra
+
+Adicionar tudo possível nesse repositório:
+- Diagrama ER;
+- Código SQL;
+- Modelo Físico;
+- Código do aplicativo da interface;
+
+Usar o sistema de Issues do github para organizar o que ainda deve ser feito.
