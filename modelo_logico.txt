@@ -19,17 +19,11 @@ pre_requisitos(PK(FK_disciplina_disciplina(sigla), FK_disciplina_prerequisito(si
 comunicacoes(PK(FK_itens_de_pauta(pauta, data_aprovacao), FK_membro(cpf), data_hora), descricao) - OK FIS
 intervencoes(PK(FK_itens_de_pauta(pauta, data_aprovacao), FK_membro(cpf), data_hora), descricao) - OK FIS
 matricula(PK(fase,FK_aluno(cpf),FK_turma(semestre,ano,sigla_disciplina,letra)), razao, nota, deferimento) - OK FIS
-cursa(PK(FK_curso(sigla), FK_aluno(cpf)), data_inicio, data_fim) - OK FIS
 preve(PK(FK_disciplina(sigla), FK_PPP(ano, semestre)), perfil, optativa) - OK FIS
 faz_credenciamento(PK(FK_enade(periodo, ano), FK_aluno(cpf)), data) - OK FIS
 avalia(PK(FK_itens_do_formulario(descricao, fase), FK_visita(num_capes,data))) - OK FIS
 aula(PK(FK_turma(semestre, ano, sigla_disciplina, letra), dia, hora, predio, sala)) - OK FIS
 
-####teste thiago###### olhem!! n sei se esta certo rsrs
- Data (Faz Prova)
-faz_prova(PK(data,FK.enade(periodo,ano),FK.aluno(cpf)),nota) - OK FIS
-
-##############
 
 #BRUNO BORTOLLI
 recesso(PK(data_inicio, data_fim, campus, nome), tipo ) - OK FIS
@@ -44,6 +38,8 @@ curso(PK(sigla),nome,max_creditos,min_creditos ) - OK FIS
 departamento(PK(sigla), nome) - OK FIS
 disciplina(PK(sigla ), nome, ementa, creditos, FK.departamento(sigla_depto) )###FK não faz parte da PK - OK FIS
 reconhecimento(PK(num_capes, FK.curso(sigla_curso) ), data_inicio, ) - OK FIS
+cursa(PK(FK_curso(sigla), FK_aluno(cpf)), data_inicio, data_fim) - OK FIS
+faz_prova(PK(data,FK.enade(periodo,ano),FK.aluno(cpf)),nota) - OK FIS
 
 
 #FABIO
