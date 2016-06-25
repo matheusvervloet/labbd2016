@@ -1,0 +1,225 @@
+USE labbd;
+
+INSERT INTO labbd.pessoa (cpf, prenome, nome_meio, sobrenome) 
+VALUES ('919191919-44', 'Danilo', 'Otavio', 'Barros');
+
+INSERT INTO labbd.pessoa (cpf, prenome, nome_meio, sobrenome) 
+VALUES ('919136532-44', 'Alice', 'Luisa', 'Ramos');
+
+INSERT INTO labbd.pessoa (cpf, prenome, nome_meio, sobrenome) 
+VALUES ('505019159-44', 'Victor', 'Matheus', 'Vasconcelos');
+
+INSERT INTO labbd.pessoa (cpf, prenome, nome_meio, sobrenome) 
+VALUES ('231546389-98', 'Augusto', 'Cesar', 'Deus');
+
+INSERT INTO labbd.pessoa (cpf, prenome, nome_meio, sobrenome) 
+VALUES ('546322148-91', 'Jorge', 'Carvalho', 'Dias');
+
+INSERT INTO labbd.pessoa (cpf, prenome, nome_meio, sobrenome) 
+VALUES ('252468793-11', 'Linda', 'Almeida', 'Aparecida');
+
+INSERT INTO labbd.pessoa (cpf, prenome, nome_meio, sobrenome) 
+VALUES ('777795472-95', 'Loco', 'George', 'Santos');
+
+INSERT INTO labbd.pessoa (cpf, prenome, nome_meio, sobrenome) 
+VALUES ('121541619-21', 'Amanda', 'Maite', 'Pereira');
+
+INSERT INTO labbd.pessoa (cpf, prenome, nome_meio, sobrenome) 
+VALUES ('830225565-26', 'Raphael', 'Takamassa', 'Nomuro');
+
+INSERT INTO labbd.pessoa (cpf, prenome, nome_meio, sobrenome) 
+VALUES ('254847477-17', 'Priscila', 'Aleixo', 'Muller');
+
+INSERT INTO labbd.pessoa (cpf, prenome, nome_meio, sobrenome) 
+VALUES ('209243943-08', 'Jessica', 'Luisa', 'Barbosa');
+
+INSERT INTO labbd.pessoa (cpf, prenome, nome_meio, sobrenome) 
+VALUES ('275677595-94', 'Clara', 'Alves', 'Lima');
+
+
+INSERT INTO labbd.pessoa (cpf, prenome, nome_meio, sobrenome) 
+VALUES ('684499362-79', 'Ricardo', 'Matheus', 'Almeida');
+
+INSERT INTO labbd.aluno  (nome_da_mae, nome_do_pai, pais, uf, data_nascimento, ano_ingresso, sexo, cor, reenquadramento, ra, cpf, conclusao_em_nome, conclusao_em_ano)
+VALUES ('Luciana A Moura', 'Leonardo A Barros', 'Brasil', 'SP',
+                         STR_TO_DATE('1-01-1990', '%d-%m-%Y') , STR_TO_DATE('1-01-2012', '%d-%m-%Y'),
+                         'M', 'Branco', 0, 12345, '919191919-44', 'Escola Estadual Legal', STR_TO_DATE('1-01-2011', '%d-%m-%Y'));
+
+INSERT INTO labbd.aluno (nome_da_mae, nome_do_pai, pais, uf, data_nascimento, ano_ingresso, sexo, cor, reenquadramento, ra, cpf, conclusao_em_nome, conclusao_em_ano)
+VALUES ('Alvara A Petralina', 'Jorge A Ramos', 'Brasil', 'RJ',
+                         STR_TO_DATE('17-07-1990', '%d-%m-%Y') , STR_TO_DATE('1-01-2012', '%d-%m-%Y'),
+                         'F', 'Branco', 0, 2245, '919136532-44', 'Escola Estadual Chata', STR_TO_DATE('22-02-2011', '%d-%m-%Y'));
+                         
+INSERT INTO labbd.aluno (nome_da_mae, nome_do_pai, pais, uf, data_nascimento, ano_ingresso, sexo, cor, reenquadramento, ra, cpf, conclusao_em_nome, conclusao_em_ano)
+VALUES ('Daniela Pereira', 'Marcos G Vasconcelos', 'Brasil', 'SP',
+                         STR_TO_DATE('1-01-1990', '%d-%m-%Y') , STR_TO_DATE('1-01-2010', '%d-%m-%Y'),
+                         'M', 'Pardo', 0, 1299, '505019159-44', 'Escola Federal Super', STR_TO_DATE('5-01-2011', '%d-%m-%Y'));
+
+
+INSERT INTO labbd.aluno (nome_da_mae, nome_do_pai, pais, uf, data_nascimento, ano_ingresso, sexo, cor, reenquadramento, ra, cpf, conclusao_em_nome, conclusao_em_ano)
+VALUES ('Daniela Lima', 'Vinicius Lima', 'Brasil', 'SP',
+                         STR_TO_DATE('1-01-1990', '%d-%m-%Y') , STR_TO_DATE('1-01-2010', '%d-%m-%Y'),
+                         'M', 'Pardo', 0, 1299, '275677595-94', 'Escola Federal Super', STR_TO_DATE('5-01-2011', '%d-%m-%Y'));
+
+
+INSERT INTO labbd.aluno (nome_da_mae, nome_do_pai, pais, uf, data_nascimento, ano_ingresso, sexo, cor, reenquadramento, ra, cpf, conclusao_em_nome, conclusao_em_ano)
+VALUES ('Bruna Barbosa', 'Igor Barbosa', 'Brasil', 'SP',
+                         STR_TO_DATE('1-01-1990', '%d-%m-%Y') , STR_TO_DATE('1-01-2010', '%d-%m-%Y'),
+                         'M', 'Pardo', 0, 1299, '209243943-08', 'Escola Federal Super', STR_TO_DATE('5-01-2011', '%d-%m-%Y'));
+
+INSERT INTO labbd.ta (cpf)
+VALUES ('684499362-79');
+
+INSERT INTO labbd.ta (cpf)
+VALUES ('231546389-98');
+
+INSERT INTO labbd.ta (cpf)
+VALUES ('546322148-91');
+
+INSERT INTO labbd.ta (cpf)
+VALUES ('254847477-17');
+
+INSERT INTO labbd.ta (cpf)
+VALUES ('252468793-11');
+
+INSERT INTO labbd.docente (cpf)
+VALUES ('777795472-95');
+
+INSERT INTO labbd.docente (cpf)
+VALUES ('121541619-21');
+
+INSERT INTO labbd.docente (cpf)
+VALUES ('830225565-26');
+
+INSERT INTO labbd.docente (cpf)
+VALUES ('254847477-17');
+
+INSERT INTO labbd.docente (cpf)
+VALUES ('209243943-08');
+
+INSERT INTO labbd.centro_academico (sigla, nome)
+VALUES ('CAEnf', 'Centro Acadêmico da Enfermagem');
+
+INSERT INTO labbd.centro_academico (sigla, nome)
+VALUES ('CALING', 'Centro Acadêmico dos Estudantes de Linguística da UFSCar');
+
+INSERT INTO labbd.centro_academico (sigla, nome)
+VALUES ('CAJAR', 'Centro Acadêmico José Albertino Rodrigues');
+
+INSERT INTO labbd.centro_academico (sigla, nome)
+VALUES ('CAEP', 'Centro Acadêmico da Engenharia de Produção');
+
+INSERT INTO labbd.centro_academico (sigla, nome)
+VALUES ('CAAMP', 'Centro Academico Ana Maria Primavesi – Agroecologia');
+
+INSERT INTO labbd.faz_prova(data,cpf,nota)
+VALUES (STR_TO_DATE('02-11-2015', '%d-%m-%Y') ,'919191919-44',7);
+INSERT INTO labbd.faz_prova(data,cpf,nota)
+VALUES (STR_TO_DATE('05-11-2015', '%d-%m-%Y'),'919136532-44' ,4);
+INSERT INTO labbd.faz_prova(data,cpf,nota)
+VALUES (STR_TO_DATE('01-11-2015', '%d-%m-%Y') ,'505019159-44',5);
+INSERT INTO labbd.faz_prova(data,cpf,nota)
+VALUES (STR_TO_DATE('03-11-2015', '%d-%m-%Y') ,'275677595-94',5);
+INSERT INTO labbd.faz_prova(data,cpf,nota)
+VALUES (STR_TO_DATE('06-11-2015', '%d-%m-%Y') ,'209243943-08',5);
+
+
+INSERT INTO labbd.membro (data_inicio, data_fim, representacao, portaria_indicacao, cpf)
+VALUES (STR_TO_DATE('07-03-2015', '%d-%m-%Y'), STR_TO_DATE('07-03-2016', '%d-%m-%Y'), 
+    'corpo discente', '1757/16', '919191919-44');
+
+INSERT INTO labbd.membro (data_inicio, data_fim, representacao, portaria_indicacao, cpf)
+VALUES (STR_TO_DATE('07-03-2015', '%d-%m-%Y'), STR_TO_DATE('07-03-2016', '%d-%m-%Y'), 
+    'corpo docente', '1757/16', '505019159-44');
+
+INSERT INTO labbd.curso (sigla, nome, max_creditos, min_creditos) 
+VALUES ('ENC', 'Engenharia de Computacao', 38, 4);
+INSERT INTO labbd.curso (sigla, nome, max_creditos, min_creditos) 
+VALUES ('EP', 'Engenharia de Producao', 38,4);
+INSERT INTO labbd.curso (sigla, nome, max_creditos, min_creditos) 
+VALUES ('EQ', 'Engenharia Quimica', 38,4);
+INSERT INTO labbd.curso (sigla, nome, max_creditos, min_creditos) 
+VALUES ('BCC', 'Bacharelado Ciencia da Computacao', 38,4);
+INSERT INTO labbd.curso (sigla, nome, max_creditos, min_creditos) 
+VALUES ('Bio', 'Biologia', 38,4);
+INSERT INTO labbd.curso (sigla, nome, max_creditos, min_creditos) 
+VALUES ('Mat', 'Matematica', 38,4);
+
+INSERT INTO labbd.departamento (sigla, nome)
+VALUES ('DC', 'Departamento de Computacao');
+INSERT INTO labbd.departamento (sigla, nome)
+VALUES ('DQ', 'Departamento de Quimica');
+INSERT INTO labbd.departamento (sigla, nome)
+VALUES ('DF', 'Departamento de Fisica');
+INSERT INTO labbd.departamento (sigla, nome)
+VALUES ('DP', 'Departamento de Producao');
+INSERT INTO labbd.departamento (sigla, nome)
+VALUES ('DM', 'Departamento de Matematica');
+
+INSERT INTO labbd.disciplina (sigla, nome, ementa, creditos,sigla_depto)
+VALUES ('LBD', 'Laboratorio de Bancos de Dados', 'link1', 2, 'DC');
+INSERT INTO labbd.disciplina (sigla, nome, ementa, creditos,sigla_depto)
+VALUES ('FT6', 'Fenomenos de Transporte6', 'link2', 4, 'DF');
+INSERT INTO labbd.disciplina (sigla, nome, ementa, creditos,sigla_depto)
+VALUES ('TO', 'Teoria das Organizacoes', 'link3', 4, 'DP');
+INSERT INTO labbd.disciplina (sigla, nome, ementa, creditos,sigla_depto)
+VALUES ('CAP', 'Construcao de Algoritmos de Programacao', 'link4', 8,'DC');
+INSERT INTO labbd.disciplina (sigla, nome, ementa, creditos,sigla_depto)
+VALUES ('SO', 'Sistemas Operacionais', 'link5', 4,'DC');
+INSERT INTO labbd.disciplina (sigla, nome, ementa, creditos,sigla_depto)
+VALUES ('BD', 'Banco de Dados', 'link6', 4,'DC');
+INSERT INTO labbd.disciplina (sigla, nome, ementa, creditos,sigla_depto)
+VALUES ('ARQ1', 'Arquitetura e Organização de Computadores 1', 'link7', 4,'DC');
+INSERT INTO labbd.disciplina (sigla, nome, ementa, creditos,sigla_depto)
+VALUES ('LARQ1', 'Laboratorio de Arquitetura e Organização de Computadores 1', 'link8', 2,'DC');
+INSERT INTO labbd.disciplina (sigla, nome, ementa, creditos,sigla_depto)
+VALUES ('ARQ2', 'Arquitetura e Organização de Computadores 2', 'link9', 4,'DC');
+INSERT INTO labbd.disciplina (sigla, nome, ementa, creditos,sigla_depto)
+VALUES ('LARQ2', 'Laboratorio de Arquitetura e Organização de Computadores 2', 'link10', 2,'DC');
+INSERT INTO labbd.disciplina (sigla, nome, ementa, creditos,sigla_depto)
+VALUES ('CD', 'Circuitos Digitais', 'link11', 4,'DC');
+INSERT INTO labbd.disciplina (sigla, nome, ementa, creditos,sigla_depto)
+VALUES ('LCD', 'Laboratorio de Circuitos Digitais', 'link12', 2,'DC');
+
+INSERT INTO labbd.reconhecimento (num_capes,sigla_curso,data_inicio)
+VALUES ('1001', 'BCC',STR_TO_DATE('08-06-2015', '%d-%m-%Y'));
+INSERT INTO labbd.reconhecimento(num_capes,sigla_curso,data_inicio)
+VALUES ('1002', 'ENC',STR_TO_DATE('08-06-2015', '%d-%m-%Y'));
+INSERT INTO labbd.reconhecimento(num_capes,sigla_curso,data_inicio)
+VALUES ('1003', 'EP',STR_TO_DATE('08-06-2015', '%d-%m-%Y'));
+INSERT INTO labbd.reconhecimento (num_capes,sigla_curso,data_inicio)
+VALUES ('1004', 'EQ',STR_TO_DATE('08-06-2015', '%d-%m-%Y'));
+INSERT INTO labbd.reconhecimento (num_capes,sigla_curso,data_inicio)
+VALUES ('1005', 'MAT',STR_TO_DATE('08-06-2015', '%d-%m-%Y'));
+
+# inserts calendario
+#inserts presencial
+#inserts ead
+#inserts adminsitrativo
+
+INSERT INTO recesso (data_inicio, data_fim, campus, nome, tipo)
+VALUES (STR_TO_DATE('09-02-2016', '%d-%m-%Y'), STR_TO_DATE('09-02-2016', '%d-%m-%Y'), 'Sorocaba', 'Carnaval', 'Federal');
+
+INSERT INTO recesso (data_inicio, data_fim, campus, nome, tipo)
+VALUES (STR_TO_DATE('13-06-2016', '%d-%m-%Y'), STR_TO_DATE('13-06-2016', '%d-%m-%Y'), 'Sao Carlos', 'Feriado Municipal em Buri', 'Municipal');
+
+INSERT INTO recesso (data_inicio, data_fim, campus, nome, tipo)
+VALUES (STR_TO_DATE('26-05-2016', '%d-%m-%Y'), STR_TO_DATE('28-05-2016', '%d-%m-%Y'), 'Sao Carlos', 'Corpus Christi', 'Federal');
+
+INSERT INTO recesso (data_inicio, data_fim, campus, nome, tipo)
+VALUES (STR_TO_DATE('15-08-2016', '%d-%m-%Y'), STR_TO_DATE('15-08-2016', '%d-%m-%Y'), 'Araras', 'Feriado Municipal em Araras', 'Municipal');
+
+INSERT INTO recesso (data_inicio, data_fim, campus, nome, tipo)
+VALUES (STR_TO_DATE('15-08-2016', '%d-%m-%Y'), STR_TO_DATE('15-08-2016', '%d-%m-%Y'), 'Sorocaba', 'Feriado Municipal em Sorocaba', 'Municipal');
+
+
+INSERT INTO labbd.cursa(sigla,cpf, data_inicio, data_fim)
+VALUES ('BCC','919191919-44',STR_TO_DATE('02-02-2014', '%d-%m-%Y'),STR_TO_DATE('11-12-2018', '%d-%m-%Y'));
+INSERT INTO labbd.cursa(sigla,cpf, data_inicio, data_fim)
+VALUES ('ENC','919136532-44',STR_TO_DATE('12-02-2013', '%d-%m-%Y'),STR_TO_DATE('15-12-2018', '%d-%m-%Y'));
+INSERT INTO labbd.cursa(sigla,cpf, data_inicio, data_fim)
+VALUES ('EP','505019159-44',STR_TO_DATE('09-02-2014', '%d-%m-%Y'),STR_TO_DATE('10-12-2019', '%d-%m-%Y'));
+INSERT INTO labbd.cursa(sigla,cpf, data_inicio, data_fim)
+VALUES ('Bio','209243943-08',STR_TO_DATE('02-02-2010', '%d-%m-%Y'),STR_TO_DATE('10-12-2014', '%d-%m-%Y'));
+INSERT INTO labbd.cursa(sigla,cpf, data_inicio, data_fim)
+VALUES ('BCC','275677595-94',STR_TO_DATE('05-02-2012', '%d-%m-%Y'),STR_TO_DATE('07-12-2016', '%d-%m-%Y'));
