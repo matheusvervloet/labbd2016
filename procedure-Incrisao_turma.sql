@@ -1,7 +1,7 @@
 CREATE DEFINER=`root`@`localhost` PROCEDURE `inscricao_turma`(n_cpf char(12), n_id_turma int, n_fase int)
 BEGIN
 DECLARE  CpfAluno CHAR(12);
-select CpfAluno
+select labbd.aluno.cpf into CpfAluno
 from labbd.aluno
 where labbd.aluno.cpf = n_cpf;
 IF (CpfAluno = n_cpf) THEN
