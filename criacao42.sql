@@ -179,7 +179,7 @@ CREATE TABLE labbd.reconhecimento (
 );
 #15
 CREATE TABLE labbd.calendario (
-	id					INT,
+	id					INT NOT NULL AUTO_INCREMENT,
     data_inicio         DATE,
     data_fim            DATE,
     dias_letivos        INT,

@@ -223,3 +223,11 @@ INSERT INTO labbd.cursa(sigla,cpf, data_inicio, data_fim)
 VALUES ('Bio','209243943-08',STR_TO_DATE('02-02-2010', '%d-%m-%Y'),STR_TO_DATE('10-12-2014', '%d-%m-%Y'));
 INSERT INTO labbd.cursa(sigla,cpf, data_inicio, data_fim)
 VALUES ('BCC','275677595-94',STR_TO_DATE('05-02-2012', '%d-%m-%Y'),STR_TO_DATE('07-12-2016', '%d-%m-%Y'));
+
+
+INSERT INTO calendario(id,data_inicio, data_fim, dias_letivos, semestre, ano,versao,tipo,situacao)
+VALUES (1,STR_TO_DATE('01-01-2016', '%d-%m-%Y'), STR_TO_DATE('30-06-2016', '%d-%m-%Y'), 300, 1, 2016, 1, 'presencial', 'aprovado');
+
+INSERT INTO labbd.turma (letra, vagas, sala, predio, dia, hora, sigla, cpf_docente,id_calendario)
+VALUES ('A', 20, 4, 'DC', 'Quarta', '8:00-10:00', 'LBD','209243943-08',1);
+
