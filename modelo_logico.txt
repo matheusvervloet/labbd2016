@@ -1,4 +1,4 @@
-#ADAMSKI
+﻿#ADAMSKI
 itens_de_pauta(PK(pauta,data_aprovacao),FK_reuniao(numero), texto_descritivo) - OK FIS
 documentos(PK(FK.itens_de_pauta(pauta,data_aprovacao),documento)) - OK FIS
 
@@ -9,7 +9,7 @@ ead(PK(FK_calendario(semestre, ano)) - OK FIS
 administrativo(PK(FK_calendario(semestre, ano)) - OK FIS
 
 #DANILO
-turma(PK(FK_calendario(semestre, ano), FK_disciplina(sigla), letra), FK_pessoa(cpf_docente), vagas, sala, predio, dia, hora) - OK FIS
+turma(PK(FK_calendario(semestre, ano), FK_disciplina(sigla), letra), FK_pessoa(cpf_docente), vagas) - OK FIS
 ppp(PK(ano, semestre, FK_curso(sigla_curso), FK_disciplina(sigla_disciplina), FK_reuniao( numero_reuniao)), texto)  - OK FIS
 
 #HUGO 

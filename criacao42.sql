@@ -271,7 +271,7 @@ CREATE TABLE labbd.cursa(
 CREATE TABLE labbd.item_do_formulario (
     id_itens_do_formulario  INT NOT NULL AUTO_INCREMENT,
     num_capes               INT,
-    num_item 				INT UNIQUE,
+    num_item 				INT,
     descricao               char(255),
     fase                    INT,
     dados                   LONGTEXT,
@@ -312,10 +312,6 @@ CREATE TABLE labbd.turma (
 id_turma			INT auto_increment,
 letra               CHAR(1),
 vagas               INT,
-sala                INT,
-predio              CHAR(255),
-dia                 CHAR(255),
-hora                CHAR(255),
 ##turma da disciplina:
 sigla               CHAR(255), ##não sei se tem mesmo, acho q é um codigo, **tem q criar uma nova tabela gera?
 
@@ -354,11 +350,11 @@ CREATE TABLE labbd.aula (
 	id_turma			INT auto_increment,
     predio              CHAR(255),
     sala                INT,
-    dia                 DATE,
-    hora                DATE,
+    dia                 varchar(10), constraint aula_dia check (dia in ('segunda','terca','quarta','quinta','sexta','sabado')),
+    hora                char(2), constraint aula_hora check (dia in ('08','10','14','16','19','21')),
      
     CONSTRAINT aula_turma_fk FOREIGN KEY(id_turma) REFERENCES turma(id_turma),
-    CONSTRAINT aula_pk PRIMARY KEY(id_turma)
+    CONSTRAINT aula_pk PRIMARY KEY(id_turma,predio,sala,dia,hora)
 );
 
 #32
