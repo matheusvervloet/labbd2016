@@ -54,42 +54,52 @@ CREATE TABLE labbd.pessoa (
     sobrenome           CHAR(255),
     CONSTRAINT pessoa_pk PRIMARY KEY(cpf)
 );
+
+
 #2
 CREATE TABLE labbd.aluno (
-nome_da_mae                 CHAR(255),
-nome_do_pai                 CHAR(255),
-pais                        CHAR(255),
-uf                          CHAR(255),
-data_nascimento             DATE,
-ano_ingresso                DATE,
-sexo                        CHAR(1),
-cor                         CHAR(255),
-reenquadramento             INT, #lembrar de iniciar com 0
-ra                          INT unique,
-cpf                         CHAR(12),
-conclusao_em_nome           CHAR(255),
-conclusao_em_ano            DATE,
-CONSTRAINT aluno_cpf_fk FOREIGN KEY (cpf) references pessoa (cpf),
-CONSTRAINT aluno_pk PRIMARY KEY (cpf)
+    nome_da_mae                 CHAR(255),
+    nome_do_pai                 CHAR(255),
+    pais                        CHAR(255),
+    uf                          CHAR(255),
+    data_nascimento             DATE,
+    ano_ingresso                DATE,
+    sexo                        CHAR(1),
+    cor                         CHAR(255),
+    reenquadramento             INT, #lembrar de iniciar com 0
+    ra                          INT unique,
+    cpf                         CHAR(12),
+    conclusao_em_nome           CHAR(255),
+    conclusao_em_ano            DATE,
+    CONSTRAINT aluno_cpf_fk FOREIGN KEY (cpf) references pessoa (cpf),
+    CONSTRAINT aluno_pk PRIMARY KEY (cpf)
 );
+
+
 #3
 CREATE TABLE labbd.ta (
     cpf CHAR(12),
     CONSTRAINT ta_cpf_fk FOREIGN KEY (cpf) references pessoa (cpf),
     CONSTRAINT ta_pk PRIMARY KEY (cpf)
 );
+
+
 #4
 CREATE TABLE labbd.docente (
     cpf CHAR(12),
     CONSTRAINT docente_cpf_fk FOREIGN KEY (cpf) references pessoa (cpf),
     CONSTRAINT docente_pk PRIMARY KEY (cpf)
 );
+
+
 #5
 CREATE TABLE labbd.centro_academico (
     sigla               CHAR(10),
     nome                CHAR(255),
     CONSTRAINT centro_academico_pk PRIMARY KEY(sigla)
 );
+
+
 #6
 CREATE TABLE labbd.faz_prova (
     nota                INT,
@@ -100,19 +110,20 @@ CREATE TABLE labbd.faz_prova (
     CONSTRAINT faz_prova_pk PRIMARY KEY(cpf, data)
 );
 
+
 #7
 CREATE TABLE labbd.membro (
-data_inicio         DATE,
-data_fim            DATE,
-representacao       CHAR(255),
-portaria_indicacao  CHAR(255),
-cpf                 CHAR(12),
-CONSTRAINT membro_fk FOREIGN KEY (cpf) references pessoa(cpf),
-CONSTRAINT membro_pk PRIMARY KEY (cpf)
+    data_inicio         DATE,
+    data_fim            DATE,
+    representacao       CHAR(255),
+    portaria_indicacao  CHAR(255),
+    cpf                 CHAR(12),
+    CONSTRAINT membro_fk FOREIGN KEY (cpf) references pessoa(cpf),
+    CONSTRAINT membro_pk PRIMARY KEY (cpf)
 );
 
-#8
 
+#8
 CREATE TABLE labbd.reuniao (
     numero              INT,
     cpf                 CHAR(12),
@@ -122,6 +133,7 @@ CREATE TABLE labbd.reuniao (
     CONSTRAINT reunia_cpf_membro_fk FOREIGN KEY (cpf) references membro(cpf),
     CONSTRAINT reuniao_pk PRIMARY KEY(numero)
 );
+
 
 #9
 CREATE TABLE labbd.itens_de_pauta (
@@ -138,11 +150,12 @@ CREATE TABLE labbd.itens_de_pauta (
 
 #10
 CREATE TABLE labbd.documentos(
-id_item_pauta       INT,
-documento           VARCHAR(255),
-CONSTRAINT documentos_itens_de_pauta_fk FOREIGN KEY (id_item_pauta) references itens_de_pauta (id),
-CONSTRAINT documentos_pk PRIMARY KEY (id_item_pauta,documento)
+    id_item_pauta       INT,
+    documento           VARCHAR(255),
+    CONSTRAINT documentos_itens_de_pauta_fk FOREIGN KEY (id_item_pauta) references itens_de_pauta (id),
+    CONSTRAINT documentos_pk PRIMARY KEY (id_item_pauta,documento)
 );
+
 
 #11
 CREATE TABLE labbd.curso (
@@ -153,12 +166,16 @@ CREATE TABLE labbd.curso (
 
     CONSTRAINT curso_pk PRIMARY KEY(sigla)
 );
+
+
 #12
 CREATE TABLE labbd.departamento (
     sigla               CHAR(10),
     nome                CHAR(255),
     CONSTRAINT departamento_pk PRIMARY KEY(sigla)
 );
+
+
 #13
 CREATE TABLE labbd.disciplina (
     sigla               CHAR(10),
@@ -170,6 +187,8 @@ CREATE TABLE labbd.disciplina (
     CONSTRAINT disciplina_sigla_fk FOREIGN KEY (sigla_depto) references departamento (sigla),
     CONSTRAINT disciplina_pk PRIMARY KEY(sigla)
 );
+
+
 #14
 CREATE TABLE labbd.reconhecimento (
     num_capes           INT,
@@ -179,6 +198,8 @@ CREATE TABLE labbd.reconhecimento (
     CONSTRAINT reconhecimento_curso_fk FOREIGN KEY (sigla_curso) references curso (sigla),
     CONSTRAINT reconhecimento_pk PRIMARY KEY(num_capes,sigla_curso)
 );
+
+
 #15
 CREATE TABLE labbd.calendario (
 	id					INT NOT NULL AUTO_INCREMENT,
@@ -194,6 +215,8 @@ CREATE TABLE labbd.calendario (
     constraint unique_calendario UNIQUE (ano, semestre, versao,tipo),
     CONSTRAINT calendario_pk PRIMARY KEY(id)
 );
+
+
 #16
 CREATE TABLE labbd.presencial (
     id		INT,
@@ -201,6 +224,8 @@ CREATE TABLE labbd.presencial (
     CONSTRAINT presencial_id_fk FOREIGN KEY (id) references calendario (id),
     CONSTRAINT presencial_id_pk PRIMARY KEY (id)
 );
+
+
 #17
 CREATE TABLE labbd.ead (
     id		INT,
@@ -208,12 +233,16 @@ CREATE TABLE labbd.ead (
     CONSTRAINT ead_id_fk FOREIGN KEY (id) references calendario (id),
     CONSTRAINT ead_id_fk PRIMARY KEY (id)
 );
+
+
 #18
 CREATE TABLE labbd.administrativo (
     id		INT,
     CONSTRAINT adm_id_pk FOREIGN KEY (id) references calendario (id),
     CONSTRAINT adm_id_fk PRIMARY KEY (id)
 );
+
+
 #19
 CREATE TABLE recesso(
     id_recesso INT NOT NULL AUTO_INCREMENT,
@@ -225,6 +254,8 @@ CREATE TABLE recesso(
     constraint pk_recesso PRIMARY KEY (id_recesso),
     constraint unique_recesso UNIQUE (data_inicio, data_fim, campus, nome)
 );
+
+
 #20
 CREATE TABLE possui_recesso_ead(
     id_recesso 			INT,
@@ -233,6 +264,8 @@ CREATE TABLE possui_recesso_ead(
     constraint fk_ead_possui_recesso_ead FOREIGN KEY (id_ead) REFERENCES ead(id),
     constraint pk_possui_recesso_ead PRIMARY KEY (id_recesso, id_ead)
 );
+
+
 #21
 CREATE TABLE possui_recesso_presencial(
     id_recesso 			INT,
@@ -241,6 +274,8 @@ CREATE TABLE possui_recesso_presencial(
     constraint fk_ead_possui_recesso_presencial FOREIGN KEY (id_presencial) REFERENCES presencial(id),
     constraint pk_possui_recesso_presencial PRIMARY KEY (id_recesso, id_presencial)
 );
+
+
 #22
 CREATE TABLE atividade_administrativa(
     id_ativ_adm 		INT NOT NULL AUTO_INCREMENT,
@@ -251,6 +286,8 @@ CREATE TABLE atividade_administrativa(
     constraint unique_atividade_administrativa UNIQUE (nome, data_inicio, data_fim),
     constraint pk_atividade_administrativa PRIMARY KEY (id_ativ_adm)
 );
+
+
 #23
 CREATE TABLE possui_atividade_administrativa(
     id_ativ_adm INT,
@@ -259,6 +296,8 @@ CREATE TABLE possui_atividade_administrativa(
     constraint fk_calendario_possui_atividade_administrativa FOREIGN KEY (id) REFERENCES calendario (id),
     constraint pk_possui_atividade_administrativa PRIMARY KEY (id_ativ_adm, id)
 );
+
+
 #24
 CREATE TABLE labbd.cursa(
     sigla            CHAR(10),
@@ -269,6 +308,7 @@ CREATE TABLE labbd.cursa(
     CONSTRAINT cursa_curso_fk FOREIGN KEY(sigla) REFERENCES curso(sigla),
     CONSTRAINT cursa_pk PRIMARY KEY(cpf, sigla)
 );
+
 
 #25
 CREATE TABLE labbd.item_do_formulario (
@@ -283,6 +323,8 @@ CREATE TABLE labbd.item_do_formulario (
     constraint unique_item_form UNIQUE (num_item), #Retirei fase de UNIQUE pois podemos ter mais de um item na mesma fase
     CONSTRAINT item_do_formulario_pk PRIMARY KEY(id_itens_do_formulario, num_capes)
 );
+
+
 #26
 CREATE TABLE labbd.visita (
     id_visita           INT NOT NULL AUTO_INCREMENT,
@@ -291,6 +333,8 @@ CREATE TABLE labbd.visita (
     CONSTRAINT visita_num_capes_fk FOREIGN KEY (num_capes) references reconhecimento(num_capes),
     CONSTRAINT visita_pk PRIMARY KEY (id_visita)
 );
+
+
 #27
 CREATE TABLE labbd.comite (
     id_visita           INT,
@@ -300,8 +344,9 @@ CREATE TABLE labbd.comite (
     CONSTRAINT comite_id_visita_fk FOREIGN KEY (id_visita) references visita(id_visita),
     CONSTRAINT comite_pk PRIMARY KEY (id_visita)
 );
-#28
 
+
+#28
 CREATE TABLE labbd.decisoes_aprovadas(
     
     id_itens_de_pauta       INT,
@@ -310,43 +355,46 @@ CREATE TABLE labbd.decisoes_aprovadas(
     CONSTRAINT decisoes_aprovadas_pk PRIMARY KEY (id_itens_de_pauta)
 );
 
+
 #29
 CREATE TABLE labbd.turma (
-id_turma			INT auto_increment,
-letra               CHAR(1),
-vagas               INT,
-##turma da disciplina:
-sigla               CHAR(255), ##não sei se tem mesmo, acho q é um codigo, **tem q criar uma nova tabela gera?
+    id_turma			INT auto_increment,
+    letra               CHAR(1),
+    vagas               INT,
+    ##turma da disciplina:
+    sigla               CHAR(255), ##não sei se tem mesmo, acho q é um codigo, **tem q criar uma nova tabela gera?
 
-cpf_docente        CHAR(12), ##docente leciona turmas. turma tem 1 docente, 
+    cpf_docente        CHAR(12), ##docente leciona turmas. turma tem 1 docente, 
 
-#é ofertada em um calendario
-id_calendario		INT,#calendario
+    #é ofertada em um calendario
+    id_calendario		INT,#calendario
 
-CONSTRAINT turma_calendario_fk FOREIGN KEY (id_calendario) REFERENCES calendario (id),
-CONSTRAINT turma_docente_fk FOREIGN KEY (cpf_docente) REFERENCES docente (cpf),
-CONSTRAINT turma_sigla_fk FOREIGN KEY (sigla) references disciplina (sigla),
-constraint unique_turma UNIQUE (id_calendario, letra,sigla),
-CONSTRAINT turma_pk PRIMARY KEY(id_turma) 
-
+    CONSTRAINT turma_calendario_fk FOREIGN KEY (id_calendario) REFERENCES calendario (id),
+    CONSTRAINT turma_docente_fk FOREIGN KEY (cpf_docente) REFERENCES docente (cpf),
+    CONSTRAINT turma_sigla_fk FOREIGN KEY (sigla) references disciplina (sigla),
+    constraint unique_turma UNIQUE (id_calendario, letra,sigla),
+    CONSTRAINT turma_pk PRIMARY KEY(id_turma) 
 );
+
+
 #30
 CREATE TABLE labbd.ppp (
-id					INT auto_increment,	
-texto               LONGTEXT,
-sigla_curso         CHAR(10),
-numero_reuniao      INT(11),
-sigla_disciplina    CHAR(10),
+    id					INT auto_increment,	
+    texto               LONGTEXT,
+    sigla_curso         CHAR(10),
+    numero_reuniao      INT(11),
+    sigla_disciplina    CHAR(10),
 
-ano					YEAR(4),
-semestre			INT,
+    ano					YEAR(4),
+    semestre			INT,
 
-constraint unique_ppp UNIQUE (ano, semestre, sigla_curso, sigla_disciplina),
-CONSTRAINT ppp_sigla_curso_fk FOREIGN KEY (sigla_curso) REFERENCES curso (sigla),
-CONSTRAINT ppp_numero_reuniao_fk FOREIGN KEY (numero_reuniao) REFERENCES reuniao (numero),
-CONSTRAINT ppp_sigla_disciplina_fk FOREIGN KEY (sigla_disciplina) REFERENCES disciplina (sigla),
-CONSTRAINT ppp_pk PRIMARY KEY(id)
+    constraint unique_ppp UNIQUE (ano, semestre, sigla_curso, sigla_disciplina),
+    CONSTRAINT ppp_sigla_curso_fk FOREIGN KEY (sigla_curso) REFERENCES curso (sigla),
+    CONSTRAINT ppp_numero_reuniao_fk FOREIGN KEY (numero_reuniao) REFERENCES reuniao (numero),
+    CONSTRAINT ppp_sigla_disciplina_fk FOREIGN KEY (sigla_disciplina) REFERENCES disciplina (sigla),
+    CONSTRAINT ppp_pk PRIMARY KEY(id)
 );
+
 
 #31
 CREATE TABLE labbd.aula (
@@ -360,6 +408,7 @@ CREATE TABLE labbd.aula (
     CONSTRAINT aula_pk PRIMARY KEY(id_turma,predio,sala,dia,hora)
 );
 
+
 #32
 CREATE TABLE labbd.enade (
     ano                 YEAR(4),
@@ -369,15 +418,19 @@ CREATE TABLE labbd.enade (
     CONSTRAINT enade_curso_fk FOREIGN KEY (sigla_curso) references curso(sigla),
     CONSTRAINT enade_pk PRIMARY KEY(ano, periodo, sigla_curso)
 );
+
+
 #33
 CREATE TABLE labbd.avalia_formulario (
-id_item                  INT,
-id_visita             INT,
-num_capes_formulario  INT,
+    id_item                  INT,
+    id_visita             INT,
+    num_capes_formulario  INT,
     CONSTRAINT avalia_item_do_formulario_fk FOREIGN KEY(id_item,num_capes_formulario) references item_do_formulario (id_itens_do_formulario, num_capes),
     CONSTRAINT avalia_visita_fk FOREIGN KEY (id_visita) references visita (id_visita),
     CONSTRAINT avalia_formulario_pk PRIMARY KEY(id_item, num_capes_formulario, id_visita) 
 );
+
+
 #34
 CREATE TABLE labbd.preve_disciplina (
     perfil CHAR(1),
@@ -389,6 +442,8 @@ CREATE TABLE labbd.preve_disciplina (
     CONSTRAINT preve_ppp_fk FOREIGN KEY(id_ppp) references ppp (id),
     CONSTRAINT preve_disciplina_pk PRIMARY KEY(id_ppp, sigla_disciplina)
 );
+
+
 #35
 CREATE TABLE labbd.faz_credenciamento (
     data 				DATE,
@@ -399,33 +454,41 @@ CREATE TABLE labbd.faz_credenciamento (
     CONSTRAINT aluno_fk FOREIGN KEY(cpf) references aluno(cpf),
     CONSTRAINT faz_credenciamento_pk PRIMARY KEY(ano, periodo, cpf, data)
 );
+
+
 #36
 CREATE TABLE labbd.proposto_por_RC (
-data_proposta       DATE,
-aprovacao           CHAR(255),  
-numero              INT,
-id_calendario		INT,
+    data_proposta       DATE,
+    aprovacao           CHAR(255),  
+    numero              INT,
+    id_calendario		INT,
 
-CONSTRAINT proposto_por_RC_reuniao_fk FOREIGN KEY ( numero) REFERENCES reuniao (numero),
-CONSTRAINT proposto_por_RC_calendario_fk FOREIGN KEY (id_calendario) REFERENCES calendario (id),
-CONSTRAINT proposto_por_RC_pk PRIMARY KEY (numero, id_calendario)
+    CONSTRAINT proposto_por_RC_reuniao_fk FOREIGN KEY ( numero) REFERENCES reuniao (numero),
+    CONSTRAINT proposto_por_RC_calendario_fk FOREIGN KEY (id_calendario) REFERENCES calendario (id),
+    CONSTRAINT proposto_por_RC_pk PRIMARY KEY (numero, id_calendario)
 );
+
+
 #37
 CREATE TABLE labbd.correquisitos (
-disciplina          CHAR(10),
-correquisito        CHAR(10),
-CONSTRAINT correquisitos_disciplina_fk FOREIGN KEY (disciplina) REFERENCES disciplina (sigla),
-CONSTRAINT correquisitos_correquisito_fk FOREIGN KEY (correquisito) REFERENCES disciplina (sigla),
-CONSTRAINT correquisitos_fk PRIMARY KEY (disciplina, correquisito)
+    disciplina          CHAR(10),
+    correquisito        CHAR(10),
+    CONSTRAINT correquisitos_disciplina_fk FOREIGN KEY (disciplina) REFERENCES disciplina (sigla),
+    CONSTRAINT correquisitos_correquisito_fk FOREIGN KEY (correquisito) REFERENCES disciplina (sigla),
+    CONSTRAINT correquisitos_fk PRIMARY KEY (disciplina, correquisito)
 );
+
+
 #38
 CREATE TABLE labbd.pre_requisitos (
-disciplina          CHAR(10),
-pre_requisito       CHAR(10),
-CONSTRAINT pre_requisitos_disciplina_fk FOREIGN KEY (disciplina) REFERENCES disciplina (sigla),
-CONSTRAINT pre_requisitos_requisito_fk FOREIGN KEY (pre_requisito) REFERENCES disciplina (sigla),
-CONSTRAINT pre_requisitos_fk PRIMARY KEY (disciplina, pre_requisito)
+    disciplina          CHAR(10),
+    pre_requisito       CHAR(10),
+    CONSTRAINT pre_requisitos_disciplina_fk FOREIGN KEY (disciplina) REFERENCES disciplina (sigla),
+    CONSTRAINT pre_requisitos_requisito_fk FOREIGN KEY (pre_requisito) REFERENCES disciplina (sigla),
+    CONSTRAINT pre_requisitos_fk PRIMARY KEY (disciplina, pre_requisito)
 );
+
+
 #39
 CREATE TABLE labbd.matricula (
     cpf                 CHAR(12),
@@ -439,36 +502,40 @@ CREATE TABLE labbd.matricula (
     CONSTRAINT matricula_pk PRIMARY KEY(cpf, id_turma, fase)
 );
 
+
 #40
 CREATE TABLE labbd.gestao (
-cpf                   CHAR(12),
-gestao_data_inicio    DATE,
-gestao_data_fim       DATE,
-CONSTRAINT gestao_cpf_fk FOREIGN KEY (cpf) references membro (cpf),
-CONSTRAINT gestao_pk PRIMARY KEY (cpf, gestao_data_inicio, gestao_data_fim)
+    cpf                   CHAR(12),
+    gestao_data_inicio    DATE,
+    gestao_data_fim       DATE,
+    CONSTRAINT gestao_cpf_fk FOREIGN KEY (cpf) references membro (cpf),
+    CONSTRAINT gestao_pk PRIMARY KEY (cpf, gestao_data_inicio, gestao_data_fim)
 );
+
 
 #41
 CREATE TABLE labbd.intervencoes (
-data_hora             DATE,
-descricao             LONGTEXT,
-id_itens_de_pauta     INT,
-cpf                   CHAR(12),
-CONSTRAINT intervencao_itens_de_pauta_fk FOREIGN KEY (id_itens_de_pauta) references itens_de_pauta (id),
-CONSTRAINT intervencao_cpf_fk FOREIGN KEY (cpf) references membro (cpf),
-CONSTRAINT intervencao_pk PRIMARY KEY (id_itens_de_pauta, cpf, data_hora)
+    data_hora             DATE,
+    descricao             LONGTEXT,
+    id_itens_de_pauta     INT,
+    cpf                   CHAR(12),
+    CONSTRAINT intervencao_itens_de_pauta_fk FOREIGN KEY (id_itens_de_pauta) references itens_de_pauta (id),
+    CONSTRAINT intervencao_cpf_fk FOREIGN KEY (cpf) references membro (cpf),
+    CONSTRAINT intervencao_pk PRIMARY KEY (id_itens_de_pauta, cpf, data_hora)
 );
+
 
 #42
 CREATE TABLE labbd.comunicacoes (
-data_hora    DATE,
-descricao    LONGTEXT,
-id_itens_de_pauta     INT,
-cpf                   CHAR(12),
-CONSTRAINT comunicacao_itens_de_pauta_fk FOREIGN KEY (id_itens_de_pauta) references itens_de_pauta (id),
-CONSTRAINT comunicacao_cpf_fk FOREIGN KEY (cpf) references membro (cpf),
-CONSTRAINT comunicacao_pk PRIMARY KEY (id_itens_de_pauta, cpf, data_hora)
+    data_hora    DATE,
+    descricao    LONGTEXT,
+    id_itens_de_pauta     INT,
+    cpf                   CHAR(12),
+    CONSTRAINT comunicacao_itens_de_pauta_fk FOREIGN KEY (id_itens_de_pauta) references itens_de_pauta (id),
+    CONSTRAINT comunicacao_cpf_fk FOREIGN KEY (cpf) references membro (cpf),
+    CONSTRAINT comunicacao_pk PRIMARY KEY (id_itens_de_pauta, cpf, data_hora)
 );
+
 
 delimiter $$
 create DEFINER = `root`@`localhost` trigger insere_calendario
