@@ -62,7 +62,7 @@ ano_ingresso                DATE,
 sexo                        CHAR(1),
 cor                         CHAR(255),
 reenquadramento             INT, #lembrar de iniciar com 0
-ra                          INT,
+ra                          INT unique,
 cpf                         CHAR(12),
 conclusao_em_nome           CHAR(255),
 conclusao_em_ano            DATE,
@@ -188,7 +188,7 @@ CREATE TABLE labbd.calendario (
     tipo				CHAR(255),
     situacao			CHAR(10),
     
-    constraint unique_calendario UNIQUE (ano, semestre, versao),
+    constraint unique_calendario UNIQUE (ano, semestre, versao,tipo),
     CONSTRAINT calendario_pk PRIMARY KEY(id)
 );
 #16
