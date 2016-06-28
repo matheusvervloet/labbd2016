@@ -62,7 +62,7 @@ ano_ingresso                DATE,
 sexo                        CHAR(1),
 cor                         CHAR(255),
 reenquadramento             INT, #lembrar de iniciar com 0
-ra                          INT,
+ra                          INT unique,
 cpf                         CHAR(12),
 conclusao_em_nome           CHAR(255),
 conclusao_em_ano            DATE,
