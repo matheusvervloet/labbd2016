@@ -10,6 +10,12 @@ INSERT INTO labbd.pessoa (cpf, prenome, nome_meio, sobrenome)
 VALUES ('505019159-44', 'Victor', 'Matheus', 'Vasconcelos');
 
 INSERT INTO labbd.pessoa (cpf, prenome, nome_meio, sobrenome) 
+VALUES ('209243943-08', 'Jessica', 'Luisa', 'Barbosa');
+
+INSERT INTO labbd.pessoa (cpf, prenome, nome_meio, sobrenome) 
+VALUES ('275677595-94', 'Clara', 'Alves', 'Lima');
+
+INSERT INTO labbd.pessoa (cpf, prenome, nome_meio, sobrenome) 
 VALUES ('231546389-98', 'Augusto', 'Cesar', 'Deus');
 
 INSERT INTO labbd.pessoa (cpf, prenome, nome_meio, sobrenome) 
@@ -30,15 +36,17 @@ VALUES ('830225565-26', 'Raphael', 'Takamassa', 'Nomuro');
 INSERT INTO labbd.pessoa (cpf, prenome, nome_meio, sobrenome) 
 VALUES ('254847477-17', 'Priscila', 'Aleixo', 'Muller');
 
-INSERT INTO labbd.pessoa (cpf, prenome, nome_meio, sobrenome) 
-VALUES ('209243943-08', 'Jessica', 'Luisa', 'Barbosa');
-
-INSERT INTO labbd.pessoa (cpf, prenome, nome_meio, sobrenome) 
-VALUES ('275677595-94', 'Clara', 'Alves', 'Lima');
-
 
 INSERT INTO labbd.pessoa (cpf, prenome, nome_meio, sobrenome) 
 VALUES ('684499362-79', 'Ricardo', 'Matheus', 'Almeida');
+
+INSERT INTO labbd.pessoa (cpf, prenome, nome_meio, sobrenome) 
+VALUES ('385270967-90', 'Marcos', 'Vinicius', 'Gomes');
+
+INSERT INTO labbd.pessoa (cpf, prenome, nome_meio, sobrenome) 
+VALUES ('746399667-09', 'Luan', 'Leonardo', 'Mendes');
+
+
 
 INSERT INTO labbd.aluno  (nome_da_mae, nome_do_pai, pais, uf, data_nascimento, ano_ingresso, sexo, cor, reenquadramento, ra, cpf, conclusao_em_nome, conclusao_em_ano)
 VALUES ('Luciana A Moura', 'Leonardo A Barros', 'Brasil', 'SP',
@@ -68,25 +76,22 @@ VALUES ('Bruna Barbosa', 'Igor Barbosa', 'Brasil', 'SP',
                          'M', 'Pardo', 0, 1301, '209243943-08', 'Escola Federal Super', STR_TO_DATE('5-01-2011', '%d-%m-%Y'));
 
 INSERT INTO labbd.ta (cpf)
-VALUES ('684499362-79');
-
-INSERT INTO labbd.ta (cpf)
 VALUES ('231546389-98');
 
 INSERT INTO labbd.ta (cpf)
 VALUES ('546322148-91');
 
 INSERT INTO labbd.ta (cpf)
-VALUES ('254847477-17');
+VALUES ('252468793-11');
 
 INSERT INTO labbd.ta (cpf)
-VALUES ('252468793-11');
+VALUES ('746399667-09');
+
+INSERT INTO labbd.ta (cpf)
+VALUES ('121541619-21');
 
 INSERT INTO labbd.docente (cpf)
 VALUES ('777795472-95');
-
-INSERT INTO labbd.docente (cpf)
-VALUES ('121541619-21');
 
 INSERT INTO labbd.docente (cpf)
 VALUES ('830225565-26');
@@ -95,7 +100,10 @@ INSERT INTO labbd.docente (cpf)
 VALUES ('254847477-17');
 
 INSERT INTO labbd.docente (cpf)
-VALUES ('209243943-08');
+VALUES ('684499362-79');
+
+INSERT INTO labbd.docente (cpf)
+VALUES ('385270967-90');
 
 INSERT INTO labbd.centro_academico (sigla, nome)
 VALUES ('CAEnf', 'Centro Acadêmico da Enfermagem');
