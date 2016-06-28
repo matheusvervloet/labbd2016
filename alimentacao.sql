@@ -246,12 +246,12 @@ VALUES ('1004', 'EQ',STR_TO_DATE('08-06-2015', '%d-%m-%Y'));
 INSERT INTO labbd.reconhecimento (num_capes,sigla_curso,data_inicio)
 VALUES ('1005', 'MAT',STR_TO_DATE('08-06-2015', '%d-%m-%Y'));
 
-INSERT INTO calendario(id,data_inicio, data_fim, dias_letivos, semestre, ano,versao,tipo,situacao)
-VALUES (1,STR_TO_DATE('01-01-2016', '%d-%m-%Y'), STR_TO_DATE('30-06-2016', '%d-%m-%Y'), 300, 1, 2016, 1, 'presencial', 'aprovado'),
-(2,STR_TO_DATE('01-01-2016', '%d-%m-%Y'), STR_TO_DATE('30-06-2016', '%d-%m-%Y'), 300, 1, 2016, 1, 'ead', 'aprovado'),
-(3,STR_TO_DATE('01-01-2016', '%d-%m-%Y'), STR_TO_DATE('30-06-2016', '%d-%m-%Y'), 300, 1, 2016, 1, 'administrativo', 'aprovado');
+INSERT INTO calendario(data_inicio, data_fim, dias_letivos, semestre, ano,versao,tipo,situacao)
+VALUES (STR_TO_DATE('01-01-2016', '%d-%m-%Y'), STR_TO_DATE('30-06-2016', '%d-%m-%Y'), 300, 1, 2016, 1, 'presencial', 'aprovado'),
+(STR_TO_DATE('01-01-2016', '%d-%m-%Y'), STR_TO_DATE('30-06-2016', '%d-%m-%Y'), 300, 1, 2016, 1, 'ead', 'aprovado'),
+(STR_TO_DATE('01-01-2016', '%d-%m-%Y'), STR_TO_DATE('30-06-2016', '%d-%m-%Y'), 300, 1, 2016, 1, 'administrativo', 'aprovado');
 
-insert into ead(id) values(2);
+#insert into ead(id) values(2);
 
 #depois de reconhecimento
 INSERT INTO labbd.item_do_formulario (num_capes, descricao, fase, dados, resultado)
