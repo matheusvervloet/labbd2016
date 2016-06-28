@@ -221,6 +221,19 @@ INSERT INTO labbd.disciplina (sigla, nome, ementa, creditos,sigla_depto)
 VALUES ('CD', 'Circuitos Digitais', 'link11', 4,'DC');
 INSERT INTO labbd.disciplina (sigla, nome, ementa, creditos,sigla_depto)
 VALUES ('LCD', 'Laboratorio de Circuitos Digitais', 'link12', 2,'DC');
+INSERT INTO labbd.disciplina (sigla, nome, ementa, creditos,sigla_depto)
+VALUES ('Calc1', 'Calculo 1', 'link13', 4,'DM');
+INSERT INTO labbd.disciplina (sigla, nome, ementa, creditos,sigla_depto)
+VALUES ('Calc2', 'Calculo 2', 'link14', 4,'DM');
+INSERT INTO labbd.disciplina (sigla, nome, ementa, creditos,sigla_depto)
+VALUES ('Calc3', 'Calculo 3', 'link15', 4,'DM');
+INSERT INTO labbd.disciplina (sigla, nome, ementa, creditos,sigla_depto)
+VALUES ('GA', 'Geometria Analitica', 'link16', 4,'DM');
+INSERT INTO labbd.disciplina (sigla, nome, ementa, creditos,sigla_depto)
+VALUES ('AlgLin', 'Algebra Linear', 'link17', 4,'DM');
+
+
+
 
 INSERT INTO labbd.reconhecimento (num_capes,sigla_curso,data_inicio)
 VALUES ('1001', 'BCC',STR_TO_DATE('08-06-2015', '%d-%m-%Y'));
@@ -329,4 +342,50 @@ insert into labbd.aula(id_turma,predio,sala,  dia,		hora)
 					(2, 		'DC', 'lab4','quarta', '08'),
 					(3, 		'DC', 'lab2','quarta', '08');
 
+#inserts , correquisito
+INSERT INTO labbd.correquisitos (disciplina, correquisito)
+VALUES ('CD','LCD');
+INSERT INTO labbd.correquisitos (disciplina, correquisito)
+VALUES ('ARQ1','LARQ1');
+INSERT INTO labbd.correquisitos (disciplina, correquisito)
+VALUES ('ARQ2','LARQ2');
 
+
+#inserts , pre_requisito
+INSERT INTO labbd.pre_requisitos (disciplina, pre_requisito)
+VALUES ('Calc2','Calc1');
+INSERT INTO labbd.pre_requisitos (disciplina, pre_requisito)
+VALUES ('AlgLin','GA');
+INSERT INTO labbd.pre_requisitos (disciplina, pre_requisito)
+VALUES ('ARQ1','CD');
+INSERT INTO labbd.pre_requisitos (disciplina, pre_requisito)
+VALUES ('LARQ1','CD');
+INSERT INTO labbd.pre_requisitos (disciplina, pre_requisito)
+VALUES ('LBD','BD');
+
+#inserts , proposto_por_Rc
+INSERT INTO labbd.proposto_por_RC (data_proposta, aprovacao, numero, id_calendario)
+VALUES (STR_TO_DATE('05-03-2016', '%d-%m-%Y'), 'reprovado', 1, 1);
+INSERT INTO labbd.proposto_por_RC (data_proposta, aprovacao, numero, id_calendario)
+VALUES (STR_TO_DATE('07-03-2015', '%d-%m-%Y'), 'reprovado', 3, 1);
+INSERT INTO labbd.proposto_por_RC (data_proposta, aprovacao, numero, id_calendario)
+VALUES (STR_TO_DATE('06-03-2016', '%d-%m-%Y'), 'reprovado', 2, 1);
+INSERT INTO labbd.proposto_por_RC (data_proposta, aprovacao, numero, id_calendario)
+VALUES (STR_TO_DATE('08-03-2015', '%d-%m-%Y'), 'aprovado', 4, 1);
+INSERT INTO labbd.proposto_por_RC (data_proposta, aprovacao, numero, id_calendario)
+VALUES (STR_TO_DATE('08-03-2016', '%d-%m-%Y'), 'aprovado', 5, 2);
+
+
+#inserts , intervencoes
+INSERT INTO labbd.intervencoes(id_itens_de_pauta, cpf, data_hora, descricao) VALUES (1,'919191919-44',STR_TO_DATE('29-04-2016', '%d-%m-%Y'), 'Nesse dia as coisas foram legais');
+INSERT INTO labbd.intervencoes(id_itens_de_pauta, cpf, data_hora, descricao) VALUES (2,'919191919-44',STR_TO_DATE('29-04-2016', '%d-%m-%Y'), 'Nesse dia as coisas foram legais');
+INSERT INTO labbd.intervencoes(id_itens_de_pauta, cpf, data_hora, descricao) VALUES (3,'919191919-44',STR_TO_DATE('29-04-2016', '%d-%m-%Y'), 'Nesse dia as coisas foram legais');
+INSERT INTO labbd.intervencoes(id_itens_de_pauta, cpf, data_hora, descricao) VALUES (1,'505019159-44',STR_TO_DATE('29-04-2016', '%d-%m-%Y'), 'Achamos tudo ok');
+INSERT INTO labbd.intervencoes(id_itens_de_pauta, cpf, data_hora, descricao) VALUES (2,'505019159-44',STR_TO_DATE('29-04-2016', '%d-%m-%Y'), 'Achamos tudo mais ou menos');
+
+#inserts, comunicacoes
+INSERT INTO labbd.comunicacoes(id_itens_de_pauta, cpf, data_hora, descricao) VALUES (1,'919191919-44',STR_TO_DATE('29-04-2016', '%d-%m-%Y'), 'Comunicado da Dilma mãe');
+INSERT INTO labbd.comunicacoes(id_itens_de_pauta, cpf, data_hora, descricao) VALUES (2,'919191919-44',STR_TO_DATE('29-04-2016', '%d-%m-%Y'), 'Comunicado do Aecio louco');
+INSERT INTO labbd.comunicacoes(id_itens_de_pauta, cpf, data_hora, descricao) VALUES (3,'919191919-44',STR_TO_DATE('29-04-2016', '%d-%m-%Y'), 'Comunicado do Temer legal');
+INSERT INTO labbd.comunicacoes(id_itens_de_pauta, cpf, data_hora, descricao) VALUES (1,'505019159-44',STR_TO_DATE('29-04-2016', '%d-%m-%Y'), 'Comunicado do cara que sabe');
+INSERT INTO labbd.comunicacoes(id_itens_de_pauta, cpf, data_hora, descricao) VALUES (2,'505019159-44',STR_TO_DATE('29-04-2016', '%d-%m-%Y'), 'Comunicado importante');
