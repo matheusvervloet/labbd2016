@@ -231,6 +231,13 @@ VALUES (STR_TO_DATE('15-08-2016', '%d-%m-%Y'), STR_TO_DATE('15-08-2016', '%d-%m-
 INSERT INTO recesso (data_inicio, data_fim, campus, nome, tipo)
 VALUES (STR_TO_DATE('15-08-2016', '%d-%m-%Y'), STR_TO_DATE('15-08-2016', '%d-%m-%Y'), 'Sorocaba', 'Feriado Municipal em Sorocaba', 'Municipal');
 
+insert into possui_recesso_ead (id_recesso,id_ead)
+values(1,2),(2,2),(3,2),(4,2),(5,2);
+
+insert into atividade_administrativa (data_inicio,data_fim,responsavel,nome)values
+(STR_TO_DATE('25-02-2016', '%d-%m-%Y'), STR_TO_DATE('28-02-2016', '%d-%m-%Y'),'prograd','inscricao em disciplinas');
+
+insert into possui_atividade_administrativa(id_ativ_adm,id) values(1,2);
 
 INSERT INTO labbd.cursa(sigla,cpf, data_inicio, data_fim)
 VALUES ('BCC','919191919-44',STR_TO_DATE('02-02-2014', '%d-%m-%Y'),STR_TO_DATE('11-12-2018', '%d-%m-%Y'));
@@ -245,8 +252,17 @@ VALUES ('BCC','275677595-94',STR_TO_DATE('05-02-2012', '%d-%m-%Y'),STR_TO_DATE('
 
 
 INSERT INTO calendario(id,data_inicio, data_fim, dias_letivos, semestre, ano,versao,tipo,situacao)
-VALUES (1,STR_TO_DATE('01-01-2016', '%d-%m-%Y'), STR_TO_DATE('30-06-2016', '%d-%m-%Y'), 300, 1, 2016, 1, 'presencial', 'aprovado');
+VALUES (1,STR_TO_DATE('01-01-2016', '%d-%m-%Y'), STR_TO_DATE('30-06-2016', '%d-%m-%Y'), 300, 1, 2016, 1, 'presencial', 'aprovado'),
+(2,STR_TO_DATE('01-01-2016', '%d-%m-%Y'), STR_TO_DATE('30-06-2016', '%d-%m-%Y'), 300, 1, 2016, 1, 'ead', 'aprovado'),
+(3,STR_TO_DATE('01-01-2016', '%d-%m-%Y'), STR_TO_DATE('30-06-2016', '%d-%m-%Y'), 300, 1, 2016, 1, 'administrativo', 'aprovado');
+
+insert into ead(id) values(2);
 
 INSERT INTO labbd.turma (letra, vagas, sala, predio, dia, hora, sigla, cpf_docente,id_calendario)
 VALUES ('A', 20, 4, 'DC', 'Quarta', '8:00-10:00', 'LBD','209243943-08',1);
+INSERT INTO labbd.turma (letra, vagas, sala, predio, dia, hora, sigla, cpf_docente,id_calendario)
+VALUES ('B', 20, 4, 'DC', 'Sexta', '8:00-12:00', 'SO','209243943-08',1);
+INSERT INTO labbd.turma (letra, vagas, sala, predio, dia, hora, sigla, cpf_docente,id_calendario)
+VALUES ('B', 20, 4, 'DC', 'Terça', '8:00-10:00', 'LBD','209243943-08',1);
+
 
