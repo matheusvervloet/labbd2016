@@ -320,7 +320,7 @@ insert into ead(id) values(2);
 INSERT INTO labbd.turma (letra, vagas, sala, predio, dia, hora, sigla, cpf_docente,id_calendario)
 VALUES ('A', 20, 4, 'DC', 'Quarta', '8:00-10:00', 'LBD','209243943-08',1);
 INSERT INTO labbd.turma (letra, vagas, sala, predio, dia, hora, sigla, cpf_docente,id_calendario)
-VALUES ('B', 20, 4, 'DC', 'Sexta', '8:00-12:00', 'SO','209243943-08',1);
+VALUES ('B', 20, 4, 'DC', 'Sexta', '8:00-12:00', 'SO','121541619-21',1);
 INSERT INTO labbd.turma (letra, vagas, sala, predio, dia, hora, sigla, cpf_docente,id_calendario)
 VALUES ('B', 20, 4, 'DC', 'Terça', '8:00-10:00', 'LBD','209243943-08',1);
 
