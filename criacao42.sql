@@ -349,7 +349,7 @@ CONSTRAINT ppp_pk PRIMARY KEY(id)
 CREATE TABLE labbd.aula (
 	id_turma			INT auto_increment,
     predio              CHAR(255),
-    sala                INT,
+    sala                varchar(10),
     dia                 varchar(10), constraint aula_dia check (dia in ('segunda','terca','quarta','quinta','sexta','sabado')),
     hora                char(2), constraint aula_hora check (dia in ('08','10','14','16','19','21')),
      

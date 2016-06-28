@@ -59,13 +59,13 @@ VALUES ('Daniela Pereira', 'Marcos G Vasconcelos', 'Brasil', 'SP',
 INSERT INTO labbd.aluno (nome_da_mae, nome_do_pai, pais, uf, data_nascimento, ano_ingresso, sexo, cor, reenquadramento, ra, cpf, conclusao_em_nome, conclusao_em_ano)
 VALUES ('Daniela Lima', 'Vinicius Lima', 'Brasil', 'SP',
                          STR_TO_DATE('1-01-1990', '%d-%m-%Y') , STR_TO_DATE('1-01-2010', '%d-%m-%Y'),
-                         'M', 'Pardo', 0, 1299, '275677595-94', 'Escola Federal Super', STR_TO_DATE('5-01-2011', '%d-%m-%Y'));
+                         'M', 'Pardo', 0, 1300, '275677595-94', 'Escola Federal Super', STR_TO_DATE('5-01-2011', '%d-%m-%Y'));
 
 
 INSERT INTO labbd.aluno (nome_da_mae, nome_do_pai, pais, uf, data_nascimento, ano_ingresso, sexo, cor, reenquadramento, ra, cpf, conclusao_em_nome, conclusao_em_ano)
 VALUES ('Bruna Barbosa', 'Igor Barbosa', 'Brasil', 'SP',
                          STR_TO_DATE('1-01-1990', '%d-%m-%Y') , STR_TO_DATE('1-01-2010', '%d-%m-%Y'),
-                         'M', 'Pardo', 0, 1299, '209243943-08', 'Escola Federal Super', STR_TO_DATE('5-01-2011', '%d-%m-%Y'));
+                         'M', 'Pardo', 0, 1301, '209243943-08', 'Escola Federal Super', STR_TO_DATE('5-01-2011', '%d-%m-%Y'));
 
 INSERT INTO labbd.ta (cpf)
 VALUES ('684499362-79');
@@ -233,6 +233,12 @@ VALUES ('1004', 'EQ',STR_TO_DATE('08-06-2015', '%d-%m-%Y'));
 INSERT INTO labbd.reconhecimento (num_capes,sigla_curso,data_inicio)
 VALUES ('1005', 'MAT',STR_TO_DATE('08-06-2015', '%d-%m-%Y'));
 
+INSERT INTO calendario(id,data_inicio, data_fim, dias_letivos, semestre, ano,versao,tipo,situacao)
+VALUES (1,STR_TO_DATE('01-01-2016', '%d-%m-%Y'), STR_TO_DATE('30-06-2016', '%d-%m-%Y'), 300, 1, 2016, 1, 'presencial', 'aprovado'),
+(2,STR_TO_DATE('01-01-2016', '%d-%m-%Y'), STR_TO_DATE('30-06-2016', '%d-%m-%Y'), 300, 1, 2016, 1, 'ead', 'aprovado'),
+(3,STR_TO_DATE('01-01-2016', '%d-%m-%Y'), STR_TO_DATE('30-06-2016', '%d-%m-%Y'), 300, 1, 2016, 1, 'administrativo', 'aprovado');
+
+insert into ead(id) values(2);
 
 #depois de reconhecimento
 INSERT INTO labbd.item_do_formulario (num_capes, descricao, fase, dados, resultado)
@@ -309,19 +315,18 @@ VALUES ('Bio','209243943-08',STR_TO_DATE('02-02-2010', '%d-%m-%Y'),STR_TO_DATE('
 INSERT INTO labbd.cursa(sigla,cpf, data_inicio, data_fim)
 VALUES ('BCC','275677595-94',STR_TO_DATE('05-02-2012', '%d-%m-%Y'),STR_TO_DATE('07-12-2016', '%d-%m-%Y'));
 
+INSERT INTO labbd.turma (letra, vagas, sigla, cpf_docente,id_calendario)
+VALUES ('A',20, 'LBD','209243943-08',1);
+INSERT INTO labbd.turma (letra, vagas, sigla, cpf_docente,id_calendario)
+VALUES ('B', 20,  'SO','121541619-21',1);
+INSERT INTO labbd.turma (letra, vagas, sigla, cpf_docente,id_calendario)
+VALUES ('B', 20,'LBD','209243943-08',1);
 
-INSERT INTO calendario(id,data_inicio, data_fim, dias_letivos, semestre, ano,versao,tipo,situacao)
-VALUES (1,STR_TO_DATE('01-01-2016', '%d-%m-%Y'), STR_TO_DATE('30-06-2016', '%d-%m-%Y'), 300, 1, 2016, 1, 'presencial', 'aprovado'),
-(2,STR_TO_DATE('01-01-2016', '%d-%m-%Y'), STR_TO_DATE('30-06-2016', '%d-%m-%Y'), 300, 1, 2016, 1, 'ead', 'aprovado'),
-(3,STR_TO_DATE('01-01-2016', '%d-%m-%Y'), STR_TO_DATE('30-06-2016', '%d-%m-%Y'), 300, 1, 2016, 1, 'administrativo', 'aprovado');
-
-insert into ead(id) values(2);
-
-INSERT INTO labbd.turma (letra, vagas, sala, predio, dia, hora, sigla, cpf_docente,id_calendario)
-VALUES ('A', 20, 4, 'DC', 'Quarta', '8:00-10:00', 'LBD','209243943-08',1);
-INSERT INTO labbd.turma (letra, vagas, sala, predio, dia, hora, sigla, cpf_docente,id_calendario)
-VALUES ('B', 20, 4, 'DC', 'Sexta', '8:00-12:00', 'SO','121541619-21',1);
-INSERT INTO labbd.turma (letra, vagas, sala, predio, dia, hora, sigla, cpf_docente,id_calendario)
-VALUES ('B', 20, 4, 'DC', 'Terça', '8:00-10:00', 'LBD','209243943-08',1);
+insert into labbd.aula(id_turma,predio,sala,  dia,		hora)
+ values				  (1, 		'DC', 'lab2','quarta', '08'),
+					(1, 		'DC', 'lab2','segunda', '08'),
+					(2, 		'DC', 'lab4','segunda', '08'),
+					(2, 		'DC', 'lab4','quarta', '08'),
+					(3, 		'DC', 'lab2','quarta', '08');
 
 
