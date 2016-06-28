@@ -1,5 +1,6 @@
 #create database labbd
 USE labbd;
+drop trigger insere_calendario;
 drop table comunicacoes;
 drop table intervencoes;
 drop table gestao;
@@ -185,7 +186,7 @@ CREATE TABLE labbd.calendario (
     semestre            INT,
     ano                 YEAR(4),
     versao				INT,
-    tipo				CHAR(255),
+    tipo				CHAR(255), constraint check_tipo check(tipo in ('ead','presencial','administrativo')),
     situacao			CHAR(10),
     
     constraint unique_calendario UNIQUE (ano, semestre, versao,tipo),
@@ -466,4 +467,17 @@ CONSTRAINT comunicacao_itens_de_pauta_fk FOREIGN KEY (id_itens_de_pauta) referen
 CONSTRAINT comunicacao_cpf_fk FOREIGN KEY (cpf) references membro (cpf),
 CONSTRAINT comunicacao_pk PRIMARY KEY (id_itens_de_pauta, cpf, data_hora)
 );
+
+delimiter $$
+create DEFINER = `root`@`localhost` trigger insere_calendario
+after insert
+on labbd.calendario
+for each row
+begin
+ case new.tipo
+	when 'ead' then insert into ead(id) value (new.id);
+    when 'presencial' then insert into presencial(id) value(new.id);
+    when 'administrativo' then insert into administrativo(id) value(new.id);
+	end case;
+end$$
 
