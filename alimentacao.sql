@@ -131,6 +131,25 @@ VALUES (STR_TO_DATE('07-03-2015', '%d-%m-%Y'), STR_TO_DATE('07-03-2016', '%d-%m-
 INSERT INTO labbd.membro (data_inicio, data_fim, representacao, portaria_indicacao, cpf)
 VALUES (STR_TO_DATE('07-03-2015', '%d-%m-%Y'), STR_TO_DATE('07-03-2016', '%d-%m-%Y'), 
     'corpo docente', '1757/16', '505019159-44');
+    
+insert into labbd.reuniao (numero,cpf,data,grupo_organizador)
+VALUES(1,'505019159-44',STR_TO_DATE('30-04-2016', '%d-%m-%Y'),'CoG');    
+INSERT INTO labbd.itens_de_pauta (pauta,data_aprovacao,numero_reuniao,texto_descritivo)
+VALUES('paralizacao',STR_TO_DATE('29-04-2016', '%d-%m-%Y'),1,'Discutir o fechamento dos ATs'),
+      ('paralizacao',STR_TO_DATE('29-04-2016', '%d-%m-%Y'),1,'Discutir efeitos da Greve'),
+      ('paralizacao',STR_TO_DATE('29-04-2016', '%d-%m-%Y'),1,'Discutir FORA TEMER, VEM AECIO'),
+      ('reprovacao',STR_TO_DATE('29-03-2016', '%d-%m-%Y'),1,'Piquete em frente ao dm'),
+      ('reprovacao',STR_TO_DATE('29-03-2016', '%d-%m-%Y'),1,'carta ao DM pedindo pra ter SUB');
+      
+INSERT INTO labbd.documentos (id_item_pauta,documento)
+VALUES
+    (1,'~/src/1/paralizacao/29-04-2016/jornal.txt'),
+    (1,'~/src/1/paralizacao/29-04-2016/revista.txt'),
+    (1,'~/src/1/paralizacao/29-04-2016/imagem.jpg'),
+    (1,'~/src/1/paralizacao/29-04-2016/carta.txt'),
+    (1,'~/src/1/paralizacao/29-04-2016/seila.out')
+    ;
+
 
 INSERT INTO labbd.curso (sigla, nome, max_creditos, min_creditos) 
 VALUES ('ENC', 'Engenharia de Computacao', 38, 4);

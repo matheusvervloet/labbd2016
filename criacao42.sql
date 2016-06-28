@@ -33,8 +33,8 @@ drop table disciplina;
 drop table departamento;
 drop table curso;
 drop table documentos;
-drop table reuniao;
 drop table itens_de_pauta;
+drop table reuniao;
 drop table membro;
 drop table faz_prova;
 drop table centro_academico;
@@ -43,7 +43,6 @@ drop table  ta;
 drop table aluno;
 drop table pessoa;
 
-###Area do Fabio#####
 #Creates1
 CREATE TABLE labbd.pessoa (
     cpf                 CHAR(12),
@@ -110,36 +109,36 @@ CONSTRAINT membro_pk PRIMARY KEY (cpf)
 );
 
 #8
-CREATE TABLE labbd.itens_de_pauta (
-    id                  INT not null auto_increment,
-    pauta               VARCHAR(255),
-    data_aprovacao      DATE,
-    texto_descritivo    LONGTEXT,
-    constraint	unique_itens_pauta unique(pauta,data_aprovacao),
-    CONSTRAINT itens_de_pauta_pk PRIMARY KEY(id)
-);
 
-#9
 CREATE TABLE labbd.reuniao (
     numero              INT,
     cpf                 CHAR(12),
     data                DATE,
     grupo_organizador   CHAR(255),
     documento           CHAR(255),
-    id_itens_de_pauta	INT,
-    CONSTRAINT reunia_itens_pauta_fk FOREIGN KEY (id_itens_de_pauta) references itens_de_pauta(id),
     CONSTRAINT reunia_cpf_membro_fk FOREIGN KEY (cpf) references membro(cpf),
     CONSTRAINT reuniao_pk PRIMARY KEY(numero)
 );
 
+#9
+CREATE TABLE labbd.itens_de_pauta (
+    id                  INT not null auto_increment,
+    pauta               VARCHAR(255),
+    data_aprovacao      DATE,
+    texto_descritivo    LONGTEXT,
+    numero_reuniao		INT,
+    CONSTRAINT itens_pauta_reuniao_fk FOREIGN KEY (numero_reuniao) references reuniao(numero),
+    constraint	unique_itens_pauta unique(pauta,data_aprovacao,id),
+    CONSTRAINT itens_de_pauta_pk PRIMARY KEY(id)
+);
+
+
 #10
 CREATE TABLE labbd.documentos(
 id_item_pauta       INT,
-num_reuniao			INT,
 documento           VARCHAR(255),
-CONSTRAINT documentos_reuniao_fk FOREIGN KEY (num_reuniao) references reuniao(numero),
 CONSTRAINT documentos_itens_de_pauta_fk FOREIGN KEY (id_item_pauta) references itens_de_pauta (id),
-CONSTRAINT documentos_pk PRIMARY KEY (num_reuniao,id_item_pauta)
+CONSTRAINT documentos_pk PRIMARY KEY (id_item_pauta,documento)
 );
 
 #11
