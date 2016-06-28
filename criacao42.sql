@@ -188,7 +188,7 @@ CREATE TABLE labbd.calendario (
     tipo				CHAR(255),
     situacao			CHAR(10),
     
-    constraint unique_calendario UNIQUE (ano, semestre, versao),
+    constraint unique_calendario UNIQUE (ano, semestre, versao,tipo),
     CONSTRAINT calendario_pk PRIMARY KEY(id)
 );
 #16
