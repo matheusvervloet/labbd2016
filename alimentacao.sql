@@ -131,15 +131,37 @@ VALUES (STR_TO_DATE('07-03-2015', '%d-%m-%Y'), STR_TO_DATE('07-03-2016', '%d-%m-
 INSERT INTO labbd.membro (data_inicio, data_fim, representacao, portaria_indicacao, cpf)
 VALUES (STR_TO_DATE('07-03-2015', '%d-%m-%Y'), STR_TO_DATE('07-03-2016', '%d-%m-%Y'), 
     'corpo docente', '1757/16', '505019159-44');
-    
-insert into labbd.reuniao (numero,cpf,data,grupo_organizador)
-VALUES(1,'505019159-44',STR_TO_DATE('30-04-2016', '%d-%m-%Y'),'CoG');    
+
+#Depois de membro
+INSERT INTO labbd.reuniao (numero, cpf, data, grupo_organizador, documento)
+VALUES(1,'505019159-44',STR_TO_DATE('30-04-2016', '%d-%m-%Y'),'CoG', '~/src/1/paralizacao/29-04-2016/foo.txt');
+INSERT INTO labbd.reuniao (numero, cpf, data, grupo_organizador, documento)
+VALUES(2,'505019159-44',STR_TO_DATE('29-04-2016', '%d-%m-%Y'),'CoG', '~/src/1/paralizacao/29-04-2016/bar.txt');
+INSERT INTO labbd.reuniao (numero, cpf, data, grupo_organizador, documento)
+VALUES(3,'919191919-44',STR_TO_DATE('28-04-2016', '%d-%m-%Y'),'CoG', '~/src/1/paralizacao/29-04-2016/foobar.txt');
+INSERT INTO labbd.reuniao (numero, cpf, data, grupo_organizador, documento)
+VALUES(4,'919191919-44',STR_TO_DATE('27-04-2016', '%d-%m-%Y'),'CoG', '~/src/1/paralizacao/29-04-2016/foo.pdf');
+INSERT INTO labbd.reuniao (numero, cpf, data, grupo_organizador, documento)
+VALUES(5,'505019159-44',STR_TO_DATE('26-04-2016', '%d-%m-%Y'),'CoG', '~/src/1/paralizacao/29-04-2016/bar.pdf');
+  
 INSERT INTO labbd.itens_de_pauta (pauta,data_aprovacao,numero_reuniao,texto_descritivo)
 VALUES('paralizacao',STR_TO_DATE('29-04-2016', '%d-%m-%Y'),1,'Discutir o fechamento dos ATs'),
       ('paralizacao',STR_TO_DATE('29-04-2016', '%d-%m-%Y'),1,'Discutir efeitos da Greve'),
       ('paralizacao',STR_TO_DATE('29-04-2016', '%d-%m-%Y'),1,'Discutir FORA TEMER, VEM AECIO'),
       ('reprovacao',STR_TO_DATE('29-03-2016', '%d-%m-%Y'),1,'Piquete em frente ao dm'),
       ('reprovacao',STR_TO_DATE('29-03-2016', '%d-%m-%Y'),1,'carta ao DM pedindo pra ter SUB');
+
+#Depois de itens de pauta
+INSERT INTO labbd.decisoes_aprovadas (id_itens_de_pauta, decisoes_aprovadas)
+VALUES (1, 'Apoio ao fechamento dos ATs.');
+INSERT INTO labbd.decisoes_aprovadas (id_itens_de_pauta, decisoes_aprovadas)
+VALUES (2, 'Apoio a paralizacao estudantil.');
+INSERT INTO labbd.decisoes_aprovadas (id_itens_de_pauta, decisoes_aprovadas)
+VALUES (3, 'Apoio a candidatura do Tiririca para presidente.');
+INSERT INTO labbd.decisoes_aprovadas (id_itens_de_pauta, decisoes_aprovadas)
+VALUES (4, 'Repudio ao piquete em um departamento tao notavel e justo com os alunos como o DM');
+INSERT INTO labbd.decisoes_aprovadas (id_itens_de_pauta, decisoes_aprovadas)
+VALUES (5, 'Repudio a sub no DM, visto que todas suas materias e professores ja sao extremamente faceis de se obter aprovacao');
       
 INSERT INTO labbd.documentos (id_item_pauta,documento)
 VALUES
@@ -210,6 +232,43 @@ INSERT INTO labbd.reconhecimento (num_capes,sigla_curso,data_inicio)
 VALUES ('1004', 'EQ',STR_TO_DATE('08-06-2015', '%d-%m-%Y'));
 INSERT INTO labbd.reconhecimento (num_capes,sigla_curso,data_inicio)
 VALUES ('1005', 'MAT',STR_TO_DATE('08-06-2015', '%d-%m-%Y'));
+
+
+#depois de reconhecimento
+INSERT INTO labbd.item_do_formulario (num_capes, descricao, fase, dados, resultado)
+VALUES ('1001', 'O curso possui estagio?', 1, 'Sim, o estagio e obrigatorio e e oferecido como disciplina do ultimo semestre.', 'Aprovado');
+INSERT INTO labbd.item_do_formulario (num_capes, descricao, fase, dados, resultado)
+VALUES ('1002', 'O curso possui trabalho de conclusao de curso?', 2, 'Sim, o trabalho de conclusao de curso e obrigatorio.', 'Aprovado');
+INSERT INTO labbd.item_do_formulario (num_capes, descricao, fase, dados, resultado)
+VALUES ('1003', 'O curso possui estagio?', 1, 'Sim, o estagio e obrigatorio.', 'Aprovado');
+INSERT INTO labbd.item_do_formulario (num_capes, descricao, fase, dados, resultado)
+VALUES ('1004', 'O curso possui trabalho de conclusao de curso?', 3, 'Sim, o trabalho de conclusao de curso e obrigatorio.', 'Aprovado');
+INSERT INTO labbd.item_do_formulario (num_capes, descricao, fase, dados, resultado)
+VALUES ('1005', 'O curso possui estagio?', 1, 'Sim, porem o estagio nao e obrigatorio.', 'Aprovado');
+
+#depois de reconhecimento
+INSERT INTO labbd.visita (data, num_capes)
+VALUES (STR_TO_DATE('28-06-2016', '%d-%m-%Y'),'1001');
+INSERT INTO labbd.visita (data, num_capes)
+VALUES (STR_TO_DATE('27-06-2016', '%d-%m-%Y'),'1002');
+INSERT INTO labbd.visita (data, num_capes)
+VALUES (STR_TO_DATE('26-06-2016', '%d-%m-%Y'),'1003');
+INSERT INTO labbd.visita (data, num_capes)
+VALUES (STR_TO_DATE('25-06-2016', '%d-%m-%Y'),'1004');
+INSERT INTO labbd.visita (data, num_capes)
+VALUES (STR_TO_DATE('24-06-2016', '%d-%m-%Y'),'1005');
+
+#depois de visita
+INSERT INTO labbd.comite (id_visita, prenome, nome_do_meio, sobrenome)
+VALUES (1, 'Cristiano', 'Ornelas', 'Ribeiro');
+INSERT INTO labbd.comite (id_visita, prenome, nome_do_meio, sobrenome)
+VALUES (2, 'Joao', 'Antonio', 'da Silva');
+INSERT INTO labbd.comite (id_visita, prenome, nome_do_meio, sobrenome)
+VALUES (3, 'Beatriz', 'Cabrera', 'Santana');
+INSERT INTO labbd.comite (id_visita, prenome, nome_do_meio, sobrenome)
+VALUES (4, 'Francisco', 'Meira', 'Lima');
+INSERT INTO labbd.comite (id_visita, prenome, nome_do_meio, sobrenome)
+VALUES (5, 'Maria', 'Souza', 'e Silva');
 
 # inserts calendario
 #inserts presencial

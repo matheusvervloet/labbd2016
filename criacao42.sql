@@ -273,11 +273,11 @@ CREATE TABLE labbd.item_do_formulario (
     num_capes               INT,
     num_item 				INT UNIQUE,
     descricao               char(255),
-    fase                    INT UNIQUE,
+    fase                    INT,
     dados                   LONGTEXT,
     resultado               LONGTEXT,
     CONSTRAINT item_do_formulario_num_capes_fk FOREIGN KEY (num_capes) references reconhecimento(num_capes),
-    constraint unique_item_form UNIQUE (num_item, fase),
+    constraint unique_item_form UNIQUE (num_item), #Retirei fase de UNIQUE pois podemos ter mais de um item na mesma fase
     CONSTRAINT item_do_formulario_pk PRIMARY KEY(id_itens_do_formulario, num_capes)
 );
 #26
