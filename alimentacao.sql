@@ -276,7 +276,7 @@ INSERT INTO labbd.decisoes_aprovadas (id_itens_de_pauta, decisoes_aprovadas)
             (5, 'Repudio a sub no DM, visto que todas suas materias e professores ja sao extremamente faceis de se obter aprovacao');
 
 
-#29 - CORRIGIR, não bate com o script de criação mais 
+#29
 INSERT INTO labbd.turma (letra, vagas, sigla, cpf_docente, id_calendario)
     VALUES  ('A', 20, 'LBD', '777795472-95', 1),
             ('B', 20, 'SO', '684499362-79', 1),
@@ -366,13 +366,15 @@ INSERT INTO labbd.pre_requisitos (disciplina, pre_requisito)
             ('LBD','BD');
 
 
-############################39
-#
-#         COLOCAR INSERTS DA TABELA MATRICULA AQUI
-#         SEGUIR PADRAO COM SÓ UM 'VALUE'
-#         DE PREFERENCIA IDENTADO, TENHO TOC. GRATO. =)
-#
-############################ 
+#39 - ATENCAO: aqui também depende de campo auto-increment de turma
+INSERT INTO labbd.matricula (cpf, id_turma, fase, deferimento)
+    VALUES  ('275677595-94', 7, 1, 'em espera'),
+            ('275677595-94', 8, 1, 'indeferido'),
+            ('919136532-44', 7, 2, 'indeferido');
+INSERT INTO labbd.matricula (cpf, id_turma, fase, deferimento, nota)
+    VALUES  ('275677595-94', 9, 2, 'aprovado', 6),
+            ('919136532-44', 8, 1, 'aprovado', 7),
+            ('919136532-44', 9, 1, 'aprovado', 6);
 
 
 ############################40
