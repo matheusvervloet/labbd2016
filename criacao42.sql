@@ -160,11 +160,13 @@ CREATE TABLE labbd.documentos(
 #11
 CREATE TABLE labbd.curso (
     sigla               CHAR(10),
+    sigla_ca			CHAR(10),
     nome                CHAR(255),
     max_creditos        INT,
     min_creditos        INT,
 
-    CONSTRAINT curso_pk PRIMARY KEY(sigla)
+    CONSTRAINT curso_pk PRIMARY KEY(sigla),
+    CONSTRAINT curso_ca_fk FOREIGN KEY (sigla_ca) references centro_academico (sigla)
 );
 
 

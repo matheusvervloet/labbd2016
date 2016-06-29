@@ -59,9 +59,11 @@ INSERT INTO labbd.docente (cpf)
 #5    -- checar se CA é CET, da biologia, etc... administrativo e oficial
 INSERT INTO labbd.centro_academico (sigla, nome)
     VALUES  ('CAEnf', 'Centro Acadêmico da Enfermagem'),
+			('CCET', 'Centro de Ciências Exatas e de Tecnologia'),
             ('CALING', 'Centro Acadêmico dos Estudantes de Linguística da UFSCar'),
             ('CAJAR', 'Centro Acadêmico José Albertino Rodrigues'),
             ('CAEP', 'Centro Acadêmico da Engenharia de Produção'),
+            ('CCBS', 'Centro de Ciências Biológicas e da Saúde'),
             ('CAAMP', 'Centro Academico Ana Maria Primavesi – Agroecologia');
 
 
@@ -110,13 +112,13 @@ INSERT INTO labbd.documentos (id_item_pauta,documento)
 
 
 #11
-INSERT INTO labbd.curso (sigla, nome, max_creditos, min_creditos) 
-    VALUES  ('ENC', 'Engenharia de Computacao', 38, 4),
-            ('EP', 'Engenharia de Producao', 38,4),
-            ('EQ', 'Engenharia Quimica', 38,4),
-            ('BCC', 'Bacharelado Ciencia da Computacao', 38,4),
-            ('Bio', 'Biologia', 38,4),
-            ('Mat', 'Matematica', 38,4);
+INSERT INTO labbd.curso (sigla, sigla_ca, nome, max_creditos, min_creditos) 
+    VALUES  ('ENC', 'CCET', 'Engenharia de Computacao', 38, 4),
+            ('EP', 'CCET', 'Engenharia de Producao', 38,4),
+            ('EQ', 'CCET', 'Engenharia Quimica', 38,4),
+            ('BCC', 'CCET', 'Bacharelado Ciencia da Computacao', 38,4),
+            ('Bio', 'CCBS', 'Biologia', 38,4),
+            ('Mat', 'CCET', 'Matematica', 38,4);
 
 
 #12
