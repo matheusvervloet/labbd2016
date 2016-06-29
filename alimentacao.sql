@@ -285,14 +285,13 @@ INSERT INTO labbd.turma (letra, vagas, sigla, cpf_docente, id_calendario)
             ('A', 20, 'GA', '385270967-90', 1);
 
 
-
-############################30
-#
-#         COLOCAR INSERTS DA TABELA PPP AQUI
-#         SEGUIR PADRAO COM SÓ UM 'VALUE'
-#         DE PREFERENCIA IDENTADO, TENHO TOC. GRATO. =)
-#
-############################  
+#30
+INSERT INTO labbd.ppp (texto, sigla_curso, numero_reuniao, sigla_disciplina, ano, semestre)
+	VALUES 	('Projeto que vamos melhorar essa disciplina', 'BCC', 1, 'ARQ1', 2006, 1),
+			('Aumentar numero de aulas sobre coisa legal', 'ENC', 1, 'ARQ2', 2006, 1),
+            ('Vamos falar mais sobre placas', 'BCC', 2, 'LARQ1', 2007, 2),
+            ('Vamos falar mais da intel', 'BCC', 3, 'LARQ2', 2008, 1),
+            ('Vamos programar tambem', 'BCC', 3, 'BD', 2010, 1);
 
 
 #31 - ATENÇÃO - referencia uma PK que é auto increment, esses valores podem mudar e dar erro
