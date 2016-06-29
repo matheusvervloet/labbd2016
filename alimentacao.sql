@@ -1,4 +1,4 @@
-USE labbd;
+USE labbd
 
 #1
 INSERT INTO labbd.pessoa (cpf, prenome, nome_meio, sobrenome) 
@@ -276,11 +276,14 @@ INSERT INTO labbd.decisoes_aprovadas (id_itens_de_pauta, decisoes_aprovadas)
             (5, 'Repudio a sub no DM, visto que todas suas materias e professores ja sao extremamente faceis de se obter aprovacao');
 
 
-#29 - CORRIGIR, não bate com o script de criação mais
+#29 - 
 INSERT INTO labbd.turma (letra, vagas, sigla, cpf_docente, id_calendario)
     VALUES  ('A', 20, 'LBD', '777795472-95', 1),
             ('B', 20, 'SO', '684499362-79', 1),
-            ('B', 20, 'LBD', '777795472-95', 1);
+            ('B', 20, 'LBD', '777795472-95', 1),
+            ('C', 20, 'CD', '684499362-79', 1 ),
+            ('A', 20, 'GA', '385270967-90', 1);
+
 
 
 ############################30
@@ -292,13 +295,13 @@ INSERT INTO labbd.turma (letra, vagas, sigla, cpf_docente, id_calendario)
 ############################  
 
 
-#31 - ATENÇÃO - referencia uma PK que é auto increment, esses valores podem mudar e dar erro
+#31 -
 INSERT INTO labbd.aula (id_turma, predio, sala, dia, hora)
-    VALUES  (7, 'DC', 'lab2', 'quarta', '08'),
-            (7, 'DC', 'lab2', 'segunda', '08'),
-            (8, 'DC', 'lab4', 'segunda', '08'),
-            (8, 'DC', 'lab4', 'quarta', '08'),
-            (9, 'DC', 'lab2', 'quarta', '08');
+    VALUES  (1, 'DC', 'lab2', 'quarta', '08'),
+            (2, 'DC', 'lab2', 'segunda', '08'),
+            (3, 'DC', 'lab4', 'segunda', '08'),
+            (3, 'DC', 'lab4', 'quarta', '08'),
+            (4, 'DC', 'lab2', 'quarta', '08');
 
 
 

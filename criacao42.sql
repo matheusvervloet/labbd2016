@@ -1,9 +1,9 @@
-#create database labbd
-USE labbd;
+#create database labbd;
+USE labbd
 
 drop trigger IF EXISTS insere_calendario;
 
-drop table IF EXISTS comunicacoes ;
+drop table IF EXISTS comunicacoes;
 drop table IF EXISTS intervencoes;
 drop table IF EXISTS gestao;
 drop table IF EXISTS matricula;
@@ -344,7 +344,7 @@ CREATE TABLE labbd.comite (
     nome_do_meio        CHAR(255),
     sobrenome           CHAR(255),
     CONSTRAINT comite_id_visita_fk FOREIGN KEY (id_visita) references visita(id_visita),
-    CONSTRAINT comite_pk PRIMARY KEY (id_visita)
+    CONSTRAINT comite_pk PRIMARY KEY (id_visita, prenome, nome_do_meio, sobrenome)
 );
 
 
@@ -352,9 +352,9 @@ CREATE TABLE labbd.comite (
 CREATE TABLE labbd.decisoes_aprovadas(
     
     id_itens_de_pauta       INT,
-    decisoes_aprovadas      LONGTEXT,
+    decisoes_aprovadas      CHAR(255),
     CONSTRAINT decisoes_aprovadas_id_itens_de_pauta_fk FOREIGN KEY (id_itens_de_pauta) references itens_de_pauta (id),
-    CONSTRAINT decisoes_aprovadas_pk PRIMARY KEY (id_itens_de_pauta)
+    CONSTRAINT decisoes_aprovadas_pk PRIMARY KEY (id_itens_de_pauta, decisoes_aprovadas)
 );
 
 
@@ -400,14 +400,14 @@ CREATE TABLE labbd.ppp (
 
 #31
 CREATE TABLE labbd.aula (
-	id_turma			INT auto_increment,
+	id_turma			INT,
     predio              CHAR(255),
     sala                varchar(10),
     dia                 varchar(10), constraint aula_dia check (dia in ('segunda','terca','quarta','quinta','sexta','sabado')),
     hora                char(2), constraint aula_hora check (dia in ('08','10','14','16','19','21')),
      
     CONSTRAINT aula_turma_fk FOREIGN KEY(id_turma) REFERENCES turma(id_turma),
-    CONSTRAINT aula_pk PRIMARY KEY(id_turma,predio,sala,dia,hora)
+    CONSTRAINT aula_pk PRIMARY KEY(id_turma, predio, sala, dia, hora)
 );
 
 
