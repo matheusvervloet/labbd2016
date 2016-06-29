@@ -10,7 +10,8 @@ VIEW `labbd`.`turmas_disciplina_ro` AS
         `labbd`.`turma`.`hora` AS `Horario`,
         `labbd`.`turma`.`vagas` AS `Vagas`,
         `labbd`.`pessoa`.`prenome` AS `Docente Nome`,
-        `labbd`.`pessoa`.`sobrenome` AS `Docente Sobrenome`
+        `labbd`.`pessoa`.`sobrenome` AS `Docente Sobrenome`,
+        `labbd`.`turma`.`id_calendario` AS `Calendario`
     FROM
         (((`labbd`.`turma`
         JOIN `labbd`.`disciplina`)
