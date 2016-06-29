@@ -1,5 +1,5 @@
 #create database labbd;
-USE labbd
+USE labbd;
 
 drop trigger IF EXISTS insere_calendario;
 
@@ -344,7 +344,7 @@ CREATE TABLE labbd.comite (
     nome_do_meio        CHAR(255),
     sobrenome           CHAR(255),
     CONSTRAINT comite_id_visita_fk FOREIGN KEY (id_visita) references visita(id_visita),
-    CONSTRAINT comite_pk PRIMARY KEY (id_visita, prenome, nome_do_meio, sobrenome)
+    CONSTRAINT comite_pk PRIMARY KEY (id_visita)
 );
 
 
@@ -352,9 +352,9 @@ CREATE TABLE labbd.comite (
 CREATE TABLE labbd.decisoes_aprovadas(
     
     id_itens_de_pauta       INT,
-    decisoes_aprovadas      CHAR(255),
+    decisoes_aprovadas      LONGTEXT,
     CONSTRAINT decisoes_aprovadas_id_itens_de_pauta_fk FOREIGN KEY (id_itens_de_pauta) references itens_de_pauta (id),
-    CONSTRAINT decisoes_aprovadas_pk PRIMARY KEY (id_itens_de_pauta, decisoes_aprovadas)
+    CONSTRAINT decisoes_aprovadas_pk PRIMARY KEY (id_itens_de_pauta)
 );
 
 
@@ -400,7 +400,7 @@ CREATE TABLE labbd.ppp (
 
 #31
 CREATE TABLE labbd.aula (
-	id_turma			INT,
+	id_turma			INT auto_increment,
     predio              CHAR(255),
     sala                varchar(10),
     dia                 varchar(10), constraint aula_dia check (dia in ('segunda','terca','quarta','quinta','sexta','sabado')),
