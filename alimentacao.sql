@@ -167,7 +167,7 @@ INSERT INTO calendario(data_inicio, data_fim, dias_letivos, semestre, ano,versao
             (STR_TO_DATE('01-01-2016', '%d-%m-%Y'), STR_TO_DATE('30-06-2016', '%d-%m-%Y'), 300, 1, 2016, 1, 'administrativo', 'aprovado');
 
 
-############################16
+############################16 NAO PRECISA, JA CRIEI UMA TRIGGER PRA ISSO
 #
 #         COLOCAR INSERTS DA TABELA PRESENCIAL AQUI
 #         SEGUIR PADRAO COM SÓ UM 'VALUE'
@@ -176,7 +176,7 @@ INSERT INTO calendario(data_inicio, data_fim, dias_letivos, semestre, ano,versao
 ############################
 
 
-############################17
+############################17 NAO PRECISA, JA CRIEI UMA TRIGGER PRA ISSO
 #
 #         COLOCAR INSERTS DA TABELA EAD AQUI
 #         SEGUIR PADRAO COM SÓ UM 'VALUE'
@@ -185,7 +185,7 @@ INSERT INTO calendario(data_inicio, data_fim, dias_letivos, semestre, ano,versao
 ############################
 
 
-############################18
+############################18 NAO PRECISA, JA CRIEI UMA TRIGGER PRA ISSO
 #
 #         COLOCAR INSERTS DA TABELA ADMINISTRATIVO AQUI
 #         SEGUIR PADRAO COM SÓ UM 'VALUE'
@@ -367,13 +367,13 @@ INSERT INTO labbd.pre_requisitos (disciplina, pre_requisito)
 
 #39 - ATENCAO: aqui também depende de campo auto-increment de turma
 INSERT INTO labbd.matricula (cpf, id_turma, fase, deferimento)
-    VALUES  ('275677595-94', 7, 1, 'em espera'),
-            ('275677595-94', 8, 1, 'indeferido'),
-            ('919136532-44', 7, 2, 'indeferido');
+    VALUES  ('275677595-94', 1, 1, 'em espera'),
+            ('275677595-94', 2, 1, 'indeferido'),
+            ('919136532-44', 1, 2, 'indeferido');
 INSERT INTO labbd.matricula (cpf, id_turma, fase, deferimento, nota)
-    VALUES  ('275677595-94', 9, 2, 'aprovado', 6),
-            ('919136532-44', 8, 1, 'aprovado', 7),
-            ('919136532-44', 9, 1, 'aprovado', 6);
+    VALUES  ('275677595-94', 3, 2, 'aprovado', 6),
+            ('919136532-44', 2, 1, 'aprovado', 7),
+            ('919136532-44', 3, 1, 'aprovado', 6);
 
 
 ############################40

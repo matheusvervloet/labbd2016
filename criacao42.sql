@@ -1,4 +1,4 @@
-#create database labbd;
+create database if not exists labbd;
 USE labbd;
 
 drop trigger IF EXISTS insere_calendario;
