@@ -374,7 +374,7 @@ INSERT INTO labbd.pre_requisitos (disciplina, pre_requisito)
 #39 - ATENCAO: aqui também depende de campo auto-increment de turma
 INSERT INTO labbd.matricula (cpf, id_turma, status, nota, frequencia)
     VALUES  ('275677595-94', 3, 'aprovado', 6, 78),
-            ('209243943-08', 1, 'reprovado', 3, 78),
+            ('209243943-08', 8, 'reprovado', 3, 78),
             ('209243943-08', 2, 'reprovado', 1, 45),
             ('275677595-94', 5, 'reprovado', 4, 79),
             ('209243943-08', 3, 'aprovado', 6, 78),
@@ -418,7 +418,7 @@ INSERT INTO labbd.inscreve (cpf, id_turma, fase, deferimento)
             ('275677595-94', 1, 2, 'em espera'),
             ('275677595-94', 3, 1, 'deferido'),
             ('275677595-94', 5, 1, 'deferido'),
-            ('209243943-08', 1, 1, 'deferido'),
+            ('209243943-08', 8, 1, 'deferido'),
             ('209243943-08', 2, 1, 'deferido'),
             ('209243943-08', 3, 1, 'deferido'),
             ('275677595-94', 2, 1, 'indeferido'),
