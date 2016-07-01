@@ -499,6 +499,7 @@ CREATE TABLE labbd.matricula (
     nota                INT,
     deferimento         CHAR(10),
     fase                INT,
+    frequencia          INT,
     CONSTRAINT matricula_aluno_fk FOREIGN KEY(cpf) REFERENCES aluno(cpf),
     CONSTRAINT matricula_turma_fk FOREIGN KEY(id_turma) REFERENCES turma(id_turma),
     CONSTRAINT matricula_pk PRIMARY KEY(cpf, id_turma, fase)

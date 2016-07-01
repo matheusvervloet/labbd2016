@@ -370,10 +370,10 @@ INSERT INTO labbd.matricula (cpf, id_turma, fase, deferimento)
     VALUES  ('275677595-94', 1, 1, 'em espera'),
             ('275677595-94', 2, 1, 'indeferido'),
             ('919136532-44', 1, 2, 'indeferido');
-INSERT INTO labbd.matricula (cpf, id_turma, fase, deferimento, nota)
-    VALUES  ('275677595-94', 3, 2, 'aprovado', 6),
-            ('919136532-44', 2, 1, 'aprovado', 7),
-            ('919136532-44', 3, 1, 'aprovado', 6);
+INSERT INTO labbd.matricula (cpf, id_turma, fase, deferimento, nota, frequencia)
+    VALUES  ('275677595-94', 3, 2, 'aprovado', 6, 78),
+            ('919136532-44', 2, 1, 'aprovado', 7, 90),
+            ('919136532-44', 3, 1, 'aprovado', 6, 82);
 
 
 ############################40
