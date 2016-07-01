@@ -6,4 +6,4 @@ CREATE OR REPLACE VIEW vhistorico AS
 					INNER JOIN matricula ON matricula.id_turma = turma.id_turma
 					INNER JOIN aluno ON aluno.cpf = matricula.cpf
 	WHERE aluno.cpf = '919136532-44'
-	ORDER BY calendario.ano, calendario.semestre;
+	ORDER BY calendario.ano, calendario.semestre, disciplina.nome;
