@@ -6,6 +6,7 @@ drop trigger IF EXISTS insere_calendario;
 drop table IF EXISTS comunicacoes;
 drop table IF EXISTS intervencoes;
 drop table IF EXISTS gestao;
+drop table IF EXISTS inscreve;
 drop table IF EXISTS matricula;
 drop table IF EXISTS pre_requisitos;
 drop table IF EXISTS correquisitos;
@@ -542,7 +543,7 @@ CREATE TABLE labbd.inscreve (
     cpf                 CHAR(12),
     id_turma            INT,
     razao               CHAR(255),
-    status              CHAR(20),
+    deferimento         CHAR(20),
     fase                INT,
     CONSTRAINT inscreve_aluno_fk FOREIGN KEY(cpf) REFERENCES aluno(cpf),
     CONSTRAINT inscreve_turma_fk FOREIGN KEY(id_turma) REFERENCES turma(id_turma),

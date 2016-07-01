@@ -364,14 +364,10 @@ INSERT INTO labbd.pre_requisitos (disciplina, pre_requisito)
 
 
 #39 - ATENCAO: aqui também depende de campo auto-increment de turma
-INSERT INTO labbd.matricula (cpf, id_turma, fase, deferimento)
-    VALUES  ('275677595-94', 1, 1, 'em espera'),
-            ('275677595-94', 2, 1, 'indeferido'),
-            ('919136532-44', 1, 2, 'indeferido');
-INSERT INTO labbd.matricula (cpf, id_turma, fase, deferimento, nota, frequencia)
-    VALUES  ('275677595-94', 3, 2, 'aprovado', 6, 78),
-            ('919136532-44', 2, 1, 'aprovado', 7, 90),
-            ('919136532-44', 3, 1, 'aprovado', 6, 82);
+INSERT INTO labbd.matricula (cpf, id_turma, status, nota, frequencia)
+    VALUES  ('275677595-94', 3, 'aprovado', 6, 78),
+            ('919136532-44', 2, 'aprovado', 7, 90),
+            ('919136532-44', 3, 'aprovado', 6, 82);
 
 
 ############################40
@@ -399,3 +395,10 @@ INSERT INTO labbd.comunicacoes(id_itens_de_pauta, cpf, data_hora, descricao)
             (3,'919191919-44',STR_TO_DATE('29-04-2016', '%d-%m-%Y'), 'Comunicado do Temer legal'),
             (1,'505019159-44',STR_TO_DATE('29-04-2016', '%d-%m-%Y'), 'Comunicado do cara que sabe'),
             (2,'505019159-44',STR_TO_DATE('29-04-2016', '%d-%m-%Y'), 'Comunicado importante');
+
+
+#43 - Depende do auto_incremente da turma, cuidado
+INSERT INTO labbd.matricula (cpf, id_turma, fase, deferimento)
+    VALUES  ('275677595-94', 1, 1, 'em espera'),
+            ('275677595-94', 2, 1, 'indeferido'),
+            ('919136532-44', 1, 2, 'indeferido');
