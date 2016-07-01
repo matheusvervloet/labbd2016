@@ -2,7 +2,7 @@ CREATE
     ALGORITHM = UNDEFINED 
     DEFINER = `root`@`localhost` 
     SQL SECURITY DEFINER
-VIEW `labbd`.`calendario_ead` AS
+VIEW `labbd`.`calendario_presencial` AS
     SELECT 
         `labbd`.`calendario`.`semestre` AS `semestre`,
         `labbd`.`calendario`.`ano` AS `ano`,
@@ -15,12 +15,9 @@ VIEW `labbd`.`calendario_ead` AS
         `labbd`.`recesso`.`tipo` AS `tipo`
     FROM
         ((`labbd`.`calendario`
-        JOIN (`labbd`.`ead`
-        JOIN `labbd`.`possui_recesso_ead` ON ((`labbd`.`ead`.`id` = `labbd`.`possui_recesso_ead`.`id_ead`))) ON ((`labbd`.`calendario`.`id` = `labbd`.`ead`.`id`)))
-        JOIN `labbd`.`recesso` ON ((`labbd`.`recesso`.`id_recesso` = `labbd`.`possui_recesso_ead`.`id_recesso`)))
-    WHERE
-        ((`labbd`.`calendario`.`situacao` = 'aprovado')
-            AND (`labbd`.`calendario`.`tipo` = 'ead')) 
+        JOIN (`labbd`.`presencial`
+        JOIN `labbd`.`possui_recesso_presencial` ON ((`labbd`.`presencial`.`id` = `labbd`.`possui_recesso_presencial`.`id_presencial`))) ON ((`labbd`.`calendario`.`id` = `labbd`.`presencial`.`id`)))
+        JOIN `labbd`.`recesso` ON ((`labbd`.`recesso`.`id_recesso` = `labbd`.`possui_recesso_presencial`.`id_recesso`)))
     UNION SELECT 
         `labbd`.`calendario`.`semestre` AS `semestre`,
         `labbd`.`calendario`.`ano` AS `ano`,
@@ -32,7 +29,10 @@ VIEW `labbd`.`calendario_ead` AS
         `labbd`.`atividade_administrativa`.`data_fim` AS `atv_fim`,
         NULL AS `NULL`
     FROM
-        ((`labbd`.`ead`
+        ((`labbd`.`presencial`
         JOIN (`labbd`.`calendario`
-        JOIN `labbd`.`possui_atividade_administrativa` `adm` ON ((`labbd`.`calendario`.`id` = `adm`.`id`))) ON ((`labbd`.`ead`.`id` = `labbd`.`calendario`.`id`)))
+        JOIN `labbd`.`possui_atividade_administrativa` `adm` ON ((`labbd`.`calendario`.`id` = `adm`.`id`))) ON ((`labbd`.`presencial`.`id` = `labbd`.`calendario`.`id`)))
         JOIN `labbd`.`atividade_administrativa` ON ((`labbd`.`atividade_administrativa`.`id_ativ_adm` = `adm`.`id_ativ_adm`)))
+	WHERE
+        ((`labbd`.`calendario`.`situacao` = 'aprovado')
+            AND (`labbd`.`calendario`.`tipo` = 'presencial')) 

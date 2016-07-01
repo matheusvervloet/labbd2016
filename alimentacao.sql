@@ -210,16 +210,13 @@ INSERT INTO possui_recesso_ead (id_recesso,id_ead)
             (3,2),
             (4,2),
             (5,2);
-
-
-############################21
-#
-#         COLOCAR INSERTS DA TABELA POSSIO_RECESSO_PRESENCIAL AQUI
-#         SEGUIR PADRAO COM SÓ UM 'VALUE'
-#         DE PREFERENCIA IDENTADO, TENHO TOC. GRATO. =)
-#
-############################            
-
+#21
+INSERT INTO possui_recesso_presencial (id_recesso,id_presencial)
+    VALUES  (1,1),
+            (2,1),
+            (3,1),
+            (4,1),
+            (5,1);
 
 #22
 INSERT INTO atividade_administrativa (data_inicio, data_fim, responsavel, nome)
@@ -228,7 +225,8 @@ INSERT INTO atividade_administrativa (data_inicio, data_fim, responsavel, nome)
 
 #23
 INSERT INTO possui_atividade_administrativa(id_ativ_adm,id) 
-    VALUES  (1,2);
+    VALUES  (1,2),
+			(1,1);
 
 
 #24
