@@ -495,14 +495,12 @@ CREATE TABLE labbd.pre_requisitos (
 CREATE TABLE labbd.matricula (
     cpf                 CHAR(12),
     id_turma			INT,
-    razao               CHAR(255),
     nota                INT,
-    deferimento         CHAR(10),
-    fase                INT,
+    status              CHAR(20),
     frequencia          INT,
     CONSTRAINT matricula_aluno_fk FOREIGN KEY(cpf) REFERENCES aluno(cpf),
     CONSTRAINT matricula_turma_fk FOREIGN KEY(id_turma) REFERENCES turma(id_turma),
-    CONSTRAINT matricula_pk PRIMARY KEY(cpf, id_turma, fase)
+    CONSTRAINT matricula_pk PRIMARY KEY(cpf, id_turma)
 );
 
 
@@ -539,6 +537,17 @@ CREATE TABLE labbd.comunicacoes (
     CONSTRAINT comunicacao_pk PRIMARY KEY (id_itens_de_pauta, cpf, data_hora)
 );
 
+#43
+CREATE TABLE labbd.inscreve (
+    cpf                 CHAR(12),
+    id_turma            INT,
+    razao               CHAR(255),
+    status              CHAR(20),
+    fase                INT,
+    CONSTRAINT inscreve_aluno_fk FOREIGN KEY(cpf) REFERENCES aluno(cpf),
+    CONSTRAINT inscreve_turma_fk FOREIGN KEY(id_turma) REFERENCES turma(id_turma),
+    CONSTRAINT inscreve_pk PRIMARY KEY(cpf, id_turma, fase)
+);
 
 delimiter $$
 create DEFINER = `root`@`localhost` trigger insere_calendario
