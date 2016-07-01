@@ -398,7 +398,7 @@ INSERT INTO labbd.comunicacoes(id_itens_de_pauta, cpf, data_hora, descricao)
 
 
 #43 - Depende do auto_incremente da turma, cuidado
-INSERT INTO labbd.matricula (cpf, id_turma, fase, deferimento)
+INSERT INTO labbd.inscreve (cpf, id_turma, fase, deferimento)
     VALUES  ('275677595-94', 1, 1, 'em espera'),
             ('275677595-94', 2, 1, 'indeferido'),
             ('919136532-44', 1, 2, 'indeferido');
