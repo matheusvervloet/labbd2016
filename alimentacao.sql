@@ -164,7 +164,10 @@ INSERT INTO labbd.reconhecimento (num_capes,sigla_curso,data_inicio)
 INSERT INTO calendario(data_inicio, data_fim, dias_letivos, semestre, ano,versao,tipo,situacao)
     VALUES  (STR_TO_DATE('01-01-2016', '%d-%m-%Y'), STR_TO_DATE('30-06-2016', '%d-%m-%Y'), 300, 1, 2016, 1, 'presencial', 'aprovado'),
             (STR_TO_DATE('01-01-2016', '%d-%m-%Y'), STR_TO_DATE('30-06-2016', '%d-%m-%Y'), 300, 1, 2016, 1, 'ead', 'aprovado'),
-            (STR_TO_DATE('01-01-2016', '%d-%m-%Y'), STR_TO_DATE('30-06-2016', '%d-%m-%Y'), 300, 1, 2016, 1, 'administrativo', 'aprovado');
+            (STR_TO_DATE('01-01-2016', '%d-%m-%Y'), STR_TO_DATE('30-06-2016', '%d-%m-%Y'), 300, 1, 2016, 1, 'administrativo', 'aprovado'),
+            (STR_TO_DATE('01-08-2016', '%d-%m-%Y'), STR_TO_DATE('23-12-2016', '%d-%m-%Y'), 300, 2, 2016, 1, 'presencial', 'aprovado'),
+            (STR_TO_DATE('01-01-2015', '%d-%m-%Y'), STR_TO_DATE('30-06-2016', '%d-%m-%Y'), 300, 1, 2015, 1, 'presencial', 'aprovado'),
+            (STR_TO_DATE('01-08-2015', '%d-%m-%Y'), STR_TO_DATE('23-12-2016', '%d-%m-%Y'), 300, 2, 2015, 1, 'presencial', 'aprovado');
 
 
 ############################16 NAO PRECISA, JA CRIEI UMA TRIGGER PRA ISSO
@@ -279,8 +282,13 @@ INSERT INTO labbd.turma (letra, vagas, sigla, cpf_docente, id_calendario)
     VALUES  ('A', 20, 'LBD', '777795472-95', 1),
             ('B', 20, 'SO', '684499362-79', 1),
             ('B', 20, 'LBD', '777795472-95', 1),
-            ('C', 20, 'CD', '684499362-79', 1 ),
-            ('A', 20, 'GA', '385270967-90', 1);
+            ('A', 10, 'LBD', '777795472-95', 5),
+            ('B', 20, 'LBD', '777795472-95', 5),
+            ('C', 5, 'CD', '684499362-79', 1 ),
+            ('A', 20, 'GA', '385270967-90', 1),
+            ('C', 10, 'Calc3', '385270967-90', 4),
+            ('A', 10, 'Calc3', '385270967-90', 5),
+            ('B', 5, 'CD', '684499362-79', 4);
 
 
 #30
@@ -366,8 +374,15 @@ INSERT INTO labbd.pre_requisitos (disciplina, pre_requisito)
 #39 - ATENCAO: aqui também depende de campo auto-increment de turma
 INSERT INTO labbd.matricula (cpf, id_turma, status, nota, frequencia)
     VALUES  ('275677595-94', 3, 'aprovado', 6, 78),
+            ('209243943-08', 1, 'reprovado', 3, 78),
+            ('209243943-08', 2, 'reprovado', 1, 45),
+            ('275677595-94', 5, 'reprovado', 4, 79),
+            ('209243943-08', 3, 'aprovado', 6, 78),
             ('919136532-44', 2, 'aprovado', 7, 90),
-            ('919136532-44', 3, 'aprovado', 6, 82);
+            ('919136532-44', 3, 'aprovado', 6, 82),
+            ('919136532-44', 9, 'aprovado', 6, 82),
+            ('919136532-44', 10, 'reprovado', 4, 100);
+
 
 
 ############################40
@@ -399,6 +414,20 @@ INSERT INTO labbd.comunicacoes(id_itens_de_pauta, cpf, data_hora, descricao)
 
 #43 - Depende do auto_incremente da turma, cuidado
 INSERT INTO labbd.inscreve (cpf, id_turma, fase, deferimento)
-    VALUES  ('275677595-94', 1, 1, 'em espera'),
+    VALUES  ('275677595-94', 1, 1, 'indeferido'), 
+            ('275677595-94', 1, 2, 'em espera'),
+            ('275677595-94', 3, 1, 'deferido'),
+            ('275677595-94', 5, 1, 'deferido'),
+            ('209243943-08', 1, 1, 'deferido'),
+            ('209243943-08', 2, 1, 'deferido'),
+            ('209243943-08', 3, 1, 'deferido'),
             ('275677595-94', 2, 1, 'indeferido'),
-            ('919136532-44', 1, 2, 'indeferido');
+            ('919136532-44', 1, 1, 'indeferido'),
+            ('919136532-44', 1, 2, 'indeferido'),
+            ('919136532-44', 2, 1, 'indeferido'),
+            ('919136532-44', 2, 2, 'deferido'),
+            ('919136532-44', 3, 1, 'indeferido'),
+            ('919136532-44', 3, 2, 'deferido'),
+            ('919136532-44', 9, 1, 'indeferido'),
+            ('919136532-44', 9, 2, 'deferido'),
+            ('919136532-44', 10, 1, 'deferido');
