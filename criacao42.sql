@@ -1,6 +1,7 @@
 create database if not exists labbd;
 USE labbd;
 
+drop trigger IF EXISTS inscreve_deferimento;
 drop trigger IF EXISTS insere_calendario;
 
 drop table IF EXISTS comunicacoes;
@@ -543,7 +544,7 @@ CREATE TABLE labbd.inscreve (
     cpf                 CHAR(12),
     id_turma            INT,
     razao               CHAR(255),
-    deferimento         CHAR(10), constraint calendario_check_deferimento check(tipo in ('em espera','deferido','indeferido')),
+    deferimento         CHAR(10), constraint calendario_check_deferimento check(deferimento in ('em espera','deferido','indeferido')),
     fase                INT,
     CONSTRAINT inscreve_aluno_fk FOREIGN KEY(cpf) REFERENCES aluno(cpf),
     CONSTRAINT inscreve_turma_fk FOREIGN KEY(id_turma) REFERENCES turma(id_turma),
@@ -563,3 +564,13 @@ begin
 	end case;
 end$$
 
+delimiter $$
+create DEFINER = `root`@`localhost` trigger inscreve_deferimento
+before insert
+on labbd.inscreve
+for each row
+begin
+	if new.deferimento <=> null then
+		 SET new.deferimento = 'em espera';
+	end if;
+end$$

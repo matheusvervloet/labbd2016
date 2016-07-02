@@ -431,3 +431,10 @@ INSERT INTO labbd.inscreve (cpf, id_turma, fase, deferimento)
             ('919136532-44', 9, 1, 'indeferido'),
             ('919136532-44', 9, 2, 'deferido'),
             ('919136532-44', 10, 1, 'deferido');
+            
+INSERT INTO labbd.inscreve (cpf, id_turma, fase)
+    VALUES  ('209243943-08', 1, 1), 
+            ('209243943-08', 1, 2),
+            ('209243943-08', 4, 1),
+            ('209243943-08', 5, 1),
+            ('209243943-08', 6, 1);
