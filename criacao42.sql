@@ -212,10 +212,10 @@ CREATE TABLE labbd.calendario (
     semestre            INT,
     ano                 YEAR(4),
     versao				INT,
-    tipo				CHAR(255), constraint check_tipo check(tipo in ('ead','presencial','administrativo')),
+    tipo				CHAR(255), constraint calendario_check_tipo check(tipo in ('ead','presencial','administrativo')),
     situacao			CHAR(10),
     
-    constraint unique_calendario UNIQUE (ano, semestre, versao,tipo),
+    constraint calendario_unique UNIQUE (ano, semestre, versao,tipo),
     CONSTRAINT calendario_pk PRIMARY KEY(id)
 );
 
@@ -543,7 +543,7 @@ CREATE TABLE labbd.inscreve (
     cpf                 CHAR(12),
     id_turma            INT,
     razao               CHAR(255),
-    deferimento         CHAR(20),
+    deferimento         CHAR(10), constraint calendario_check_deferimento check(tipo in ('em espera','deferido','indeferido')),
     fase                INT,
     CONSTRAINT inscreve_aluno_fk FOREIGN KEY(cpf) REFERENCES aluno(cpf),
     CONSTRAINT inscreve_turma_fk FOREIGN KEY(id_turma) REFERENCES turma(id_turma),
