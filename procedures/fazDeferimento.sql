@@ -71,6 +71,14 @@ BEGIN
 						AND inscreve.id_turma=auxid_turma 
                         AND inscreve.fase=nfase 
                         AND inscreve.deferimento = 'em espera';
+				#nao tem vagas nem ira, entao eh indeferido
+				else
+					update inscreve SET deferimento = 'indeferido' 
+					WHERE inscreve.cpf = auxcpf 
+						AND inscreve.id_turma=auxid_turma 
+                        AND inscreve.fase=nfase 
+                        AND inscreve.deferimento = 'em espera';
+                        
                 end if;
             end if;
             
