@@ -20,22 +20,22 @@ INSERT INTO labbd.pessoa (cpf, prenome, nome_meio, sobrenome)
 
 
 #2
-INSERT INTO labbd.aluno  (nome_da_mae, nome_do_pai, pais, uf, data_nascimento, ano_ingresso, sexo, cor, reenquadramento, ra, cpf, conclusao_em_nome, conclusao_em_ano)
+INSERT INTO labbd.aluno  (nome_da_mae, nome_do_pai, pais, uf, data_nascimento, ano_ingresso, sexo, cor, reenquadramento, ra, cpf, conclusao_em_nome, conclusao_em_ano,IRA)
     VALUES  ('Luciana A Moura', 'Leonardo A Barros', 'Brasil', 'SP',
                          STR_TO_DATE('1-01-1990', '%d-%m-%Y') , STR_TO_DATE('1-01-2012', '%d-%m-%Y'),
-                         'M', 'Branco', 0, 12345, '919191919-44', 'Escola Estadual Legal', STR_TO_DATE('1-01-2011', '%d-%m-%Y')),
+                         'M', 'Branco', 0, 12345, '919191919-44', 'Escola Estadual Legal', STR_TO_DATE('1-01-2011', '%d-%m-%Y'),20000),
             ('Alvara A Petralina', 'Jorge A Ramos', 'Brasil', 'RJ',
                          STR_TO_DATE('17-07-1990', '%d-%m-%Y') , STR_TO_DATE('1-01-2012', '%d-%m-%Y'),
-                         'F', 'Branco', 0, 2245, '919136532-44', 'Escola Estadual Chata', STR_TO_DATE('22-02-2011', '%d-%m-%Y')),                       
+                         'F', 'Branco', 0, 2245, '919136532-44', 'Escola Estadual Chata', STR_TO_DATE('22-02-2011', '%d-%m-%Y'),10000),                       
             ('Daniela Pereira', 'Marcos G Vasconcelos', 'Brasil', 'SP',
                          STR_TO_DATE('1-01-1990', '%d-%m-%Y') , STR_TO_DATE('1-01-2010', '%d-%m-%Y'),
-                         'M', 'Pardo', 0, 1299, '505019159-44', 'Escola Federal Super', STR_TO_DATE('5-01-2011', '%d-%m-%Y')),
+                         'M', 'Pardo', 0, 1299, '505019159-44', 'Escola Federal Super', STR_TO_DATE('5-01-2011', '%d-%m-%Y'),15000),
             ('Daniela Lima', 'Vinicius Lima', 'Brasil', 'SP',
                          STR_TO_DATE('1-01-1990', '%d-%m-%Y') , STR_TO_DATE('1-01-2010', '%d-%m-%Y'),
-                         'M', 'Pardo', 0, 1300, '275677595-94', 'Escola Federal Super', STR_TO_DATE('5-01-2011', '%d-%m-%Y')),
+                         'M', 'Pardo', 0, 1300, '275677595-94', 'Escola Federal Super', STR_TO_DATE('5-01-2011', '%d-%m-%Y'),11000),
             ('Bruna Barbosa', 'Igor Barbosa', 'Brasil', 'SP',
                          STR_TO_DATE('1-01-1990', '%d-%m-%Y') , STR_TO_DATE('1-01-2010', '%d-%m-%Y'),
-                         'M', 'Pardo', 0, 1301, '209243943-08', 'Escola Federal Super', STR_TO_DATE('5-01-2011', '%d-%m-%Y'));
+                         'M', 'Pardo', 0, 1301, '209243943-08', 'Escola Federal Super', STR_TO_DATE('5-01-2011', '%d-%m-%Y'),6000);
 
 
 #3

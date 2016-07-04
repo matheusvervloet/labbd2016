@@ -73,6 +73,7 @@ CREATE TABLE labbd.aluno (
     cpf                         CHAR(12),
     conclusao_em_nome           CHAR(255),
     conclusao_em_ano            DATE,
+    IRA							int,
     CONSTRAINT aluno_cpf_fk FOREIGN KEY (cpf) references pessoa (cpf),
     CONSTRAINT aluno_pk PRIMARY KEY (cpf)
 );

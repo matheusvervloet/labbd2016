@@ -26,8 +26,26 @@ BEGIN
         IF finished = 1 THEN 
 			LEAVE verifica_loop;
 		end if;
+        #verifica se ja foi deferido na fase anterior
+        if nfase>1 then
+			select count(*) into contador from inscreve where inscreve.cpf =ncpf 
+													AND inscreve.id_turma = auxid_turma 
+                                                    AND inscreve.deferimento='deferido';
+                                                    
+			if contador!= 0 then
+				#deleta outros deferimentos em outras fases
+				delete from inscreve where inscreve.cpf =ncpf 
+													AND inscreve.id_turma = auxid_turma 
+                                                    AND inscreve.deferimento = 'deferido';
+				#agora nao tem mais nenhuma tupla deferida nem em espera
+				SET contador = 0;
+				LEAVE verifica_loop;
+			end if;
+		end if;
         
-        select count(*) into contador from inscreve where inscreve.cpf =ncpf AND inscreve.id_turma = auxid_turma AND inscreve.fase = nfase;
+        select count(*) into contador from inscreve where inscreve.cpf =ncpf 
+													AND inscreve.id_turma = auxid_turma 
+                                                    AND inscreve.fase = nfase;
         
         if contador!= 0 then
 			LEAVE verifica_loop;
@@ -36,9 +54,10 @@ BEGIN
 	END LOOP verifica_loop;
     
     close turmas_cursor;
-   
-	if contador= 0 then
+    
+    if contador= 0 then
 		INSERT INTO labbd.inscreve (cpf, id_turma, fase, deferimento)
 			VALUE  (ncpf, nid_turma, nfase, 'em espera');
 	end if;
+
 END
