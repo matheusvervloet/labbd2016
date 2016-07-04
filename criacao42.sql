@@ -366,7 +366,7 @@ CREATE TABLE labbd.turma (
     letra               CHAR(1),
     vagas               INT,
     ##turma da disciplina:
-    sigla               CHAR(255), ##não sei se tem mesmo, acho q é um codigo, **tem q criar uma nova tabela gera?
+    sigla               CHAR(10), ##não sei se tem mesmo, acho q é um codigo, **tem q criar uma nova tabela gera?
 
     cpf_docente        CHAR(12), ##docente leciona turmas. turma tem 1 docente, 
 
