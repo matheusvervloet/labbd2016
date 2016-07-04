@@ -279,7 +279,7 @@ INSERT INTO labbd.decisoes_aprovadas (id_itens_de_pauta, decisoes_aprovadas)
 
 #29
 INSERT INTO labbd.turma (letra, vagas, sigla, cpf_docente, id_calendario)
-    VALUES  ('A', 20, 'LBD', '777795472-95', 1),
+    VALUES  ('A', 2, 'LBD', '777795472-95', 1),
             ('B', 20, 'SO', '684499362-79', 1),
             ('B', 20, 'LBD', '777795472-95', 1),
             ('A', 10, 'LBD', '777795472-95', 5),
@@ -414,7 +414,7 @@ INSERT INTO labbd.comunicacoes(id_itens_de_pauta, cpf, data_hora, descricao)
 
 #43 - Depende do auto_incremente da turma, cuidado
 INSERT INTO labbd.inscreve (cpf, id_turma, fase, deferimento)
-    VALUES  ('275677595-94', 1, 1, 'indeferido'), 
+    VALUES  ('275677595-94', 1, 1, 'em espera'), 
             ('275677595-94', 1, 2, 'em espera'),
             ('275677595-94', 3, 1, 'deferido'),
             ('275677595-94', 5, 1, 'deferido'),
@@ -422,7 +422,7 @@ INSERT INTO labbd.inscreve (cpf, id_turma, fase, deferimento)
             ('209243943-08', 2, 1, 'deferido'),
             ('209243943-08', 3, 1, 'deferido'),
             ('275677595-94', 2, 1, 'indeferido'),
-            ('919136532-44', 1, 1, 'indeferido'),
+            ('919136532-44', 1, 1, 'em espera'),
             ('919136532-44', 1, 2, 'indeferido'),
             ('919136532-44', 2, 1, 'indeferido'),
             ('919136532-44', 2, 2, 'deferido'),
@@ -437,4 +437,5 @@ INSERT INTO labbd.inscreve (cpf, id_turma, fase)
             ('209243943-08', 1, 2),
             ('209243943-08', 4, 1),
             ('209243943-08', 5, 1),
-            ('209243943-08', 6, 1);
+            ('209243943-08', 6, 1),
+            ('505019159-44', 1, 2);
