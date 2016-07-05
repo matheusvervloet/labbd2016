@@ -382,7 +382,9 @@ INSERT INTO labbd.matricula (cpf, id_turma, status, nota, frequencia)
             ('919136532-44', 3, 'aprovado', 6, 82),
             ('919136532-44', 10, 'reprovado por nota', 4, 100);
 INSERT INTO labbd.matricula (cpf, id_turma, status)
-    VALUES  ('919136532-44', 9, 'cancelado');
+    VALUES  ('919136532-44', 9, 'cancelado'),
+            ('275677595-94', 2, 'cancelado');
+
 
 
 

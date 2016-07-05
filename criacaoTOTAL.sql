@@ -50,6 +50,7 @@ DROP FUNCTION IF EXISTS f_calc_ira;
 #DANILO
 DROP PROCEDURE IF EXISTS procedure_consulta_historico;
 DROP PROCEDURE IF EXISTS procedure_consulta_inscricoes;
+DROP PROCEDURE IF EXISTS procedure_calcula_ira;
 
 
 #FABIO
@@ -708,24 +709,24 @@ CREATE FUNCTION f_calc_ira(ra INT) RETURNS INT
 BEGIN
     DECLARE produtoNotaCredito  INT DEFAULT 0;
     DECLARE creditosInscritos   INT DEFAULT 1;
-    DECLARE creditosCancelados  INT DEFAULT 1;
+    DECLARE creditosCancelados  INT DEFAULT 0;
 
-    #productSum 
-    SELECT  SUM(matricula.nota*disciplina.creditos) INTO produtoNotaCredito
+    #produtoNotaCredito 
+    SELECT COALESCE(SUM(matricula.nota*disciplina.creditos),0) INTO produtoNotaCredito
         FROM disciplina INNER JOIN turma ON turma.sigla = disciplina.sigla
                         INNER JOIN matricula ON matricula.id_turma = turma.id_turma
                         INNER JOIN aluno ON aluno.cpf = matricula.cpf 
         WHERE aluno.ra = ra;
 
     #creditosInscritos
-    SELECT SUM(disciplina.creditos) INTO creditosInscritos
+    SELECT COALESCE(SUM(disciplina.creditos),1) INTO creditosInscritos
         FROM disciplina INNER JOIN turma ON turma.sigla = disciplina.sigla
                         INNER JOIN matricula ON matricula.id_turma = turma.id_turma
                         INNER JOIN aluno ON aluno.cpf = matricula.cpf 
         WHERE aluno.ra = ra;
     
     #creditosCancelados
-    SELECT SUM(disciplina.creditos) INTO creditosCancelados
+    SELECT COALESCE(SUM(disciplina.creditos),0) INTO creditosCancelados
         FROM disciplina INNER JOIN turma ON turma.sigla = disciplina.sigla
                         INNER JOIN matricula ON matricula.id_turma = turma.id_turma
                         INNER JOIN aluno ON aluno.cpf = matricula.cpf 
@@ -734,7 +735,7 @@ BEGIN
     #IRA    
     RETURN 1000*(produtoNotaCredito/creditosInscritos)*(2-(creditosCancelados/creditosInscritos));
 END$$
-DELIMITER ; 
+DELIMITER ;  
 
 
 #FABIO
@@ -783,6 +784,29 @@ CREATE PROCEDURE procedure_consulta_inscricoes
 BEGIN
   SELECT * FROM vinscricoes
   WHERE ra = ra_param;
+END $$
+DELIMITER ;
+
+DELIMITER $$
+CREATE PROCEDURE procedure_calcula_ira()
+BEGIN
+    DECLARE done    BOOLEAN DEFAULT FALSE;
+    DECLARE ra      INT     DEFAULT 0;
+    DECLARE ira     INT     DEFAULT 0;
+
+    DECLARE cur CURSOR FOR SELECT aluno.ra FROM aluno;
+    DECLARE CONTINUE HANDLER FOR NOT FOUND SET done := TRUE;
+
+    OPEN cur;
+
+    alunosLoop: LOOP
+        FETCH cur INTO ra;
+        IF done THEN
+            LEAVE alunosLoop;
+        END IF;
+        SELECT f_calc_ira(ra) INTO ira;
+        UPDATE aluno SET aluno.ira = ira WHERE aluno.ra = ra;
+    END LOOP alunosLoop;
 END $$
 DELIMITER ;
 
