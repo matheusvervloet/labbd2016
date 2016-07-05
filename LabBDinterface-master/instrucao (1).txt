@@ -1,0 +1,5 @@
+Modelo de pagina: mudar linha 95(nome pag), 
+98-102(atributos), 108(insere<suaTabela>),
+  120-125 (seus atributos, e call procedure),
+ 140 chamar a função criada, 152 select from <suaTabela>,
+ 157- 178 ( montar sua tabela)
