@@ -1,0 +1,25 @@
+baixa o xampp
+entrar na pasta xampp/hdocs
+criar pasta my_site
+copiar na pasta criado todo conteudo da pasta labBDInterface
+iniciar apache e mysql do XAMPP (ja pode entrar na url localhost/my_site e visualizar pagina)
+abra MySQL WorkBench
+crie conecxao com o localhost
+vc vera o schema Phpmyadmin se estiver conectado ao servidor correto
+entao rode os scrpits de criacao e alimenatacao do bd
+va para o site e logue-se com algum cpf que alimentou o bd
+
+
+
+Gente as telas estao +- feitas
++ preciso q cada um me manda sua "pagina" vou mandar aki um modelo q oq vcs precisam mudar
+Tela de login. Já verifica se é ADM, Aluno ou Docente. Não coloquei senha pq é trabalho a + e nem conta
+Tela de cadastros do ADM. Precisa de procedure, então conforme forem fazendo suas procedures já podem fazer essa pagina
+Tela Aluno. Precisa de view e procedures. Olhem oq o aluno pode fazer, se apenas ver uma view de consulta, se pode modificar/inserir no cadastro, mas oq exibe é uma view e um procedure para inserir/alterar se aluno quiser
+Aluno: ex da view só de consulta. passei DC ele listou tds as materias do DC, tem bastante views, então ajudem nessas paginas.
+Docente, alguem pense oq o docente faz tbm, eu n sei oq ele pode fazer...
+Modelo de pagina: mudar linha 95(nome pag), 
+98-102(atributos), 108(insere<suaTabela>),
+  120-125 (seus atributos, e call procedure),
+ 140 chamar a função criada, 152 select from <suaTabela>,
+ 157- 178 ( montar sua tabela)
