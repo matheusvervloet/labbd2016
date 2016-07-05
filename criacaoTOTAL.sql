@@ -48,6 +48,8 @@ DROP FUNCTION IF EXISTS f_calc_ira;
 
 
 #DANILO
+DROP PROCEDURE IF EXISTS procedure_consulta_historico;
+DROP PROCEDURE IF EXISTS procedure_consulta_inscricoes;
 
 
 #FABIO
@@ -766,6 +768,23 @@ DELIMITER ;
 
 
 #DANILO
+DELIMITER $$
+CREATE PROCEDURE procedure_consulta_historico
+(IN ra_param INT)
+BEGIN
+  SELECT * FROM vhistorico
+  WHERE ra = ra_param;
+END $$
+DELIMITER ;
+
+DELIMITER $$
+CREATE PROCEDURE procedure_consulta_inscricoes
+(IN ra_param INT)
+BEGIN
+  SELECT * FROM vinscricoes
+  WHERE ra = ra_param;
+END $$
+DELIMITER ;
 
 
 #FABIO
@@ -856,14 +875,22 @@ end$$
 
 #DANILO
 CREATE OR REPLACE VIEW vhistorico AS
-    SELECT  calendario.ano, calendario.semestre, turma.letra AS 'Turma', disciplina.nome, disciplina.creditos, 
-            matricula.nota, matricula.frequencia, matricula.status AS 'Resultado'
+    SELECT  aluno.ra, calendario.ano, calendario.semestre, turma.letra AS 'Turma', disciplina.nome, 
+            disciplina.creditos, matricula.nota, matricula.frequencia, matricula.status AS 'Resultado'
     FROM disciplina INNER JOIN turma ON turma.sigla = disciplina.sigla
                     INNER JOIN calendario ON calendario.id = turma.id_calendario
                     INNER JOIN matricula ON matricula.id_turma = turma.id_turma
                     INNER JOIN aluno ON aluno.cpf = matricula.cpf
-    WHERE aluno.cpf = '919136532-44'
     ORDER BY calendario.ano, calendario.semestre, disciplina.nome;
+
+CREATE OR REPLACE VIEW vinscricoes AS
+    SELECT  aluno.ra, calendario.ano, calendario.semestre, turma.letra AS 'Turma', 
+            disciplina.nome, disciplina.creditos, inscreve.fase, inscreve.deferimento
+    FROM disciplina INNER JOIN turma ON turma.sigla = disciplina.sigla
+                    INNER JOIN calendario ON calendario.id = turma.id_calendario
+                    INNER JOIN inscreve ON inscreve.id_turma = turma.id_turma
+                    INNER JOIN aluno ON aluno.cpf = inscreve.cpf
+    ORDER BY calendario.ano, calendario.semestre, inscreve.fase, disciplina.nome;
 
 
 #FABIO
