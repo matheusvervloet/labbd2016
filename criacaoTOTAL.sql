@@ -1,8 +1,140 @@
 create database if not exists labbd;
 USE labbd;
 
+#~~~~DROPS
+#====================FUNCTIONS========================
+
+#BRUNO B
+
+
+#BRUNO W
+
+
+#CRISTIANO
+
+
+#DANILO
+DROP FUNCTION IF EXISTS f_calc_ira;
+
+
+#FABIO
+
+
+#HUGO
+
+
+#MATHEUS
+
+
+#RAFAEL KENJI
+
+
+#RAPHAEL ADAMSKI
+
+
+#THIAGO
+
+
+
+#====================PROCEDURES========================
+
+#BRUNO B
+
+
+#BRUNO W
+
+
+#CRISTIANO
+
+
+#DANILO
+
+
+#FABIO
+
+
+#HUGO
+
+
+#MATHEUS
+
+
+#RAFAEL KENJI
+
+
+#RAPHAEL ADAMSKI
+
+
+#THIAGO
+
+
+
+#====================TRIGGERS========================
+
+#BRUNO B
+
+
+#BRUNO W
+
+
+#CRISTIANO
+
+
+#DANILO
+
+
+#FABIO
+
+
+#HUGO
+
+
+#MATHEUS
+
+
+#RAFAEL KENJI
+
+
+#RAPHAEL ADAMSKI
 drop trigger IF EXISTS inscreve_deferimento;
 drop trigger IF EXISTS insere_calendario;
+
+
+#THIAGO
+
+
+
+#====================VIEWS========================
+
+#BRUNO B
+
+
+#BRUNO W
+
+
+#CRISTIANO
+
+
+#DANILO
+
+
+#FABIO
+
+
+#HUGO
+
+
+#MATHEUS
+
+
+#RAFAEL KENJI
+
+
+#RAPHAEL ADAMSKI
+
+
+#THIAGO
+
 
 drop table IF EXISTS comunicacoes;
 drop table IF EXISTS intervencoes;
@@ -48,7 +180,8 @@ drop table IF EXISTS ta;
 drop table IF EXISTS aluno;
 drop table IF EXISTS pessoa;
 
-#Creates1
+#~~~~CREATES
+#1
 CREATE TABLE labbd.pessoa (
     cpf                 CHAR(12),
     prenome             CHAR(255),
@@ -554,6 +687,133 @@ CREATE TABLE labbd.inscreve (
     CONSTRAINT inscreve_pk PRIMARY KEY(cpf, id_turma, fase)
 );
 
+
+
+#====================FUNCTIONS========================
+
+#BRUNO B
+
+
+#BRUNO W
+
+
+#CRISTIANO
+
+
+#DANILO
+DELIMITER $$
+CREATE FUNCTION f_calc_ira(ra INT) RETURNS INT
+BEGIN
+    DECLARE produtoNotaCredito  INT DEFAULT 0;
+    DECLARE creditosInscritos   INT DEFAULT 1;
+    DECLARE creditosCancelados  INT DEFAULT 1;
+
+    #productSum 
+    SELECT  SUM(matricula.nota*disciplina.creditos) INTO produtoNotaCredito
+        FROM disciplina INNER JOIN turma ON turma.sigla = disciplina.sigla
+                        INNER JOIN matricula ON matricula.id_turma = turma.id_turma
+                        INNER JOIN aluno ON aluno.cpf = matricula.cpf 
+        WHERE aluno.ra = ra;
+
+    #creditosInscritos
+    SELECT SUM(disciplina.creditos) INTO creditosInscritos
+        FROM disciplina INNER JOIN turma ON turma.sigla = disciplina.sigla
+                        INNER JOIN matricula ON matricula.id_turma = turma.id_turma
+                        INNER JOIN aluno ON aluno.cpf = matricula.cpf 
+        WHERE aluno.ra = ra;
+    
+    #creditosCancelados
+    SELECT SUM(disciplina.creditos) INTO creditosCancelados
+        FROM disciplina INNER JOIN turma ON turma.sigla = disciplina.sigla
+                        INNER JOIN matricula ON matricula.id_turma = turma.id_turma
+                        INNER JOIN aluno ON aluno.cpf = matricula.cpf 
+        WHERE aluno.ra = ra AND matricula.status = 'cancelado';
+
+    #IRA    
+    RETURN 1000*(produtoNotaCredito/creditosInscritos)*(2-(creditosCancelados/creditosInscritos));
+END$$
+DELIMITER ; 
+
+
+#FABIO
+
+
+#HUGO
+
+
+#MATHEUS
+
+
+#RAFAEL KENJI
+
+
+#RAPHAEL ADAMSKI
+
+
+#THIAGO
+
+
+
+#====================PROCEDURES========================
+
+#BRUNO B
+
+
+#BRUNO W
+
+
+#CRISTIANO
+
+
+#DANILO
+
+
+#FABIO
+
+
+#HUGO
+
+
+#MATHEUS
+
+
+#RAFAEL KENJI
+
+
+#RAPHAEL ADAMSKI
+
+
+#THIAGO
+
+
+
+#====================TRIGGERS========================
+
+#BRUNO B
+
+
+#BRUNO W
+
+
+#CRISTIANO
+
+
+#DANILO
+
+
+#FABIO
+
+
+#HUGO
+
+
+#MATHEUS
+
+
+#RAFAEL KENJI
+
+
+#RAPHAEL ADAMSKI
 delimiter $$
 create DEFINER = `root`@`localhost` trigger insere_calendario
 after insert
@@ -561,10 +821,10 @@ on labbd.calendario
 for each row
 begin
  case new.tipo
-	when 'ead' then insert into ead(id) value (new.id);
+    when 'ead' then insert into ead(id) value (new.id);
     when 'presencial' then insert into presencial(id) value(new.id);
     when 'administrativo' then insert into administrativo(id) value(new.id);
-	end case;
+    end case;
 end$$
 
 delimiter $$
@@ -573,7 +833,53 @@ before insert
 on labbd.inscreve
 for each row
 begin
-	if new.deferimento <=> null then
-		 SET new.deferimento = 'em espera';
-	end if;
+    if new.deferimento <=> null then
+         SET new.deferimento = 'em espera';
+    end if;
 end$$
+
+
+#THIAGO
+
+
+
+#====================VIEWS========================
+
+#BRUNO B
+
+
+#BRUNO W
+
+
+#CRISTIANO
+
+
+#DANILO
+CREATE OR REPLACE VIEW vhistorico AS
+    SELECT  calendario.ano, calendario.semestre, turma.letra AS 'Turma', disciplina.nome, disciplina.creditos, 
+            matricula.nota, matricula.frequencia, matricula.status AS 'Resultado'
+    FROM disciplina INNER JOIN turma ON turma.sigla = disciplina.sigla
+                    INNER JOIN calendario ON calendario.id = turma.id_calendario
+                    INNER JOIN matricula ON matricula.id_turma = turma.id_turma
+                    INNER JOIN aluno ON aluno.cpf = matricula.cpf
+    WHERE aluno.cpf = '919136532-44'
+    ORDER BY calendario.ano, calendario.semestre, disciplina.nome;
+
+
+#FABIO
+
+
+#HUGO
+
+
+#MATHEUS
+
+
+#RAFAEL KENJI
+
+
+#RAPHAEL ADAMSKI
+
+
+#THIAGO
+

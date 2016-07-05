@@ -374,14 +374,15 @@ INSERT INTO labbd.pre_requisitos (disciplina, pre_requisito)
 #39 - ATENCAO: aqui também depende de campo auto-increment de turma
 INSERT INTO labbd.matricula (cpf, id_turma, status, nota, frequencia)
     VALUES  ('275677595-94', 3, 'aprovado', 6, 78),
-            ('209243943-08', 8, 'reprovado', 3, 78),
-            ('209243943-08', 2, 'reprovado', 1, 45),
-            ('275677595-94', 5, 'reprovado', 4, 79),
+            ('209243943-08', 8, 'reprovado por nota', 3, 78),
+            ('209243943-08', 2, 'reprovado por nota e frequencia', 1, 45),
+            ('275677595-94', 5, 'reprovado por nota', 4, 79),
             ('209243943-08', 3, 'aprovado', 6, 78),
             ('919136532-44', 2, 'aprovado', 7, 90),
             ('919136532-44', 3, 'aprovado', 6, 82),
-            ('919136532-44', 9, 'aprovado', 6, 82),
-            ('919136532-44', 10, 'reprovado', 4, 100);
+            ('919136532-44', 10, 'reprovado por nota', 4, 100);
+INSERT INTO labbd.matricula (cpf, id_turma, status)
+    VALUES  ('919136532-44', 9, 'cancelado');
 
 
 
