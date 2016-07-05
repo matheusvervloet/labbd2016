@@ -1,5 +1,8 @@
 Modelo de pagina: mudar linha 95(nome pag), 
 98-102(atributos), 108(insere<suaTabela>),
   120-125 (seus atributos, e call procedure),
- 140 chamar a função criada, 152 select from <suaTabela>,
+ 140 chamar a funÃ§Ã£o criada, 152 select from <suaTabela>,
  157- 178 ( montar sua tabela)
+ 
+ rodar pagina em php. instalar xampp.
+ https://www.youtube.com/watch?v=87-CdeA89q0
