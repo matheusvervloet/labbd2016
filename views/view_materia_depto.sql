@@ -2,7 +2,7 @@ CREATE
     ALGORITHM = UNDEFINED 
     DEFINER = `root`@`localhost` 
     SQL SECURITY DEFINER
-VIEW `labbd`.`materias_do_departamento_edit` AS
+VIEW `labbd`.`view_materias_do_depto` AS
     SELECT 
         `labbd`.`disciplina`.`sigla` AS `siglaDisciplina`,
         `labbd`.`disciplina`.`nome` AS `nomeDisciplina`,
