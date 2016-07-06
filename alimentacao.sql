@@ -166,8 +166,8 @@ INSERT INTO calendario(data_inicio, data_fim, dias_letivos, semestre, ano,versao
             (STR_TO_DATE('01-01-2016', '%d-%m-%Y'), STR_TO_DATE('30-06-2016', '%d-%m-%Y'), 300, 1, 2016, 1, 'ead', 'aprovado'),
             (STR_TO_DATE('01-01-2016', '%d-%m-%Y'), STR_TO_DATE('30-06-2016', '%d-%m-%Y'), 300, 1, 2016, 1, 'administrativo', 'aprovado'),
             (STR_TO_DATE('01-08-2016', '%d-%m-%Y'), STR_TO_DATE('23-12-2016', '%d-%m-%Y'), 300, 2, 2016, 1, 'presencial', 'aprovado'),
-            (STR_TO_DATE('01-01-2015', '%d-%m-%Y'), STR_TO_DATE('30-06-2016', '%d-%m-%Y'), 300, 1, 2015, 1, 'presencial', 'aprovado'),
-            (STR_TO_DATE('01-08-2015', '%d-%m-%Y'), STR_TO_DATE('23-12-2016', '%d-%m-%Y'), 300, 2, 2015, 1, 'presencial', 'aprovado');
+            (STR_TO_DATE('01-01-2015', '%d-%m-%Y'), STR_TO_DATE('30-06-2015', '%d-%m-%Y'), 300, 1, 2015, 1, 'presencial', 'aprovado'),
+            (STR_TO_DATE('01-08-2015', '%d-%m-%Y'), STR_TO_DATE('23-12-2015', '%d-%m-%Y'), 300, 2, 2015, 1, 'presencial', 'aprovado');
 
 
 ############################16 NAO PRECISA, JA CRIEI UMA TRIGGER PRA ISSO

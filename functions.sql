@@ -1,7 +1,19 @@
-DELIMITER $$
+
 
 DROP FUNCTION IF EXISTS f_calc_ira;
-DROP FUNCTION IF EXISTS f_calc_ira;
+DROP FUNCTION IF EXISTS calculaEnade;
+DROP FUNCTION IF EXISTS f_calendario_data;
+
+
+DELIMITER $$
+CREATE FUNCTION f_calendario_data(data DATE) RETURNS INT
+BEGIN
+    DECLARE id_calendario  INT DEFAULT 0;
+	
+    select id into id_calendario from calendario where (data between `data_inicio` AND `data_fim`) AND tipo='presencial' AND situacao='aprovado';
+
+    RETURN id_calendario;
+END$$
 
 CREATE FUNCTION labbd.calculaEnade(sigla_curso CHAR(10), ano YEAR(4)) RETURNS INT
 BEGIN
