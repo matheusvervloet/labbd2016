@@ -1,3 +1,4 @@
+DELIMITER $$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `insereDocente`(
     p_cpf                         CHAR(12),
 	p_prenome             		  CHAR(255),

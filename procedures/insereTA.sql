@@ -1,3 +1,4 @@
+DELIMITER $$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `insereTA`(
     p_cpf                         CHAR(12),
 	p_prenome             		  CHAR(255),
