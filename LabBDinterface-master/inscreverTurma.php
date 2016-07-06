@@ -120,7 +120,7 @@
 
                  $id = $_POST["id"];
                  $fase  = $_POST["fase"];
-                 $sql = "call labbd.inscricao_turma('$cpf','$id', '$fase');";
+                 $sql = "call labbd.procedure_insereInscreve('$cpf','$id', '$fase');";
                  header("Content-Type: text/html; charset=ISO-8859-1",true);
 
                 if ($con->query($sql) === TRUE) {
@@ -147,30 +147,44 @@
 
              $con = new mysqli($host, $user, $password, $dbname, $port, $socket)
                      or die ('Could not connect to the database server' . mysqli_connect_error());
-             $sql = "SELECT * FROM labbd.view_matricula_aluno where labbd.view_matricula_aluno.cpf ='$cpf';";
+
+             $sql = "select ra from aluno where cpf='$cpf';";
+             $result =$con->query($sql); 
+             $row = $result->fetch_assoc();
+             $ra  =$row["ra"];
+             $sql = "call labbd.procedure_consulta_inscricoes($ra);";
              $result = $con->query($sql);
              echo "<br>";
 
              echo "<table border=3>";
-             echo "<th> Cpf</th> <th> Turma </th>  <th> Sigla </th>  <th> Disciplina</th> <th> Letra</th>";
+             echo "<th> RA</th> <th> ano </th>  <th> semestre </th>  <th> Turma</th> <th> nome</th><th> creditos</th><th> fase</th><th> deferimento</th>";
              if ($result->num_rows > 0) {
 
                  while($row = $result->fetch_assoc()) {
                    echo "<tr>";
                      echo "<td>" ;
-                     echo  $row["cpf"];
+                     echo  $row["ra"];
                      echo "</td>";
                      echo "<td>" ;
-                     echo $row["id_turma"];
+                     echo $row["ano"];
                      echo "</td>";
                      echo "<td>" ;
-                     echo $row["sigla"];
+                     echo $row["semestre"];
                      echo "</td>";
                      echo "<td>" ;
-                     echo $row["disciplina"];
+                     echo $row["Turma"];
                      echo "</td>";
                      echo "<td>" ;
-                     echo $row["letra"];
+                     echo $row["nome"];
+                     echo "</td>";
+                     echo "<td>" ;
+                     echo $row["creditos"];
+                     echo "</td>";
+                     echo "<td>" ;
+                     echo $row["fase"];
+                     echo "</td>";
+                     echo "<td>" ;
+                     echo $row["deferimento"];
                      echo "</td>";
                    echo "</tr>";
                  }
