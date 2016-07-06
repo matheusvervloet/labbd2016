@@ -77,7 +77,7 @@ as
          <div class="innertube">
            <h1>Cadastrar Aluno</h1>
            <p>
-             <form action="criaAluno.php" method="post">
+             <form action="criarAluno.php" method="post">
              Cpf:  <input type="text" name="cpf"/><br>
              Nome: <input type="text" name="nome"/><br>
              Nome do meio: <input type="text" name="nome_meio"/><br>
@@ -91,8 +91,8 @@ as
 			 Sexo: 	<input type="radio" name="gender" value="H"/><br> Homem
 					<input type="radio" name="gender" value="M"/><br> Mulher
 			 Cor: <input type="text" name="color"/><br>
-			 Perfil: <input type="number" name="profile"/><br>
-			 RA: <input type="number" name="ra"/><br>
+			 Perfil: <input type="text" name="profile"/><br>
+			 RA: <input type="text" name="ra"/><br>
 			 Escola de conclusao do ensino medio: <input type="text" name="nome_escola"/><br>
 			 Ano de conclusao: <input type="date" name="dta_conc_medio"/><br>
 			 
@@ -180,9 +180,9 @@ as
          </ul>
          <h3>Left heading</h3>
          <ul>
-           <li><a href="#">Link 1</a></li>
-           <li><a href="#">Link 2</a></li>
-           <li><a href="#">Link 3</a></li>
+           <li><a href="http://localhost/my_site/fazDeferimento.php">Fazer Deferimento dos alunos</a></li>
+           <li><a href="http://localhost/my_site/VerCalendarios.php">Ver Calendarios</a></li>
+           <li><a href="http://localhost/my_site/verAtvAdm.php">Ver AtividadeAdministrativa</a></li>
            <li><a href="#">Link 4</a></li>
            <li><a href="#">Link 5</a></li>
          </ul>

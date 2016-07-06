@@ -93,21 +93,18 @@
      <main>
        <div id="content">
          <div class="innertube">
-           <h2>Cadastra Tecnico Administrativo</h2>
+           <h2>Calendarios</h2>
            <p>
-             <form action="criaTA.php" method="post">
-			 
+             <form action="verAtvAdm.php" method="post">
 
-             Cpf:  <input type="text" name="cpf"/><br>
-             Nome: <input type="text" name="nome"/><br>
-             Nome do meio: <input type="text" name="nome_meio"/><br>
-             Sobrenome: <input type="text" name="sobrenome"/><br>
-             <input type="submit" value="Cadastrar" name="submit">
+             Ano: <input type="text" name="ano"/><br>
+             Semestre: <input type="text" name="semestre"/><br>
+             <input type="submit" value="Ver atividades" name="submit"> 
 
              </form>
 
              <?php
-             function cadastra_ta(){
+             function ver_atv_adm(){
 
                    $host     = "localhost";
                    $port     = 3306;
@@ -116,21 +113,59 @@
                    $password = "";
                    $dbname   = "labbd";
 
+				   $ano_p = $_POST["ano"];
+				   $sem_p = $_POST["semestre"];
+				   
                    $con = new mysqli($host, $user, $password, $dbname, $port, $socket)
                        or die ('Could not connect to the database server' . mysqli_connect_error());
 
-						 $cpf_p = $_POST["cpf"];
-						 $nome_p  = $_POST["nome"];
-						 $nome_meio_p  = $_POST["nome_meio"];
-						 $sobrenome_p  = $_POST["sobrenome"];
 
-						 $sql = "call procedure insereTA($cpf_p, $nome_p, $nome_meio_p, $sobrenome_p)"
-                       if ($con->query($sql) === TRUE) {
-                     echo "Inserido com sucesso\n";
+
+                 $sql = "SELECT * FROM calendario_adm_atividade_administrativas WHERE ano = $ano_p AND semestre = $sem_p;";
+             $result = $con->query($sql);
+             echo "<br>";
+
+             echo "<table border=3>";
+             echo "<th> semestre </th>  <th> ano </th>  <th> inicio_calendario </th> <th> fim_calendario </th><th> nome </th><th> atv_inicio </th> <th> atv_fim </th> <th> responsavel </th>";
+             if ($result->num_rows > 0) {
+
+                 while($row = $result->fetch_assoc()) {
+                   echo "<tr>";
+                     echo "<td>" ;
+                     echo $row["semestre"];
+                     echo "</td>";
+                     echo "<td>" ;
+                     echo $row["ano"];
+                     echo "</td>";
+                     echo "<td>" ;
+                     echo $row["inicio_calendario"];
+                     echo "</td>";
+                     echo "<td>" ;
+                     echo $row["fim_calendario"];
+                     echo "</td>";
+                     echo "<td>" ;
+                     echo $row["nome"];
+                     echo "</td>";
+                     echo "<td>" ;
+                     echo $row["atv_inicio"];
+                     echo "</td>";
+                     echo "<td>" ;
+                     echo $row["atv_fim"];
+                     echo "</td>";
+					 echo "<td>" ;
+                     echo $row["responsavel"];
+                     echo "</td>";
+                   echo "</tr>";
                  }
-                 else {
-                     echo "Erro: dados errados";
-                 }
+
+             }
+             echo "</table>";
+
+
+
+
+
+
 
 
                  $con->close();
@@ -140,7 +175,7 @@
 
              if(isset($_POST['submit']))
              {
-                cadastra_ta();
+                ver_atv_adm();
              }
   ?>
 
@@ -170,14 +205,15 @@
             <li><a href="http://localhost/my_site/criarPossuiAtividadeAdministrativa.php">AtribuirAtvAdministrativa</a></li>
             <li><a href="http://localhost/my_site/criarRecesso.php">Recesso</a></li>
             <li><a href="http://localhost/my_site/criarPossuiRecesso.php">AtribuirRecesso</a></li>
-			<li><a href="http://localhost/my_site/criarAluno.php">CadastraAluno</a></li>
+			<li><a href="http://localhost/my_site/criarAluno.php">Cadastra Aluno</a></li>
 			<li><a href="http://localhost/my_site/criaDocente.php">CadastraDocente</a></li>
+			<li><a href="http://localhost/my_site/criaTA.php">CadastraTA</a></li>
           </ul>
           <h3>Açoes</h3>
           <ul>
             <li><a href="http://localhost/my_site/fazDeferimento.php">Fazer Deferimento dos alunos</a></li>
             <li><a href="http://localhost/my_site/VerCalendarios.php">Ver Calendarios</a></li>
-            <li><a href="http://localhost/my_site/verAtvAdm.php">Ver AtividadeAdministrativa</a></li>
+            <li><a href="#">Link 3</a></li>
             <li><a href="#">Link 4</a></li>
             <li><a href="#">Link 5</a></li>
           </ul>
