@@ -1112,6 +1112,7 @@ end$$
 
 
 #DANILO
+delimiter $$
 CREATE OR REPLACE VIEW vhistorico AS
     SELECT  aluno.ra, calendario.ano, calendario.semestre, turma.letra AS 'Turma', disciplina.nome, 
             disciplina.creditos, matricula.nota, matricula.frequencia, matricula.status AS 'Resultado'
@@ -1120,7 +1121,7 @@ CREATE OR REPLACE VIEW vhistorico AS
                     INNER JOIN matricula ON matricula.id_turma = turma.id_turma
                     INNER JOIN aluno ON aluno.cpf = matricula.cpf
     ORDER BY calendario.ano, calendario.semestre, disciplina.nome;
-
+$$
 CREATE OR REPLACE VIEW vinscricoes AS
     SELECT  aluno.ra, calendario.ano, calendario.semestre, turma.letra AS 'Turma', 
             disciplina.nome, disciplina.creditos, inscreve.fase, inscreve.deferimento
@@ -1129,7 +1130,7 @@ CREATE OR REPLACE VIEW vinscricoes AS
                     INNER JOIN inscreve ON inscreve.id_turma = turma.id_turma
                     INNER JOIN aluno ON aluno.cpf = inscreve.cpf
     ORDER BY calendario.ano, calendario.semestre, inscreve.fase, disciplina.nome;
-
+$$
 
 #FABIO
 
@@ -1145,7 +1146,7 @@ CREATE OR REPLACE VIEW vdadospessoaisaluno AS
     SELECT aluno.cpf AS cpf,pessoa.prenome AS prenome,pessoa.nome_meio AS nome_meio,pessoa.sobrenome AS sobrenome,aluno.nome_da_mae AS nome_da_mae,aluno.nome_do_pai AS nome_do_pai,aluno.pais AS pais,aluno.uf AS uf,aluno.data_nascimento AS data_nascimento,aluno.ano_ingresso AS ano_ingresso,aluno.sexo AS sexo,aluno.cor AS cor,aluno.reenquadramento AS reenquadramento,aluno.ra AS ra,aluno.conclusao_em_nome AS conclusao_em_nome,aluno.conclusao_em_ano AS conclusao_em_ano,aluno.IRA AS IRA 
     FROM aluno join pessoa on aluno.cpf = pessoa.cpf
     ORDER BY aluno.cpf;
-
+$$
 #RAPHAEL ADAMSKI
 CREATE OR REPLACE
     ALGORITHM = UNDEFINED 
@@ -1185,7 +1186,16 @@ VIEW `labbd`.`vcalendario_ead` AS
 	WHERE
         ((`labbd`.`calendario`.`situacao` = 'aprovado')
             AND (`labbd`.`calendario`.`tipo` = 'ead')) 
-
+$$
+CREATE OR REPLACE VIEW vinscricoesCalendario AS
+    SELECT  aluno.ra, turma.id_calendario, calendario.ano, calendario.semestre, turma.letra AS 'Turma', 
+            disciplina.nome, disciplina.creditos, inscreve.fase, inscreve.deferimento
+    FROM disciplina INNER JOIN turma ON turma.sigla = disciplina.sigla
+                    INNER JOIN calendario ON calendario.id = turma.id_calendario
+                    INNER JOIN inscreve ON inscreve.id_turma = turma.id_turma
+                    INNER JOIN aluno ON aluno.cpf = inscreve.cpf
+    ORDER BY calendario.ano, calendario.semestre, inscreve.fase, disciplina.nome;
+$$
 
 #THIAGO
 
