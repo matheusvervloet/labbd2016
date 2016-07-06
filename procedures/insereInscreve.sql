@@ -1,4 +1,4 @@
-CREATE DEFINER=`root`@`localhost` PROCEDURE `insereInscreve`(ncpf char(12), nid_turma INT, nfase INT)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `procedure_insereInscreve`(ncpf char(12), nid_turma INT, nfase INT)
 BEGIN
 	DECLARE siglaDisc char(10);
 	DECLARE id_calendarioTurma int;

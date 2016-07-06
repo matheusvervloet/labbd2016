@@ -1,4 +1,4 @@
-CREATE DEFINER=`root`@`localhost` PROCEDURE `fazDeferimento`(nfase INT, calendario INT)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `procedure_fazDeferimento`(nfase INT, calendario INT)
 BEGIN
 	DECLARE siglaDisc char(10);
     DECLARE auxid_turma int;
