@@ -347,7 +347,7 @@ CREATE TABLE labbd.comite (
     nome_do_meio        CHAR(255),
     sobrenome           CHAR(255),
     CONSTRAINT comite_id_visita_fk FOREIGN KEY (id_visita) references visita(id_visita),
-    CONSTRAINT comite_pk PRIMARY KEY (id_visita)
+    CONSTRAINT comite_pk PRIMARY KEY (id_visita, prenome, nome_do_meio, sobrenome)
 );
 
 
@@ -355,9 +355,9 @@ CREATE TABLE labbd.comite (
 CREATE TABLE labbd.decisoes_aprovadas(
     
     id_itens_de_pauta       INT,
-    decisoes_aprovadas      LONGTEXT,
+    decisoes_aprovadas      CHAR(255),
     CONSTRAINT decisoes_aprovadas_id_itens_de_pauta_fk FOREIGN KEY (id_itens_de_pauta) references itens_de_pauta (id),
-    CONSTRAINT decisoes_aprovadas_pk PRIMARY KEY (id_itens_de_pauta)
+    CONSTRAINT decisoes_aprovadas_pk PRIMARY KEY (id_itens_de_pauta, decisoes_aprovadas)
 );
 
 
