@@ -1151,7 +1151,7 @@ CREATE OR REPLACE
     ALGORITHM = UNDEFINED 
     DEFINER = `root`@`localhost` 
     SQL SECURITY DEFINER
-VIEW `labbd`.`calendario_ead` AS
+VIEW `labbd`.`vcalendario_ead` AS
     SELECT 
         `labbd`.`calendario`.`semestre` AS `semestre`,
         `labbd`.`calendario`.`ano` AS `ano`,
