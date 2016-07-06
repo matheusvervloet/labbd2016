@@ -120,9 +120,9 @@
 						<li><a href="http://localhost/my_site/criarRecesso.php">Recesso</a></li>
 						<li><a href="http://localhost/my_site/criarPossuiRecesso.php">AtribuirRecesso</a></li>
           </ul>
-          <h3>Left heading</h3>
+          <h3>Açoes</h3>
           <ul>
-            <li><a href="#">Link 1</a></li>
+            <li><a href="http://localhost/my_site/fazDeferimento.php">Fazer Deferimento dos alunos</a></li>
             <li><a href="#">Link 2</a></li>
             <li><a href="#">Link 3</a></li>
             <li><a href="#">Link 4</a></li>
