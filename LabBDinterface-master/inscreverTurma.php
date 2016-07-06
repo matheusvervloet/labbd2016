@@ -148,6 +148,47 @@
              $con = new mysqli($host, $user, $password, $dbname, $port, $socket)
                      or die ('Could not connect to the database server' . mysqli_connect_error());
 
+            $sql = "select ra from aluno where cpf='$cpf';";
+             $result =$con->query($sql); 
+             $row = $result->fetch_assoc();
+             $ra  =$row["ra"];
+             $sql = "select
+        `turmaCodigo`,
+         `Disciplina`,
+        `Vagas`,
+        `Docente Nome`,
+       `Docente Sobrenome` from turmas_disciplina where `Calendario` = f_calendario_data(curdate());";
+             $result = $con->query($sql);
+             echo "<br>";
+             echo "<h2>Turmas disponiveis</h2>";
+             echo "<table border=3>";
+             echo "<th> Turma Codigo </th>  <th> Disciplina </th>  <th>Vagas</th> <th>Docente Nome</th><th> Sobrenome</th>";
+             if ($result->num_rows > 0) {
+
+                 while($row = $result->fetch_assoc()) {
+                   echo "<tr>";
+                     echo "<td>" ;
+                     echo  $row["turmaCodigo"];
+                     echo "</td>";
+                     echo "<td>" ;
+                     echo $row["Disciplina"];
+                     echo "</td>";
+                     echo "<td>" ;
+                     echo $row["Vagas"];
+                     echo "</td>";
+                     echo "<td>" ;
+                     echo $row["Docente Nome"];
+                     echo "</td>";
+                     echo "<td>" ;
+                     echo $row["Docente Sobrenome"];
+                     echo "</td>";
+                   echo "</tr>";
+                 }
+
+             }
+             echo "</table>";
+
+
              $sql = "select ra from aluno where cpf='$cpf';";
              $result =$con->query($sql); 
              $row = $result->fetch_assoc();
@@ -155,7 +196,7 @@
              $sql = "call labbd.procedure_consulta_inscricoes($ra);";
              $result = $con->query($sql);
              echo "<br>";
-
+             echo "<h2>Inscrito</h2>";
              echo "<table border=3>";
              echo "<th> RA</th> <th> ano </th>  <th> semestre </th>  <th> Turma</th> <th> nome</th><th> creditos</th><th> fase</th><th> deferimento</th>";
              if ($result->num_rows > 0) {
