@@ -1,4 +1,4 @@
-CREATE DEFINER=`root`@`localhost` PROCEDURE `insereCurso`(
+CREATE DEFINER=`root`@`localhost` PROCEDURE `insereEnade`(
         p_ano                 YEAR(4), 
         p_periodo             CHAR(10), 
         p_sigla_curso         CHAR(10)
