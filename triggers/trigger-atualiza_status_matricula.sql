@@ -1,7 +1,7 @@
 drop trigger IF EXISTS t_atualiza_status_matricula;
 DELIMITER $$
 CREATE TRIGGER t_atualiza_status_matricula
-AFTER UPDATE
+BEFORE UPDATE
 ON matricula
 FOR EACH ROW
 begin
