@@ -8,7 +8,7 @@ VIEW `labbd`.`resultado_enade_curso` AS
         `labbd`.`curso`.`sigla` AS `Sigla`,
         `labbd`.`enade`.`ano` AS `Ano`,
         `labbd`.`enade`.`periodo` AS `Periodo`,
-        `labbd`.`enade`.`resultado` AS `Resultado`,
+        calculaEnade(sigla, ano) AS `Resultado`,
 
     FROM
         (((`labbd`.`enade`
