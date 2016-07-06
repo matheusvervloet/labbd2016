@@ -68,6 +68,8 @@ DROP PROCEDURE IF EXISTS procedure_insere_aluno;
 #RAPHAEL ADAMSKI
 DROP PROCEDURE IF EXISTS procedure_fazDeferimento;
 DROP PROCEDURE IF EXISTS procedure_insereInscreve;
+DROP PROCEDURE IF EXISTS insereItens_de_pauta;
+DROP PROCEDURE IF EXISTS insereDocumentos;
 
 #THIAGO
 
@@ -953,8 +955,6 @@ BEGIN
    
 END
  $$
-DELIMITER ;
-DELIMITER $$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `procedure_insereInscreve`(ncpf char(12), nid_turma INT, nfase INT)
 BEGIN
 	DECLARE siglaDisc char(10);
@@ -1019,7 +1019,21 @@ BEGIN
 
 END
  $$
+ 
+ CREATE DEFINER=`root`@`localhost` PROCEDURE `insereItens_de_pauta`(npauta VARCHAR(255), ndata_aprovacao CHAR(10), nnumero_reuniao INT, ntexto_descritivo LONGTEXT)
+BEGIN
+	insert into labbd.itens_de_pauta(pauta , data_aprovacao, numero_reuniao,texto_descritivo) values (npauta, STR_TO_DATE(ndata_aprovacao, '%d-%m-%Y') , nnumero_reuniao ,ntexto_descritivo);
+END
+$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `insereDocumentos`(nid int, ndocumento varchar(255))
+BEGIN
+	insert into labbd.documentos(id_item_pauta,documento) value (nid,ndocumento);
+END
+$$
 DELIMITER ;
+
+
+
 #THIAGO
 
 
