@@ -54,7 +54,9 @@ DROP PROCEDURE IF EXISTS procedure_calcula_ira;
 
 
 #FABIO
-
+DROP PROCEDURE IF EXISTS insereAluno;
+DROP PROCEDURE IF EXISTS insereTA;
+DROP PROCEDURE IF EXISTS insereDocente;
 
 #HUGO
 
@@ -126,7 +128,8 @@ drop trigger IF EXISTS insere_calendario;
 
 
 #FABIO
-
+DROP VIEW IF EXISTS calendario_geral;
+DROP VIEW IF EXISTS calendario_adm_atividade_administrativas;
 
 #HUGO
 
@@ -742,7 +745,54 @@ DELIMITER ;
 
 
 #FABIO
+DELIMITER $$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `insereAluno`(
+	p_nome_da_mae                 CHAR(255),
+    p_nome_do_pai                 CHAR(255),
+    p_pais                        CHAR(255),
+    p_uf                          CHAR(255),
+    p_data_nascimento             DATE,
+    p_ano_ingresso                DATE,
+    p_sexo                        CHAR(1),
+    p_cor                         CHAR(255),
+    p_reenquadramento             INT, #lembrar de iniciar com 0
+    p_ra                          INT,
+    p_cpf                         CHAR(12),
+    p_conclusao_em_nome           CHAR(255),
+    p_conclusao_em_ano            DATE,
+	p_prenome             		  CHAR(255),
+    p_nome_meio           		  CHAR(255),
+    p_sobrenome           		  CHAR(255)
+)
+BEGIN
+	INSERT INTO labbd.pessoa (cpf, prenome, nome_meio, sobrenome) VALUES (p_cpf, p_prenome, p_nome_meio, p_sobrenome);
+	INSERT INTO labbd.aluno  (nome_da_mae, nome_do_pai, pais, uf, data_nascimento, ano_ingresso, sexo, cor, reenquadramento, ra, cpf, conclusao_em_nome, conclusao_em_ano)
+	VALUES (p_nome_da_mae, p_nome_do_pai, p_pais, p_uf, p_data_nascimento, p_ano_ingresso, p_sexo, p_cor, p_reenquadramento, p_ra, p_cpf, p_conclusao_em_nome, p_conclusao_em_ano);
+END
 
+DELIMITER $$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `insereTA`(
+    p_cpf                         CHAR(12),
+	p_prenome             		  CHAR(255),
+    p_nome_meio           		  CHAR(255),
+    p_sobrenome           		  CHAR(255)
+)
+BEGIN
+	INSERT INTO labbd.pessoa (cpf, prenome, nome_meio, sobrenome) VALUES (p_cpf, p_prenome, p_nome_meio, p_sobrenome);
+	INSERT INTO labbd.ta  (cpf) VALUES (p_cpf);
+END
+
+DELIMITER $$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `insereDocente`(
+    p_cpf                         CHAR(12),
+	p_prenome             		  CHAR(255),
+    p_nome_meio           		  CHAR(255),
+    p_sobrenome           		  CHAR(255)
+)
+BEGIN
+	INSERT INTO labbd.pessoa (cpf, prenome, nome_meio, sobrenome) VALUES (p_cpf, p_prenome, p_nome_meio, p_sobrenome);
+	INSERT INTO labbd.docente  (cpf) VALUES (p_cpf);
+END
 
 #HUGO
 
@@ -1063,7 +1113,58 @@ DELIMITER ;
 
 
 #FABIO
-
+CREATE 
+    ALGORITHM = UNDEFINED 
+    DEFINER = `root`@`localhost` 
+    SQL SECURITY DEFINER
+VIEW `calendario_adm_atividade_administrativas` AS
+    SELECT 
+        `labbd`.`calendario`.`semestre` AS `semestre`,
+        `labbd`.`calendario`.`ano` AS `ano`,
+        `labbd`.`calendario`.`data_inicio` AS `inicio_calendario`,
+        `labbd`.`calendario`.`data_fim` AS `fim_calendario`,
+        `labbd`.`atividade_administrativa`.`nome` AS `nome`,
+        `labbd`.`atividade_administrativa`.`data_inicio` AS `atv_inicio`,
+        `labbd`.`atividade_administrativa`.`data_fim` AS `atv_fim`,
+		`labbd`.`atividade_administrativa`.`responsavel` AS `responsavel`
+    FROM
+        ((`labbd`.`calendario` 
+       JOIN (`labbd`.`atividade_administrativa`
+        JOIN `labbd`.`possui_atividade_administrativa` ON ((`labbd`.`atividade_administrativa`.`id_ativ_adm` = `labbd`.`possui_atividade_administrativa`.`id_ativ_adm`)))
+        JOIN  `labbd`.`administrativo` ON ((`labbd`.`administrativo`.`id` = `labbd`.`calendario`.`id`)) 
+        ))
+	WHERE
+		((`labbd`.`calendario`.`situacao` = 'aprovado') AND
+		 (`labbd`.`calendario`.`tipo` = 'administrativo'))
+	ORDER BY  atv_inicio;
+	
+CREATE 
+    ALGORITHM = UNDEFINED 
+    DEFINER = `root`@`localhost` 
+    SQL SECURITY DEFINER
+VIEW `calendario_geral` AS
+    SELECT 
+		`labbd`.`calendario`.`id` AS `ID`,
+		`labbd`.`calendario`.`semestre` AS `semestre`,
+        `labbd`.`calendario`.`ano` AS `ano`,
+        `labbd`.`calendario`.`data_inicio` AS `inicio_calendario`,
+        `labbd`.`calendario`.`data_fim` AS `fim_calendario`,
+		`labbd`.`calendario`.`versao` AS `versao`,
+        `labbd`.`calendario`.`tipo` AS `tipo`,
+		`labbd`.`calendario`.`situacao` AS `situacao`,
+		`labbd`.`atividade_administrativa`.`nome` AS `nome`,
+        `labbd`.`atividade_administrativa`.`data_inicio` AS `atv_inicio`,
+        `labbd`.`atividade_administrativa`.`data_fim` AS `atv_fim`,
+		`labbd`.`atividade_administrativa`.`responsavel` AS `responsavel`
+		
+	FROM
+        ((`labbd`.`calendario` 
+       JOIN (`labbd`.`atividade_administrativa`
+        JOIN `labbd`.`possui_atividade_administrativa` ON ((`labbd`.`atividade_administrativa`.`id_ativ_adm` = `labbd`.`possui_atividade_administrativa`.`id_ativ_adm`))) 
+        ))
+    WHERE
+        (`labbd`.`calendario`.`versao` >= 0)
+	ORDER BY situacao, ano ASC;
 
 #HUGO
 

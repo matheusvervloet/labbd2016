@@ -119,6 +119,9 @@
 						<li><a href="http://localhost/my_site/criarPossuiAtividadeAdministrativa.php">AtribuirAtvAdministrativa</a></li>
 						<li><a href="http://localhost/my_site/criarRecesso.php">Recesso</a></li>
 						<li><a href="http://localhost/my_site/criarPossuiRecesso.php">AtribuirRecesso</a></li>
+						<li><a href="http://localhost/my_site/criaAluno.php">Cadastra Aluno</a></li>
+						<li><a href="http://localhost/my_site/criaDocente.php">CadastraDocente</a></li>
+						<li><a href="http://localhost/my_site/criaTA.php">CadastraTA</a></li>
           </ul>
           <h3>Açoes</h3>
           <ul>
