@@ -419,7 +419,7 @@ CREATE TABLE labbd.enade (
     ano                 YEAR(4),
     periodo             CHAR(10),  
     sigla_curso         CHAR(10),
-    resultado           CHAR(4),
+
     
     CONSTRAINT enade_curso_fk FOREIGN KEY (sigla_curso) references curso(sigla),
     CONSTRAINT enade_pk PRIMARY KEY(ano, periodo, sigla_curso)
