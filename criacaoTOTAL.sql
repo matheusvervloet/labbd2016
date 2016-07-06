@@ -469,14 +469,13 @@ CREATE TABLE labbd.item_do_formulario (
 
 
 #26
-CREATE TABLE labbd.visita (
-    id_visita           INT NOT NULL AUTO_INCREMENT,
-    data                DATE UNIQUE,
-    num_capes           INT,
-    CONSTRAINT visita_num_capes_fk FOREIGN KEY (num_capes) references reconhecimento(num_capes),
-    CONSTRAINT visita_pk PRIMARY KEY (id_visita)
+CREATE TABLE labbd.decisoes_aprovadas(
+    
+    id_itens_de_pauta       INT,
+    decisoes_aprovadas      CHAR(255),
+    CONSTRAINT decisoes_aprovadas_id_itens_de_pauta_fk FOREIGN KEY (id_itens_de_pauta) references itens_de_pauta (id),
+    CONSTRAINT decisoes_aprovadas_pk PRIMARY KEY (id_itens_de_pauta, decisoes_aprovadas)
 );
-
 
 #27
 CREATE TABLE labbd.comite (
@@ -485,7 +484,7 @@ CREATE TABLE labbd.comite (
     nome_do_meio        CHAR(255),
     sobrenome           CHAR(255),
     CONSTRAINT comite_id_visita_fk FOREIGN KEY (id_visita) references visita(id_visita),
-    CONSTRAINT comite_pk PRIMARY KEY (id_visita)
+    CONSTRAINT comite_pk PRIMARY KEY (id_visita, prenome, nome_do_meio, sobrenome)
 );
 
 
