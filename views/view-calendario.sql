@@ -4,22 +4,24 @@ CREATE
     SQL SECURITY DEFINER
 VIEW `calendario_geral` AS
     SELECT 
-		`calendario`.`id` AS `ID`,
-        `calendario`.`semestre` AS `semestre`,
-        `calendario`.`ano` AS `ano`,
-        `calendario`.`data_inicio` AS `inicio_calendario`,
-        `calendario`.`data_fim` AS `fim_calendario`,
-		`calendario`.`versao` AS `versao`,
-        `calendario`.`tipo` AS `tipo`,
-		`calendario`.`situacao` AS `situacao`,
-		`atividade_administrativa`.`nome` AS `nome`,
-        `atividade_administrativa`.`data_inicio` AS `atv_inicio`,
-        `atividade_administrativa`.`data_fim` AS `atv_fim`,
-		`atividade_administrativa`.`responsavel` AS `responsavel`,
+		`labbd`.`calendario`.`id` AS `ID`,
+		`labbd`.`calendario`.`semestre` AS `semestre`,
+        `labbd`.`calendario`.`ano` AS `ano`,
+        `labbd`.`calendario`.`data_inicio` AS `inicio_calendario`,
+        `labbd`.`calendario`.`data_fim` AS `fim_calendario`,
+		`labbd`.`calendario`.`versao` AS `versao`,
+        `labbd`.`calendario`.`tipo` AS `tipo`,
+		`labbd`.`calendario`.`situacao` AS `situacao`,
+		`labbd`.`atividade_administrativa`.`nome` AS `nome`,
+        `labbd`.`atividade_administrativa`.`data_inicio` AS `atv_inicio`,
+        `labbd`.`atividade_administrativa`.`data_fim` AS `atv_fim`,
+		`labbd`.`atividade_administrativa`.`responsavel` AS `responsavel`
 		
 	FROM
-        (`calendario`
-        JOIN `possui_atividade_administrativa` `adm` ON ((`calendario`.`id` = `adm`.`id`)))
+        ((`labbd`.`calendario` 
+       JOIN (`labbd`.`atividade_administrativa`
+        JOIN `labbd`.`possui_atividade_administrativa` ON ((`labbd`.`atividade_administrativa`.`id_ativ_adm` = `labbd`.`possui_atividade_administrativa`.`id_ativ_adm`))) 
+        ))
     WHERE
-        (`calendario`.`versao` >= 0)
+        (`labbd`.`calendario`.`versao` >= 0)
 	ORDER BY situacao, ano ASC;
