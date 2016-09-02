@@ -156,13 +156,15 @@
         `turmaCodigo`,
          `Disciplina`,
         `Vagas`,
-        `Docente Nome`,
-       `Docente Sobrenome` from turmas_disciplina where `Calendario` = f_calendario_data(curdate());";
+        `DocenteNome`,
+       `DocenteSobrenome`,
+        `Dia`,
+        `Hora`from horario_turma_disciplina where `Calendario` = f_calendario_data(curdate());";
              $result = $con->query($sql);
              echo "<br>";
              echo "<h2>Turmas disponiveis</h2>";
              echo "<table border=3>";
-             echo "<th> Turma Codigo </th>  <th> Disciplina </th>  <th>Vagas</th> <th>Docente Nome</th><th> Sobrenome</th>";
+             echo "<th> Turma Codigo </th>  <th> Disciplina </th>  <th>Vagas</th> <th>Docente Nome</th><th> Sobrenome</th><th> Dia</th><th> Hora</th>";
              if ($result->num_rows > 0) {
 
                  while($row = $result->fetch_assoc()) {
@@ -177,10 +179,16 @@
                      echo $row["Vagas"];
                      echo "</td>";
                      echo "<td>" ;
-                     echo $row["Docente Nome"];
+                     echo $row["DocenteNome"];
                      echo "</td>";
                      echo "<td>" ;
-                     echo $row["Docente Sobrenome"];
+                     echo $row["DocenteSobrenome"];
+                     echo "</td>";
+                     echo "<td>" ;
+                     echo $row["Dia"];
+                     echo "</td>";
+                     echo "<td>" ;
+                     echo $row["Hora"];
                      echo "</td>";
                    echo "</tr>";
                  }
@@ -198,7 +206,7 @@
              echo "<br>";
              echo "<h2>Inscrito</h2>";
              echo "<table border=3>";
-             echo "<th> RA</th> <th> ano </th>  <th> semestre </th>  <th> Turma</th> <th> nome</th><th> creditos</th><th> fase</th><th> deferimento</th>";
+             echo "<th> RA</th> <th> ano </th>  <th> semestre </th>  <th> Turma</th><th> Dia</th><th> Hora</th> <th> nome</th><th> creditos</th><th> fase</th><th> deferimento</th>";
              if ($result->num_rows > 0) {
 
                  while($row = $result->fetch_assoc()) {
@@ -214,6 +222,12 @@
                      echo "</td>";
                      echo "<td>" ;
                      echo $row["Turma"];
+                     echo "</td>";
+                     echo "<td>" ;
+                     echo $row["dia"];
+                     echo "</td>";
+                     echo "<td>" ;
+                     echo $row["hora"];
                      echo "</td>";
                      echo "<td>" ;
                      echo $row["nome"];

@@ -155,12 +155,13 @@ CREATE OR REPLACE VIEW labbd.vhistorico AS
 	ORDER BY calendario.ano, calendario.semestre, disciplina.nome;
 
 CREATE OR REPLACE VIEW labbd.vinscricoes AS
-	SELECT  aluno.ra, calendario.ano, calendario.semestre, turma.letra AS 'Turma', 
+	SELECT  aluno.ra, calendario.ano, calendario.semestre, turma.letra AS 'Turma',aula.dia,aula.hora, 
 			disciplina.nome, disciplina.creditos, inscreve.fase, inscreve.deferimento
 	FROM disciplina INNER JOIN turma ON turma.sigla = disciplina.sigla
 					INNER JOIN calendario ON calendario.id = turma.id_calendario
 					INNER JOIN inscreve ON inscreve.id_turma = turma.id_turma
 					INNER JOIN aluno ON aluno.cpf = inscreve.cpf
+                    LEFT OUTER JOIN labbd.aula on labbd.aula.id_turma = labbd.turma.id_turma
 	ORDER BY calendario.ano, calendario.semestre, inscreve.fase, disciplina.nome;
 
 CREATE OR REPLACE VIEW labbd.vinscricoesCalendario AS
@@ -199,19 +200,22 @@ CREATE OR REPLACE VIEW labbd.matricula_aluno AS
         ((labbd.turma.id_turma = labbd.matricula.id_turma)
             AND (labbd.turma.sigla = labbd.disciplina.sigla));
 
-CREATE OR REPLACE VIEW labbd.turmas_disciplina AS
+CREATE OR REPLACE VIEW labbd.horario_turma_disciplina AS
     SELECT 
         labbd.turma.id_turma AS turmaCodigo,
         labbd.disciplina.nome AS Disciplina,
         labbd.turma.vagas AS Vagas,
         labbd.pessoa.prenome AS DocenteNome,
         labbd.pessoa.sobrenome AS DocenteSobrenome,
-        labbd.turma.id_calendario AS Calendario
+        labbd.turma.id_calendario AS Calendario,
+        labbd.aula.dia AS Dia,
+        labbd.aula.hora AS Hora
     FROM
-        (((labbd.turma
+        ((((labbd.turma
         JOIN labbd.disciplina)
         JOIN labbd.docente)
         JOIN labbd.pessoa)
+        LEFT OUTER JOIN labbd.aula on labbd.aula.id_turma = labbd.turma.id_turma)
     WHERE
         ((labbd.turma.sigla = labbd.disciplina.sigla)
             AND (labbd.turma.cpf_docente = labbd.docente.cpf)

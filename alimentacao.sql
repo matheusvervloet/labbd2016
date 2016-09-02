@@ -306,7 +306,13 @@ INSERT INTO labbd.aula (id_turma, predio, sala, dia, hora)
             (2, 'DC', 'lab2', 'segunda', '08'),
             (3, 'DC', 'lab4', 'segunda', '08'),
             (3, 'DC', 'lab4', 'quarta', '08'),
-            (4, 'DC', 'lab2', 'quarta', '08');
+            (4, 'DC', 'lab2', 'quarta', '08'),
+            (5, 'DC', 'lab3', 'quarta', '08'),
+            (6, 'DC', 'lab6', 'segunda', '08'),
+            (7, 'DC', 'lab5', 'segunda', '08'),
+            (8, 'DC', 'lab1', 'quarta', '08'),
+            (9, 'DC', 'lab3', 'quarta', '08'),
+            (10, 'DC', 'lab3', 'quinta', '08');
 
 
 
