@@ -79,18 +79,21 @@ INSERT INTO labbd.faz_prova(data,cpf,nota)
 #7
 INSERT INTO labbd.membro (data_inicio, data_fim, representacao, portaria_indicacao, cpf)
     VALUES  (STR_TO_DATE('07-03-2015', '%d-%m-%Y'), STR_TO_DATE('07-03-2016', '%d-%m-%Y'), 
-                  'corpo discente', '1757/16', '919191919-44'),
+                  'corpo docente', '1757/16', '777795472-95'),
             (STR_TO_DATE('07-03-2015', '%d-%m-%Y'), STR_TO_DATE('07-03-2016', '%d-%m-%Y'), 
-                  'corpo docente', '1757/16', '505019159-44');
+                  'corpo docente', '1757/16', '830225565-26');
 
 
 #8 - Depois de membro
 INSERT INTO labbd.reuniao (numero, cpf, data, grupo_organizador, documento)
-    VALUES  (1,'505019159-44',STR_TO_DATE('30-04-2016', '%d-%m-%Y'),'CoG', '~/src/1/paralizacao/29-04-2016/foo.txt'),
-            (2,'505019159-44',STR_TO_DATE('29-04-2016', '%d-%m-%Y'),'CoG', '~/src/1/paralizacao/29-04-2016/bar.txt'),
-            (3,'919191919-44',STR_TO_DATE('28-04-2016', '%d-%m-%Y'),'CoG', '~/src/1/paralizacao/29-04-2016/foobar.txt'),
-            (4,'919191919-44',STR_TO_DATE('27-04-2016', '%d-%m-%Y'),'CoG', '~/src/1/paralizacao/29-04-2016/foo.pdf'),
-            (5,'505019159-44',STR_TO_DATE('26-04-2016', '%d-%m-%Y'),'CoG', '~/src/1/paralizacao/29-04-2016/bar.pdf');
+    VALUES  (1,'777795472-95',STR_TO_DATE('30-04-2016', '%d-%m-%Y'),'CoG', '~/src/1/paralizacao/29-04-2016/foo.txt'),
+            (2,'777795472-95',STR_TO_DATE('29-04-2016', '%d-%m-%Y'),'CoG', '~/src/1/paralizacao/29-04-2016/bar.txt'),
+            (3,'830225565-26',STR_TO_DATE('28-04-2016', '%d-%m-%Y'),'CoG', '~/src/1/paralizacao/29-04-2016/foobar.txt'),
+            (4,'830225565-26',STR_TO_DATE('27-04-2016', '%d-%m-%Y'),'CoG', '~/src/1/paralizacao/29-04-2016/foo.pdf'),
+            (5,'777795472-95',STR_TO_DATE('26-04-2016', '%d-%m-%Y'),'CoG', '~/src/1/paralizacao/29-04-2016/bar.pdf');
+            
+# INSERT INTO labbd.reuniao (numero, cpf, data, grupo_organizador, documento)VALUES  (1,'777795472-95',STR_TO_DATE('30-04-2016', '%d-%m-%Y'),'CoG'),(2,'777795472-95',STR_TO_DATE('29-04-2016', '%d-%m-%Y'),'CoG'),(3,'830225565-26',STR_TO_DATE('28-04-2016', '%d-%m-%Y'),'CoG'),(4,'830225565-26',STR_TO_DATE('27-04-2016', '%d-%m-%Y'),'CoG'),(5,'777795472-95',STR_TO_DATE('26-04-2016', '%d-%m-%Y'),'CoG');
+
 
 
 #9  
@@ -405,20 +408,20 @@ INSERT INTO labbd.matricula (cpf, id_turma, status)
 
 #41 
 INSERT INTO labbd.intervencoes(id_itens_de_pauta, cpf, data_hora, descricao) 
-    VALUES  (1,'919191919-44',STR_TO_DATE('29-04-2016', '%d-%m-%Y'), 'Nesse dia as coisas foram legais'),
-            (2,'919191919-44',STR_TO_DATE('29-04-2016', '%d-%m-%Y'), 'Nesse dia as coisas foram legais'),
-            (3,'919191919-44',STR_TO_DATE('29-04-2016', '%d-%m-%Y'), 'Nesse dia as coisas foram legais'),
-            (1,'505019159-44',STR_TO_DATE('29-04-2016', '%d-%m-%Y'), 'Achamos tudo ok'),
-            (2,'505019159-44',STR_TO_DATE('29-04-2016', '%d-%m-%Y'), 'Achamos tudo mais ou menos');
+    VALUES  (1,'777795472-95',STR_TO_DATE('29-04-2016', '%d-%m-%Y'), 'Nesse dia as coisas foram legais'),
+            (2,'777795472-95',STR_TO_DATE('29-04-2016', '%d-%m-%Y'), 'Nesse dia as coisas foram legais'),
+            (3,'777795472-95',STR_TO_DATE('29-04-2016', '%d-%m-%Y'), 'Nesse dia as coisas foram legais'),
+            (1,'830225565-26',STR_TO_DATE('29-04-2016', '%d-%m-%Y'), 'Achamos tudo ok'),
+            (2,'830225565-26',STR_TO_DATE('29-04-2016', '%d-%m-%Y'), 'Achamos tudo mais ou menos');
 
 
 #42
 INSERT INTO labbd.comunicacoes(id_itens_de_pauta, cpf, data_hora, descricao) 
-    VALUES  (1,'919191919-44',STR_TO_DATE('29-04-2016', '%d-%m-%Y'), 'Comunicado da Dilma mãe'),
-            (2,'919191919-44',STR_TO_DATE('29-04-2016', '%d-%m-%Y'), 'Comunicado do Aecio louco'),
-            (3,'919191919-44',STR_TO_DATE('29-04-2016', '%d-%m-%Y'), 'Comunicado do Temer legal'),
-            (1,'505019159-44',STR_TO_DATE('29-04-2016', '%d-%m-%Y'), 'Comunicado do cara que sabe'),
-            (2,'505019159-44',STR_TO_DATE('29-04-2016', '%d-%m-%Y'), 'Comunicado importante');
+    VALUES  (1,'777795472-95',STR_TO_DATE('29-04-2016', '%d-%m-%Y'), 'Comunicado da Dilma mãe'),
+            (2,'777795472-95',STR_TO_DATE('29-04-2016', '%d-%m-%Y'), 'Comunicado do Aecio louco'),
+            (3,'777795472-95',STR_TO_DATE('29-04-2016', '%d-%m-%Y'), 'Comunicado do Temer legal'),
+            (1,'830225565-26',STR_TO_DATE('29-04-2016', '%d-%m-%Y'), 'Comunicado do cara que sabe'),
+            (2,'830225565-26',STR_TO_DATE('29-04-2016', '%d-%m-%Y'), 'Comunicado importante');
 
 
 #43 - Depende do auto_incremente da turma, cuidado

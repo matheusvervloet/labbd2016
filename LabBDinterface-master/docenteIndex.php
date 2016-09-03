@@ -102,7 +102,9 @@
 					</div>
 				</div>
 			</main>
-
+			<?php 
+				$cpf = $_GET["cpf"];
+			?>
 			<?php include("sidebarDocente.php"); ?>
 
 
