@@ -10,13 +10,9 @@
                 <li><a href="http://localhost/my_site/criarItens.php?cpf=<?php echo $cpf; ?>">Itens de Pauta</a></li>
 
           </ul>
-          <h3>Left heading</h3>
+          <h3>Visualizar</h3>
           <ul>
-            <li><a href="#">Link 1</a></li>
-            <li><a href="#">Link 2</a></li>
-            <li><a href="#">Link 3</a></li>
-            <li><a href="#">Link 4</a></li>
-            <li><a href="#">Link 5</a></li>
+            <li><a href="http://localhost/my_site/visualizarItens.php?cpf=<?php echo $cpf; ?>">Itens de Pauta</a></li>
           </ul>
           <h3>Left heading</h3>
           <ul>

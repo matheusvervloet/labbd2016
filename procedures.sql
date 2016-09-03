@@ -29,6 +29,7 @@ DROP PROCEDURE IF EXISTS labbd.procedure_calcula_ira$$
 DROP PROCEDURE IF EXISTS labbd.procedure_consulta_historico$$
 DROP PROCEDURE IF EXISTS labbd.procedure_consulta_inscricoes$$
 DROP PROCEDURE IF EXISTS labbd.procedure_insere_aluno$$
+DROP PROCEDURE IF EXISTS labbd.consulta_itens$$
 
 CREATE PROCEDURE labbd.procedure_fazDeferimento(nfase INT, calendario INT)
 BEGIN
@@ -482,6 +483,18 @@ BEGIN
   INSERT INTO pessoa (cpf, prenome, nome_meio, sobrenome) VALUES (cpf_param, prenome_param, nome_meio_param, sobrenome_param);
   INSERT INTO aluno (nome_da_mae, nome_do_pai, pais, uf, data_nascimento, ano_ingresso, Sexo, cor, reenquadramento, ra, cpf, conclusao_em_nome, conclusao_em_ano, IRA) VALUES (nome_da_mae_param, nome_do_pai_param, pais_param, uf_param, data_nascimento_param, ano_ingresso_param, sexo_param, cor_param, 0, ra_param, cpf_param, conclusao_em_nome_param, conclusao_em_ano_param, IRA_param);
 END$$
+
+CREATE PROCEDURE labbd.consulta_itens
+(IN cpf_param VARCHAR(12))
+BEGIN
+  SELECT
+    numero_reuniao,
+    pauta,
+	data_aprovacao,
+    texto_descritivo
+  FROM itens_de_pauta JOIN reuniao on numero=numero_reuniao where cpf= cpf_param;
+END $$
+
 
 DELIMITER ;
 
