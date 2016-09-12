@@ -226,6 +226,24 @@ CREATE OR REPLACE VIEW labbd.view_reconhecimento AS
     FROM reconhecimento
     ORDER BY data_inicio;
 
+CREATE OR REPLACE VIEW labbd.ta_existente AS
+    SELECT 			labbd.pessoa.prenome AS pre_nome,
+					labbd.pessoa.nome_meio AS nome_meio,
+					labbd.pessoa.sobrenome AS sobrenome,
+					labbd.pessoa.cpf AS cpf
+    FROM 			(labbd.ta JOIN labbd.pessoa)
+	WHERE 			(labbd.pessoa.cpf = labbd.ta.cpf)
+    ORDER BY     	pre_nome;
+	
+CREATE OR REPLACE VIEW labbd.docente_existente AS
+    SELECT 			labbd.pessoa.prenome AS pre_nome,
+					labbd.pessoa.nome_meio AS nome_meio,
+					labbd.pessoa.sobrenome AS sobrenome,
+					labbd.pessoa.cpf AS cpf
+    FROM 			(labbd.docente JOIN labbd.pessoa)
+	WHERE 			(labbd.pessoa.cpf = labbd.docente.cpf)
+    ORDER BY     	pre_nome;
+	
 
 ################################VIEW COMENTADA POIS CONTEM ERROS#######################################
 /*

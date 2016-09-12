@@ -27,8 +27,6 @@
        padding-bottom: 10010px;
        margin-bottom: -10000px;
        background: #eee;
-       box-shadow: 0px 0px 10px black;
-       box-sizing: border-box;
      }
 
      #wrapper {
@@ -53,14 +51,15 @@
        margin: 0;
        padding: 0;
      }
+
+     nav ul a {
+       color: darkgreen;
+       text-decoration: none;
+     }
      nav ul :hover {
        margin: 1;
      background-color: white;
 
-     }
-     nav ul a {
-       color: darkgreen;
-       text-decoration: none;
      }
      b {
       color: white;
@@ -87,28 +86,23 @@
     </head>
 
  <body>
-
    <div id="wrapper">
 
      <main>
        <div id="content">
          <div class="innertube">
-           <h2>Cadastra Docente</h2>
-           <p>
-             <form action="criaDocente.php" method="post">
-			 
+           <h1>Procurando Tecnico Administrativo</h1>
+           <p >
 
-             Cpf:  <input type="text" name="cpf"/><br>
-             Nome: <input type="text" name="nome"/><br>
-             Nome do meio: <input type="text" name="nome_meio"/><br>
-             Sobrenome: <input type="text" name="sobrenome"/><br>
-             <input type="submit" value="Cadastrar" name="submit">
+             <form action="procuraTA.php?cpf=<?php echo $cpf?>" method="post" align=”center”>
+             CPF : <input type="text" name="cpf"/><br>
+             <input type="submit" value="Enviar" name="submit">
 
              </form>
 
              <?php
-             function cadastra_docente(){
-
+             function mostraInfoTA(){
+                  $cpf_p = $_POST["cpf"];
                    $host     = "localhost";
                    $port     = 3306;
                    $socket   = "";
@@ -119,31 +113,32 @@
                    $con = new mysqli($host, $user, $password, $dbname, $port, $socket)
                        or die ('Could not connect to the database server' . mysqli_connect_error());
 
-						 $cpf_p = $_POST["cpf"];
-						 $nome_p  = $_POST["nome"];
-						 $nome_meio_p  = $_POST["nome_meio"];
-						 $sobrenome_p  = $_POST["sobrenome"];
+                 if($cpf = "")
+				 {
+					 $sql = "SELECT * FROM labbd.ta_existente;"
+				 }
+                 else 
+				 {
+					$sql = "call labbd.consulta_ta('$cpf');"
+				 }
+                 header("Content-Type: text/html; charset=ISO-8859-1",true);
 
-						 $sql = "call procedure insereDocente($cpf_p, $nome_p, $nome_meio_p, $sobrenome_p)"
-                       if ($con->query($sql) === TRUE) {
-                     echo "Inserido com sucesso\n";
+                if ($con->query($sql) === TRUE) {
+                     echo "Técnicos(as) encontrados(as)!";
                  }
                  else {
-                     echo "Erro: dados errados";
+                     echo "Erro: dados errados ou técnico inexistente";
                  }
 
-
                  $con->close();
-                      
-
              }
 
              if(isset($_POST['submit']))
              {
-                cadastra_docente();
+                mostraInfoTA();
              }
-  ?>
-
+				
+			 ?>
 
 
            </p>
@@ -151,10 +146,8 @@
        </div>
      </main>
 
+     <?php include("sidebarAdm.php"); ?>
 
-
-     <?php include("sidebarAluno.php"); ?>
-     
    </div>
  </body>
 </html>

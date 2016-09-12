@@ -18,10 +18,10 @@
           <h3>Açoes</h3>
           <ul>
             <li><a href="http://localhost/my_site/fazDeferimento.php">Fazer Deferimento dos alunos</a></li>
-            <li><a href="#">Link 2</a></li>
-            <li><a href="#">Link 3</a></li>
-            <li><a href="#">Link 4</a></li>
-            <li><a href="#">Link 5</a></li>
+            <li><a href="http://localhost/my_site/VerCalendarios.php">Ver Calendarios</a></li>
+            <li><a href="http://localhost/my_site/verAtvAdm.php">Ver AtividadeAdministrativa</a></li>
+            <li><a href="http://localhost/my_site/procuraTA.php">Procurar TA</a></li>
+            <li><a href="http://localhost/my_site/procuraDocente.php">Procurar Docente</a></li>
           </ul>
           <h3>Left heading</h3>
           <ul>

@@ -30,6 +30,8 @@ DROP PROCEDURE IF EXISTS labbd.procedure_consulta_historico$$
 DROP PROCEDURE IF EXISTS labbd.procedure_consulta_inscricoes$$
 DROP PROCEDURE IF EXISTS labbd.procedure_insere_aluno$$
 DROP PROCEDURE IF EXISTS labbd.consulta_itens$$
+DROP PROCEDURE IF EXISTS labbd.consulta_ta$$
+DROP PROCEDURE IF EXISTS labbd.consulta_docente$$
 
 CREATE PROCEDURE labbd.procedure_fazDeferimento(nfase INT, calendario INT)
 BEGIN
@@ -495,6 +497,21 @@ BEGIN
   FROM itens_de_pauta JOIN reuniao on numero=numero_reuniao where cpf= cpf_param;
 END $$
 
+CREATE PROCEDURE labbd.consulta_ta
+(IN cpf_param VARCHAR(12))
+BEGIN
+  SELECT *
+  FROM ta_existente
+  WHERE cpf = cpf_param;
+END $$
+
+CREATE PROCEDURE labbd.consulta_docente
+(IN cpf_param VARCHAR(12))
+BEGIN
+  SELECT *
+  FROM docente_existente
+  WHERE cpf = cpf_param;
+END $$
 
 DELIMITER ;
 
@@ -519,5 +536,7 @@ DELIMITER ;
 #        END IF;
 #    END IF;
 #END$$
+
+
 
 #DELIMITER ;
