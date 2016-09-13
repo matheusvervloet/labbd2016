@@ -465,13 +465,13 @@ END $$
 CREATE PROCEDURE labbd.insereIntervencao (p_id_itens_de_pauta INT, p_cpf CHAR(12), p_data_hora DATE, p_descricao LONGTEXT)
 BEGIN
 	INSERT INTO labbd.intervencoes(id_itens_de_pauta, cpf, data_hora, descricao) 
-    VALUES  (1,'777795472-95',STR_TO_DATE('29-04-2016', '%d-%m-%Y'), 'Nesse dia as coisas foram legais')
+    VALUES  (p_id_itens_de_pauta, p_cpf, p_data_hora, p_descricao)
 END $$
 
 CREATE PROCEDURE labbd.insereComunicacao (p_id_itens_de_pauta INT, p_cpf CHAR(12), p_data_hora DATE, p_descricao LONGTEXT)
 BEGIN
 	INSERT INTO labbd.comunicacoes (id_itens_de_pauta, cpf, data_hora, descricao) 
-    VALUES  (1,'777795472-95',STR_TO_DATE('29-04-2016', '%d-%m-%Y'), 'Nesse dia as coisas foram legais')
+    VALUES  (p_id_itens_de_pauta, p_cpf, p_data_hora, p_descricao)
 END $$
 
 CREATE PROCEDURE labbd.procedure_calcula_ira()
