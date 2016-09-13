@@ -5,6 +5,9 @@
           <ul><a href= http://localhost/my_site/admIndex.php>Home</a></ul>
           <h3>Cadastros</h3>
           <ul>
+			<li><a href="http://localhost/my_site/criarAluno.php">Aluno</a></li>
+			<li><a href="http://localhost/my_site/criaTA.php">Tecnico Administrativo</a></li>
+			<li><a href="http://localhost/my_site/criaDocente.php">Docente</a></li>
             <li><a href="http://localhost/my_site/criarCentroAcademico.php">CentroAcademico</a></li>
             <li><a href="http://localhost/my_site/criarDepartamento.php">Departamento</a></li>
             <li><a href="http://localhost/my_site/criarDisciplina.php">Disciplina</a></li>

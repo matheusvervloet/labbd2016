@@ -115,20 +115,20 @@
 
                  if($cpf = "")
 				 {
-					 $sql = "SELECT * FROM labbd.ta_existente;"
+					 $sql = "SELECT * FROM labbd.ta_existente";
 				 }
                  else 
 				 {
-					$sql = "call labbd.consulta_ta('$cpf');"
+					$sql = "call labbd.consulta_ta('$cpf')";
 				 }
                  header("Content-Type: text/html; charset=ISO-8859-1",true);
 
                 if ($con->query($sql) === TRUE) {
                      echo "Técnicos(as) encontrados(as)!";
-                 }
-                 else {
+					}
+                 else 	{
                      echo "Erro: dados errados ou técnico inexistente";
-                 }
+						}
 
                  $con->close();
              }

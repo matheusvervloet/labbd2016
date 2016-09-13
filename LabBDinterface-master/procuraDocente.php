@@ -115,11 +115,11 @@
 
                  if($cpf = "")
 				 {
-					 $sql = "SELECT * FROM labbd.docente_existente;"
+					 $sql = "SELECT * FROM labbd.docente_existente";
 				 }
                  else 
 				 {
-					$sql = "call labbd.consulta_docente('$cpf');"
+					$sql = "call labbd.consulta_docente('$cpf')";
 				 }
                  header("Content-Type: text/html; charset=ISO-8859-1",true);
 
