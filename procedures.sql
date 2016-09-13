@@ -444,6 +444,36 @@ INSERT INTO labbd.visita (data, num_capes)
     VALUES (pData, pNum_capes);
 END $$
 
+CREATE PROCEDURE labbd.inserePropostoPorRC (p_data DATE, p_aprovacao CHAR(255), p_numero INT, p_id_calendario INT)
+BEGIN
+	INSERT INTO labbd.proposto_por_RC (data_proposta, aprovacao, numero, id_calendario)
+	    VALUES  (p_data, p_aprovacao, p_numero, p_id_calendario);
+END $$
+
+CREATE PROCEDURE labbd.insereCorrequisito (p_disciplina INT, p_corequisito INT)
+BEGIN
+	INSERT INTO labbd.correquisitos (disciplina, correquisito)
+    VALUES  (p_disciplina, p_corequisito);
+END $$
+
+CREATE PROCEDURE labbd.inserePreRequisito (p_disciplina INT, p_prerequisito INT)
+BEGIN
+	INSERT INTO labbd.pre_requisitos (disciplina, pre_requisito)
+    VALUES  (p_disciplina, p_prerequisito)
+END $$
+
+CREATE PROCEDURE labbd.insereIntervencao (p_id_itens_de_pauta INT, p_cpf CHAR(12), p_data_hora DATE, p_descricao LONGTEXT)
+BEGIN
+	INSERT INTO labbd.intervencoes(id_itens_de_pauta, cpf, data_hora, descricao) 
+    VALUES  (1,'777795472-95',STR_TO_DATE('29-04-2016', '%d-%m-%Y'), 'Nesse dia as coisas foram legais')
+END $$
+
+CREATE PROCEDURE labbd.insereComunicacao (p_id_itens_de_pauta INT, p_cpf CHAR(12), p_data_hora DATE, p_descricao LONGTEXT)
+BEGIN
+	INSERT INTO labbd.comunicacoes (id_itens_de_pauta, cpf, data_hora, descricao) 
+    VALUES  (1,'777795472-95',STR_TO_DATE('29-04-2016', '%d-%m-%Y'), 'Nesse dia as coisas foram legais')
+END $$
+
 CREATE PROCEDURE labbd.procedure_calcula_ira()
 BEGIN
 	DECLARE done 	BOOLEAN DEFAULT FALSE;
