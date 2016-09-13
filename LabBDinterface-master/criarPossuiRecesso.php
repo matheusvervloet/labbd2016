@@ -100,7 +100,7 @@
 			 ID Calendario EAD *se desnecessário deixar em branco:  <input type="number" name="idce"/><br>
              Tipo:  <input type="radio" name="tipo" value="0" checked> EAD e Presencial<br>
 					<input type="radio" name="tipo" value="1"> Apenas presencial<br>
-					<input type="radio" name="tipo" value="2"> Apenas EAD<br>
+					<input type="radio" name="tipo" value="2"> Apenas EAD<br> 
 			 <input type="submit" value="Enviar" name="submit">
 
              </form>
@@ -122,14 +122,14 @@
                  $idcp  = $_POST["idcp"];
 				 $idce  = $_POST["idce"];
                  $tipo  = $_POST["tipo"];
-
+			
 				 settype($idr, "integer");
 				 if (isset($idcp))
 					settype($idcp, "integer");
 				 if (isset($idce))
 					settype($idce, "integer");
 				 settype($tipo, "integer");
-
+				 
                  $sql = "call labbd.inserePossuiRecesso('$idr', '$idcp', '$idce','$tipo');";
                  header("Content-Type: text/html; charset=ISO-8859-1",true);
 
@@ -157,19 +157,13 @@
 
              $con = new mysqli($host, $user, $password, $dbname, $port, $socket)
                      or die ('Could not connect to the database server' . mysqli_connect_error());
-			if($tipo == 0)
-				$sql = "SELECT * FROM possui_recesso_ead JOIN possui_recesso_presencial ON possui_recesso_ead.id_recesso = possui_recesso_presencial.id_recesso WHERE id_recesso = '$idr' GROUP BY id_recesso";
-            else
-				$sql = ($tipo == 1) ? "SELECT * FROM possui_recesso_presencial WHERE id_recesso = '$idr' AND id_presencial = '$idcp'" : "SELECT * FROM possui_recesso_ead WHERE id_recesso = '$idr' AND id_ead = '$idce'";
-
+					 
+			 $sql = "SELECT id_recesso, id_presencial FROM possui_recesso_presencial as prp, recesso as r, calendario as c WHERE prp.id_recesso = r.id_recesso AND prp.id_presencial = c.id";
    			 $result = $con->query($sql);
              echo "<br>";
 
              echo "<table border=3>";
-			 if ($tipo == 0)
-				echo "<th> ID Recesso </th> <th> ID Calendario Presencial</th> <th> ID Calendario EAD</th> ";
-			 else
-				echo "<th> ID Recesso </th> <th> ID Calendario</th>";
+			 echo "<th> ID Recesso Presencial </th> <th> ID Calendario Presencial</th>";
 
              if ($result->num_rows > 0) {
                  // output data of each row
@@ -179,15 +173,9 @@
                      echo "<td>" ;
                      echo  $row["id_recesso"];
                      echo "</td>";
-					 if ($tipo == 0 || $tipo == 1){
-						echo "<td>" ;
-						echo $row["id_presencial"];
-						echo "</td>";
-					 }
-					 if ($tipo == 0 || $tipo == 2){
-						echo "<td>" ;
-						echo $row["id_ead"];
-						echo "</td>";
+					 echo "<td>" ;
+					 echo $row["id_presencial"];
+					 echo "</td>";
 					 }
                    echo "</tr>";
                  }
@@ -196,6 +184,35 @@
              } else {
                  echo "0 results";
              }
+			 
+			 // segunda tabela			 
+			 			 $sql = "SELECT id_recesso, id_ead FROM possui_recesso_ead as pre, recesso as r, calendario as c WHERE pre.id_recesso = r.id_recesso AND prp.id_ead = c.id";
+   			 $result = $con->query($sql);
+             echo "<br>";
+
+             echo "<table border=3>";
+			 echo "<th> ID Recesso EAD </th> <th> ID Calendario EAD</th>";
+
+             if ($result->num_rows > 0) {
+                 // output data of each row
+
+                 while($row = $result->fetch_assoc()) {
+                   echo "<tr>";
+                     echo "<td>" ;
+                     echo  $row["id_recesso"];
+                     echo "</td>";
+					 echo "<td>" ;
+					 echo $row["id_ead"];
+					 echo "</td>";
+					 }
+                   echo "</tr>";
+                 }
+
+             echo "</table>";
+             } else {
+                 echo "0 results";
+             }
+			 
 
              $con->close();
           ?>
@@ -206,8 +223,7 @@
        </div>
      </main>
 
-
-<?php include("sidebarAdm.php"); ?>
+	 <?php include("sidebarAdm.php"); ?>
 
    </div>
  </body>
