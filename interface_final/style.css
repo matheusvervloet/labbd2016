@@ -1,0 +1,57 @@
+body{
+	margin:0;
+	padding:0;
+	font-family: Sans-Serif;
+	line-height: 1.5em;
+}
+main {
+	padding-bottom: 10010px;
+	margin-bottom: -10000px;
+	float: left;
+	width: 100%;
+}
+#nav {
+	float: left;
+	width: 230px;
+	margin-left: -100%;
+	padding-bottom: 10010px;
+	margin-bottom: -10000px;
+	background: #eee;
+	box-shadow: 0px 0px 10px black;
+	box-sizing: border-box;
+}
+#wrapper {
+	overflow: hidden;
+}
+#content {
+	margin-left: 230px; /* Same as 'nav' width */
+}
+.innertube{
+	margin: 15px; /* Padding for content */
+	margin-top: 0;
+}
+p {
+	color: #555;
+}
+nav ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+nav ul a {
+	color: darkgreen;
+	text-decoration: none;
+}
+b {
+	color: white;
+	font-family: Sans-Serif;
+	font-size: 200%;
+	position: absolute;
+	left: 35%;
+	top: 5%;
+}
+#head {
+	height: 90px;
+	background: #444;
+	text-align: center;
+}
