@@ -23,7 +23,7 @@
 		<li><a href="http://localhost/my_site/criarPossuiRecesso.php">Atribuir Recesso*</a></li>
 		<li><a href="http://localhost/my_site/criarAtividadeAdministrativa.php">Atividade Administrativa</a>
 		</li><li><a href="http://localhost/my_site/criarPossuiAtividadeAdministrativa.php">Atribuir Atividade Administrativa</a></li>
-		<li><a href="http://localhost/my_site/criarCursa.php">Cursa*</a></li>
+		<li><a href="http://localhost/my_site/criarCursa.php">Cursa</a></li>
 		<li><a href="http://localhost/my_site/criarItemDoFormulario.php">Item do formulário*</a></li>
 		<li><a href="http://localhost/my_site/criarVisita.php">Visita*</a></li>
 		<li><a href="http://localhost/my_site/criarComite.php">Comite*</a></li>
