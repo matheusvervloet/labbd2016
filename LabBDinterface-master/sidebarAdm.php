@@ -18,6 +18,7 @@
 		<li><a href="http://localhost/my_site/criarDepartamento.php">Departamento</a></li>
 		<li><a href="http://localhost/my_site/criarDisciplina.php">Disciplina</a></li>
 		<li><a href="http://localhost/my_site/criarPreRequisito.php">Pre-Requisito</a></li>
+		<li><a href="http://localhost/my_site/criarCorrequisito.php">Correquisito</a></li>
 		<li><a href="http://localhost/my_site/criarReconhecimento.php">Reconhecimento</a></li>
 		<li><a href="http://localhost/my_site/VerCalendarios.php">Calendario**</a></li>
 		<li><a href="http://localhost/my_site/criarRecesso.php">Recesso</a></li>
