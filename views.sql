@@ -175,6 +175,7 @@ CREATE OR REPLACE VIEW labbd.vinscricoesCalendario AS
 
 CREATE OR REPLACE VIEW labbd.view_materias_do_depto AS
     SELECT 
+		labbd.departamento.sigla AS siglaDepartamento,
         labbd.disciplina.sigla AS siglaDisciplina,
         labbd.disciplina.nome AS nomeDisciplina,
         labbd.departamento.nome AS nomeDepartamento
