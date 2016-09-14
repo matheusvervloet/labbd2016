@@ -226,13 +226,15 @@ INSERT INTO possui_recesso_presencial (id_recesso,id_presencial)
 
 #22
 INSERT INTO atividade_administrativa (data_inicio, data_fim, responsavel, nome)
-    VALUES  (STR_TO_DATE('25-02-2016', '%d-%m-%Y'), STR_TO_DATE('28-02-2016', '%d-%m-%Y'), 'prograd', 'inscricao em disciplinas');
+    VALUES  (STR_TO_DATE('25-02-2016', '%d-%m-%Y'), STR_TO_DATE('28-02-2016', '%d-%m-%Y'), 'prograd', 'inscricao em disciplinas'),
+			(STR_TO_DATE('01-02-2016', '%d-%m-%Y'), STR_TO_DATE('05-02-2016', '%d-%m-%Y'), 'prograd', 'avaliacao ead');
 
 
 #23
 INSERT INTO possui_atividade_administrativa(id_ativ_adm,id) 
     VALUES  (1,2),
-			(1,1);
+			(1,1),
+			(2,2);
 
 
 #24
