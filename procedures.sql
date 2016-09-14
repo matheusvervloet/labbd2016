@@ -6,6 +6,8 @@ DROP PROCEDURE IF EXISTS labbd.insereAluno$$
 DROP PROCEDURE IF EXISTS labbd.insereAtivAdm$$
 DROP PROCEDURE IF EXISTS labbd.insereCA$$
 DROP PROCEDURE IF EXISTS labbd.insereComite$$
+DROP PROCEDURE IF EXISTS labbd.insereCorrequisito$$
+DROP PROCEDURE IF EXISTS labbd.insereComunicacao$$
 DROP PROCEDURE IF EXISTS labbd.insereCursa$$
 DROP PROCEDURE IF EXISTS labbd.insereCurso$$
 DROP PROCEDURE IF EXISTS labbd.insereDecisoes_aprovadas$$
@@ -16,12 +18,15 @@ DROP PROCEDURE IF EXISTS labbd.insereDocumentos$$
 DROP PROCEDURE IF EXISTS labbd.insereEnade$$
 DROP PROCEDURE IF EXISTS labbd.insereFazprova$$
 DROP PROCEDURE IF EXISTS labbd.insereGestao$$
+DROP PROCEDURE IF EXISTS labbd.insereIntervencao$$
 DROP PROCEDURE IF EXISTS labbd.insereMembro$$
 DROP PROCEDURE IF EXISTS labbd.procedure_insereInscreve$$
 DROP PROCEDURE IF EXISTS labbd.insereItemDoFormulario$$
 DROP PROCEDURE IF EXISTS labbd.insereItens_de_pauta$$
 DROP PROCEDURE IF EXISTS labbd.inserePossuiAtivAdm$$
 DROP PROCEDURE IF EXISTS labbd.inserePossuiRecesso$$
+DROP PROCEDURE IF EXISTS labbd.inserePropostoPorRc$$
+DROP PROCEDURE IF EXISTS labbd.inserePreRequisito$$
 DROP PROCEDURE IF EXISTS labbd.insereRecesso$$
 DROP PROCEDURE IF EXISTS labbd.insereReconhecimento$$
 DROP PROCEDURE IF EXISTS labbd.insereReuniao$$
@@ -233,7 +238,7 @@ CREATE PROCEDURE labbd.insereCA(
     p_nome                CHAR(255)
 )
 BEGIN
-	INSERT INTO labbd.docente (sigla, nome) VALUES (p_sigla, p_nome);
+	INSERT INTO labbd.centro_academico (sigla, nome) VALUES (p_sigla, p_nome);
 END $$
 
 CREATE PROCEDURE labbd.insereComite(pId_visita INT, pPrenome CHAR(255), pNomeMeio CHAR(255), pSobrenome CHAR(255))
@@ -394,7 +399,7 @@ END $$
 CREATE PROCEDURE labbd.insereGestao(
   p_cpf                   CHAR(12),
   p_gestao_data_inicio    DATE,
-  p_gestao_data_fim       DATE,
+  p_gestao_data_fim       DATE
 )
 BEGIN
   INSERT INTO labbd.membro (cpf) VALUES (p_cpf);
@@ -486,19 +491,19 @@ END $$
 CREATE PROCEDURE labbd.inserePreRequisito (p_disciplina INT, p_prerequisito INT)
 BEGIN
 	INSERT INTO labbd.pre_requisitos (disciplina, pre_requisito)
-    VALUES  (p_disciplina, p_prerequisito)
+    VALUES  (p_disciplina, p_prerequisito);
 END $$
 
 CREATE PROCEDURE labbd.insereIntervencao (p_id_itens_de_pauta INT, p_cpf CHAR(12), p_data_hora DATE, p_descricao LONGTEXT)
 BEGIN
 	INSERT INTO labbd.intervencoes(id_itens_de_pauta, cpf, data_hora, descricao) 
-    VALUES  (p_id_itens_de_pauta, p_cpf, p_data_hora, p_descricao)
+    VALUES  (p_id_itens_de_pauta, p_cpf, p_data_hora, p_descricao);
 END $$
 
 CREATE PROCEDURE labbd.insereComunicacao (p_id_itens_de_pauta INT, p_cpf CHAR(12), p_data_hora DATE, p_descricao LONGTEXT)
 BEGIN
 	INSERT INTO labbd.comunicacoes (id_itens_de_pauta, cpf, data_hora, descricao) 
-    VALUES  (p_id_itens_de_pauta, p_cpf, p_data_hora, p_descricao)
+    VALUES  (p_id_itens_de_pauta, p_cpf, p_data_hora, p_descricao);
 END $$
 
 CREATE PROCEDURE labbd.procedure_calcula_ira()
