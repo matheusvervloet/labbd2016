@@ -13,6 +13,8 @@
 		<li><a href="http://localhost/my_site/criarMembro.php">Membro**</a></li>
 		<li><a href="http://localhost/my_site/criarReuniao.php">Reunião*</a></li>
 		<li><a href="http://localhost/my_site/criarItens.php">Itens de pauta</a></li>
+		<li><a href="http://localhost/my_site/criarComunicacao.php">Comunicacao</a></li>
+		<li><a href="http://localhost/my_site/criarIntervencao.php">Intervencao</a></li>
 		<li><a href="http://localhost/my_site/criarDocumentos.php">Documentos*</a></li>
 		<li><a href="http://localhost/my_site/criarCurso.php">Curso</a></li>
 		<li><a href="http://localhost/my_site/criarDepartamento.php">Departamento</a></li>
