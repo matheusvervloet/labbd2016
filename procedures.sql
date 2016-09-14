@@ -15,6 +15,8 @@ DROP PROCEDURE IF EXISTS labbd.insereDocente$$
 DROP PROCEDURE IF EXISTS labbd.insereDocumentos$$
 DROP PROCEDURE IF EXISTS labbd.insereEnade$$
 DROP PROCEDURE IF EXISTS labbd.insereFazprova$$
+DROP PROCEDURE IF EXISTS labbd.insereGestao$$
+DROP PROCEDURE IF EXISTS labbd.insereMembro$$
 DROP PROCEDURE IF EXISTS labbd.procedure_insereInscreve$$
 DROP PROCEDURE IF EXISTS labbd.insereItemDoFormulario$$
 DROP PROCEDURE IF EXISTS labbd.insereItens_de_pauta$$
@@ -387,6 +389,31 @@ CREATE PROCEDURE labbd.insereItens_de_pauta(npauta VARCHAR(255), ndata_aprovacao
 BEGIN
 	INSERT INTO labbd.itens_de_pauta(pauta , data_aprovacao, numero_reuniao,texto_descritivo)
 	VALUES (npauta, STR_TO_DATE(ndata_aprovacao, '%Y-%m-%d') , nnumero_reuniao , ntexto_descritivo);
+END $$
+
+CREATE PROCEDURE labbd.insereGestao(
+  p_cpf                   CHAR(12),
+  p_gestao_data_inicio    DATE,
+  p_gestao_data_fim       DATE,
+)
+BEGIN
+  INSERT INTO labbd.membro (cpf) VALUES (p_cpf);
+	INSERT INTO labbd.gestao (cpf, gestao_data_inicio, gestao_data_fim) 
+              VALUES (p_cpf, p_gestao_data_inicio, p_gestao_data_fim);
+END $$
+
+
+CREATE PROCEDURE labbd.insereMembro(
+  p_data_inicio         DATE,
+  p_data_fim            DATE,
+  p_representacao       CHAR(255),
+  p_portaria_indicacao  CHAR(255),
+  p_cpf                 CHAR(12)
+)
+BEGIN
+  INSERT INTO labbd.pessoa (cpf) VALUES (p_cpf);
+	INSERT INTO labbd.membro (data_inicio, data_fim, representacao, portaria_indicacao, cpf) 
+              VALUES (p_data_inicio, p_data_fim, p_representacao, p_portaria_indicacao, p_cpf);
 END $$
 
 CREATE PROCEDURE labbd.inserePossuiAtivAdm(n_id_ativ INT, n_id_c INT)
