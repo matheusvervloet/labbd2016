@@ -12,7 +12,7 @@
 		<li><a href="http://localhost/my_site/criarCentroAcademico.php">Centro Academico</a></li>
 		<li><a href="http://localhost/my_site/criarFazProva.php">Provas feitas*</a></li>
 		<li><a href="http://localhost/my_site/criarMembro.php">Membro**</a></li>
-		<li><a href="http://localhost/my_site/criarReuniao.php">Reunião*</a></li>
+		<li><a href="http://localhost/my_site/criarReuniao.php">Reunião</a></li>
 		<li><a href="http://localhost/my_site/criarPreRequisito.php">Pre-Requisito</a></li>
 		<li><a href="http://localhost/my_site/criarCorrequisito.php">Correquisito</a></li>
 		<li><a href="http://localhost/my_site/criarDocumentos.php">Documentos*</a></li>
@@ -27,10 +27,10 @@
 		</li><li><a href="http://localhost/my_site/criarPossuiAtividadeAdministrativa.php">Atribuir Atividade Administrativa</a></li>
 		<li><a href="http://localhost/my_site/criarComunicacao.php">Comunicacao</a></li>
 		<li><a href="http://localhost/my_site/criarIntervencao.php">Intervencao</a></li>
-		<li><a href="http://localhost/my_site/criarItemDoFormulario.php">Item do formulário*</a></li>
-		<li><a href="http://localhost/my_site/criarVisita.php">Visita*</a></li>
-		<li><a href="http://localhost/my_site/criarComite.php">Comite*</a></li>
-		<li><a href="http://localhost/my_site/criarDecisoesAprovadas.php">Decisoes Aprovadas*</a></li>
+		<li><a href="http://localhost/my_site/criarItemDoFormulario.php">Item do formulário</a></li>
+		<li><a href="http://localhost/my_site/criarVisita.php">Visita</a></li>
+		<li><a href="http://localhost/my_site/criarComite.php">Comite</a></li>
+		<li><a href="http://localhost/my_site/criarDecisoesAprovadas.php">Decisoes Aprovadas</a></li>
 		<li><a href="http://localhost/my_site/criarTurma.php">Turma*</a></li>
 		<li><a href="http://localhost/my_site/criarEnade.php">Enade*</a></li>
 		
